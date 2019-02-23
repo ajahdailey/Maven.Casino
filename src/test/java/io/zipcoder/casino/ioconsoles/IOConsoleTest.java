@@ -30,7 +30,7 @@ public class IOConsoleTest {
 
         //When
 
-        testCrapsConsole.startCrapsGame();
+       // testCrapsConsole.startCrapsGame();
         String actualOutput = outputStream.toString();
 
         //Then
