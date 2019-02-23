@@ -21,6 +21,10 @@ public class Dice {
         tossResults = new ArrayList<Integer>();
     }
 
+    public int roll(){
+        return random.nextInt(6) + 1;
+    }
+
     public Integer[] getResults() {
         return tossResults.toArray(new Integer[tossResults.size()]);
     }

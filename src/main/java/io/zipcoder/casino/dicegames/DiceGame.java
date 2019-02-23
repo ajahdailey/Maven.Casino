@@ -6,7 +6,9 @@ public abstract class DiceGame implements Game {
 
     private int numberOfDice;
     protected Dice dice;
+
     protected boolean didWin;
+
 
     public void roll() {
         dice.toss();
