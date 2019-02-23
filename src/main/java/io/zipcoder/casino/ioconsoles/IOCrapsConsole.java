@@ -5,7 +5,7 @@ import io.zipcoder.casino.GameType;
 public class IOCrapsConsole extends IOConsole{
 
     public IOCrapsConsole(GameType game) {
-        super(game);
+        //super(game);
     }
 
     public void promptRollDice() {
