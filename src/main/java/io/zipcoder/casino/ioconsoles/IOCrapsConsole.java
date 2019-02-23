@@ -29,7 +29,7 @@ public class IOCrapsConsole extends IOConsole{
         System.out.println("You did not win yet !! But good news is that you did not lose yet!! ");
     }
 
-    public void printGameResults() {
+    public void printGameResults(boolean didWin) {
 
     }
 

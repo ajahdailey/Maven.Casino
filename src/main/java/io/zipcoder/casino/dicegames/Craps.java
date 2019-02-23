@@ -30,14 +30,15 @@ public class Craps extends DiceGame implements GamblingGame {
     }
 
     public void bet() {
-
+        player.betMoney();
     }
 
 
     public void evaluateGame(){
         if(didWin){
-            console.printGameResults();
+            player.winMoney();
         }
+        console.printGameResults(didWin);
     }
 
     public void play() {
