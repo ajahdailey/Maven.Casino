@@ -107,8 +107,20 @@ public class IOCrapsConsoleTest {
         Assert.assertEquals(expectedOutput, actual);
     }
 
-    public void printTossOutcome(Integer diceTossResult) {
-        System.out.println("Rolled" + diceTossResult);
+    @Test
+    public void printTossOutcomeTest() {
+        //Given
+        String tossResultsMessage = "The number rolled is %d.";
+        Integer tossResult = 4;
+        String expectedOutput = String.format(tossResultsMessage, tossResult) +"\n";
+
+        //When
+        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
+        crapsIO.printTossOutcome(tossResult);
+        String actual = testOutStream.toString();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actual);
     }
 
     public void printContinueMessage() {

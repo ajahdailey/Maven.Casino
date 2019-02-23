@@ -34,7 +34,7 @@ public class IOCrapsConsole extends IOConsole{
     }
 
     public void printTossOutcome(Integer diceTossResult) {
-        System.out.println("Rolled" + diceTossResult);
+        crapsConsole.println("The number rolled is %d.", diceTossResult);
     }
 
     public void printContinueMessage() {
