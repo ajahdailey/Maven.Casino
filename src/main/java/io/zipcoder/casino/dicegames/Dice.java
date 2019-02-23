@@ -1,5 +1,6 @@
 package io.zipcoder.casino.dicegames;
 
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -24,6 +25,7 @@ public class Dice {
     public int roll(){
         return random.nextInt(6) + 1;
     }
+
 
     public Integer[] getResults() {
         return tossResults.toArray(new Integer[tossResults.size()]);
