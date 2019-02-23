@@ -41,14 +41,15 @@ public class IOCrapsConsole extends IOConsole{
     }
 
     public void printContinueMessage() {
-        System.out.println("You did not win yet !! But good news is that you did not lose yet!! ");
+        crapsConsole.println("The set point wasn't rolled, so the game continues!");
     }
 
-
-
-
-    public void printResult() {
-
+    public void printResult(boolean gameResult) {
+        if (gameResult) {
+            crapsConsole.println("Congratulations, you won!");
+        } else {
+            crapsConsole.println("Sorry, you lost!");
+        }
     }
 
 

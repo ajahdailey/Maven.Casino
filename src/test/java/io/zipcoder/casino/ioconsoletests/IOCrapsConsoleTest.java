@@ -139,26 +139,48 @@ public class IOCrapsConsoleTest {
         //Then
         Assert.assertEquals(expectedOutput, actual);
     }
-
-    public void printContinueMessage() {
+    @Test
+    public void printContinueMessageTest() {
         //Given
-        String tossResultsMessage = "The number rolled is %d.";
-        Integer tossResult = 4;
-        String expectedOutput = String.format(tossResultsMessage, tossResult) +"\n";
+        String continueMessage = "The set point wasn't rolled, so the game continues!";
+        String expectedOutput = continueMessage +"\n";
 
         //When
         IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
-        crapsIO.printTossOutcome(tossResult);
+        crapsIO.printContinueMessage();
         String actual = testOutStream.toString();
 
         //Then
         Assert.assertEquals(expectedOutput, actual);
-//        System.out.println("You did not win yet !! But good news is that you did not lose yet!! ");
+    }
+    @Test
+    public void printResultWin() {
+        //Given
+        String resultMessage = "Congratulations, you won!";
+        String expectedOutput = resultMessage +"\n";
+
+        //When
+        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
+        crapsIO.printResult(true);
+        String actual = testOutStream.toString();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actual);
     }
 
-    public void printResult() {
+    @Test
+    public void printResultLose() {
+        //Given
+        String resultMessage = "Sorry, you lost!";
+        String expectedOutput = resultMessage +"\n";
 
+        //When
+        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
+        crapsIO.printResult(false);
+        String actual = testOutStream.toString();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actual);
     }
-
 
 }
