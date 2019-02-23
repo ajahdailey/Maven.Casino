@@ -9,7 +9,7 @@ public class BlackJackPlayer extends CardPlayer implements GamblingPlayer {
     public int betMoney() {
         return 0;
     }
-    public int winMoney() {
-        return 0;
+    public void winMoney() {
+
     }
 }
