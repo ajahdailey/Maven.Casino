@@ -43,6 +43,7 @@ public class Craps extends DiceGame implements GamblingGame {
     public void play() {
 
         boolean isDone = false;
+        console.crapsWelcome();
         passChoice = console.passOrNotPass();
 
         do{
@@ -109,7 +110,7 @@ public class Craps extends DiceGame implements GamblingGame {
     }
 
     public static void main(String[] args) {
-        Craps craps = new Craps(null, new IOCrapsConsole());
+        Craps craps = new Craps(null, new IOCrapsConsole("Aswathy"));
         craps.play();
     }
 }
