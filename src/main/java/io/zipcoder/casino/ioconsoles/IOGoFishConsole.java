@@ -6,7 +6,8 @@ public class IOGoFishConsole extends IOConsole{
 
 
     public IOGoFishConsole(GameType game) {
-        super(game);
+
+//        super(game);
     }
 
     public int pickAPlayer () {
