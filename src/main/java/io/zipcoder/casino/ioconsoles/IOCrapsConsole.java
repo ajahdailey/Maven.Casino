@@ -12,19 +12,20 @@ public class IOCrapsConsole extends IOConsole{
         System.out.println("Rolling");
     }
 
-    public void printOutcome(Integer diceTossResult) {
+    public void printTossOutcome(Integer diceTossResult) {
         System.out.println("Rolled" + diceTossResult);
     }
-
 
     public void printContinueMessage() {
         System.out.println("You did not win yet !! But good news is that you did not lose yet!! ");
     }
+
     public void printGameResults() {
 
     }
 
     public int getBetMoney() {
+
         return 0;
     }
 

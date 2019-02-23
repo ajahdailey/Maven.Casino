@@ -8,12 +8,20 @@ public class CrapsPlayer extends DicePlayer implements GamblingPlayer {
 
     private List<Integer> bin;
 
-    public int betMoney() {
-        return 0;
+    private static final int CrapsBetMoney = 10;
+
+    public int betMoney(){
+        int betMoney = -1;
+        if (player.getMoney() > CrapsBetMoney){
+            player.reduceMoney(CrapsBetMoney);
+            betMoney = CrapsBetMoney;
+        }
+        return betMoney;
     }
 
-    public int winMoney() {
-        return 0;
+    public void winMoney() {
+            player.addMoney(CrapsBetMoney);
     }
+
 
 }

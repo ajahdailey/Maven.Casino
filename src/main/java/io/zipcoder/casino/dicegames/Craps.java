@@ -35,7 +35,9 @@ public class Craps extends DiceGame implements GamblingGame {
 
 
     public void evaluateGame(){
-
+        if(didWin){
+            console.printGameResults();
+        }
     }
 
     public void play() {
@@ -47,7 +49,7 @@ public class Craps extends DiceGame implements GamblingGame {
             console.promptRollDice();
             roll();
             int result = dice.getSum();
-            console.printOutcome(result);
+            console.printTossOutcome(result);
             isDone = evaluateTurn(turnNumber, result);
 
             if(!isDone)
@@ -92,12 +94,12 @@ public class Craps extends DiceGame implements GamblingGame {
     }
 
     private boolean isInPassList(int result){
-        int [] passList = {4,5,6,8,9,10};
+        final int [] passList = {4,5,6,8,9,10};
         int isPresent = Arrays.binarySearch(passList,result);
         return isPresent > 0;
     }
     private boolean isInDoNotPassList(int result){
-        int [] passList = {2, 3, 12};
+        final int [] passList = {2, 3, 12};
         int isPresent = Arrays.binarySearch(passList,result);
         return isPresent > 0;
 
