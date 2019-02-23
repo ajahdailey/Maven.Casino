@@ -6,8 +6,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 public class IOCrapsConsoleTest {
 
@@ -45,34 +47,63 @@ public class IOCrapsConsoleTest {
 
     }
     @Test
-    public void PassOrNotPassTest() {
+    public void PassOrNotPassTest1() {
         //Given
-        String welcomeMessage = "Are you betting on Pass or No Pass?\nType P for Pass. NP for No Pass";
-        String expectedOutput = String.format(welcomeMessage) +"\n";
+        String typeOfBet = "P";
+        byte[] inputBytes = typeOfBet.getBytes();
+        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
 
         //When
-        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
-        crapsIO.passOrNotPass();
-        String actual = testOutStream.toString();
+        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName, inputByteArray );
+        boolean actualOutput = crapsIO.passOrNotPass();
 
         //Then
-        Assert.assertEquals(expectedOutput, actual);
+        Assert.assertTrue(actualOutput);
+    }
 
+    @Test
+    public void PassOrNotPassTest2() {
+        //Given
+        String typeOfBet = "p";
+        byte[] inputBytes = typeOfBet.getBytes();
+        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
+
+        //When
+        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName, inputByteArray );
+        boolean actualOutput = crapsIO.passOrNotPass();
+
+        //Then
+        Assert.assertTrue(actualOutput);
+    }
+
+    @Test
+    public void PassOrNotPassTest3() {
+        //Given
+        String typeOfBet = "NP";
+        byte[] inputBytes = typeOfBet.getBytes();
+        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
+
+        //When
+        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName, inputByteArray );
+        boolean actualOutput = crapsIO.passOrNotPass();
+
+        //Then
+        Assert.assertFalse(actualOutput);
     }
 
     @Test
     public void promptRollDice() {
-        //Given
-        String welcomeMessage = "Welcome to craps, %s. Let's play!";
-        String expectedOutput = String.format(welcomeMessage, playerName) +"\n";
-
-        //When
-        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
-        crapsIO.crapsWelcome();
-        String actual = testOutStream.toString();
-
-        //Then
-        Assert.assertEquals(expectedOutput, actual);
+//        //Given
+//        String welcomeMessage = "Welcome to craps, %s. Let's play!";
+//        String expectedOutput = String.format(welcomeMessage, playerName) +"\n";
+//
+//        //When
+//        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
+//        crapsIO.crapsWelcome();
+//        String actual = testOutStream.toString();
+//
+//        //Then
+//        Assert.assertEquals(expectedOutput, actual);
 
     }
 
