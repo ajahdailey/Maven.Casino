@@ -29,7 +29,7 @@ public class ChuckALuck extends DiceGame {
     public ChuckALuck(DicePlayer dicePlayer){
         console = new IOChuckALuckConsole(new Console(System.in, System.out));
         this.player = dicePlayer;
-        this.dice = new Dice();
+        this.dice = new Dice(numberOfDice);
     }
 
     public ChuckALuck(DicePlayer player, IOChuckALuckConsole console){
@@ -38,6 +38,7 @@ public class ChuckALuck extends DiceGame {
     }
 
     public void play() {
+
         guesses = console.getGuesses();
         rollDices();
         int matches = getMatches(guesses, results);
