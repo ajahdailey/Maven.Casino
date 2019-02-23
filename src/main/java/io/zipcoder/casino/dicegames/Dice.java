@@ -1,12 +1,26 @@
 package io.zipcoder.casino.dicegames;
 
-public class Dice {
+import java.util.Random;
 
+public class Dice {
     int numberOfDice;
+    private Random random;
+
+    public Dice(){
+        random = new Random();
+    }
+
+    public Dice(Random random){
+        this.random = random;
+    }
 
     public int tossAndSum() {
         return 0;
 
+    }
+
+    public int roll(){
+        return random.nextInt(6) + 1;
     }
 
     public Integer[] getResults() {
