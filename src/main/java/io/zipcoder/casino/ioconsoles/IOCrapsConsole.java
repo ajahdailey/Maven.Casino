@@ -30,22 +30,20 @@ public class IOCrapsConsole extends IOConsole{
     }
 
     public void promptRollDice() {
-
+        crapsConsole.println("Time to roll the dice!");
     }
 
-    public void printOutcome(Integer[] diceTossResults) {
-
+    public void printTossOutcome(Integer diceTossResult) {
+        System.out.println("Rolled" + diceTossResult);
     }
 
+    public void printContinueMessage() {
+        System.out.println("You did not win yet !! But good news is that you did not lose yet!! ");
+    }
 
     public void printResult() {
 
     }
-
-    public int getBetMoney() {
-        return 0;
-    }
-
 
 
 }

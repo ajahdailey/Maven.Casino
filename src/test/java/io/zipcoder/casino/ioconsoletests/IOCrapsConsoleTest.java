@@ -91,35 +91,32 @@ public class IOCrapsConsoleTest {
         Assert.assertFalse(actualOutput);
     }
 
+
     @Test
     public void promptRollDice() {
-//        //Given
-//        String welcomeMessage = "Welcome to craps, %s. Let's play!";
-//        String expectedOutput = String.format(welcomeMessage, playerName) +"\n";
-//
-//        //When
-//        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
-//        crapsIO.crapsWelcome();
-//        String actual = testOutStream.toString();
-//
-//        //Then
-//        Assert.assertEquals(expectedOutput, actual);
+        //Given
+        String rollDiceMessage = "Time to roll the dice!";
+        String expectedOutput = String.format(rollDiceMessage) +"\n";
 
+        //When
+        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
+        crapsIO.promptRollDice();
+        String actual = testOutStream.toString();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actual);
     }
 
-
-
-    public void printOutcome(Integer[] diceTossResults) {
-
+    public void printTossOutcome(Integer diceTossResult) {
+        System.out.println("Rolled" + diceTossResult);
     }
 
+    public void printContinueMessage() {
+        System.out.println("You did not win yet !! But good news is that you did not lose yet!! ");
+    }
 
     public void printResult() {
 
-    }
-
-    public int getBetMoney() {
-        return 0;
     }
 
 
