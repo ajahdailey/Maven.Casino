@@ -44,8 +44,25 @@ public class IOCrapsConsoleTest {
 
         //Then
         Assert.assertEquals(expectedOutput, actual);
-
     }
+
+    @Test
+    public void setPointMessageTest() {
+        //Given
+        String setPointMessage = "The set point is %d.";
+        Integer setPoint = 4;
+        String expectedOutput = String.format(setPointMessage, setPoint) +"\n";
+
+        //When
+        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
+        crapsIO.setPointMessage(setPoint);
+        String actual = testOutStream.toString();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actual);
+    }
+
+
     @Test
     public void PassOrNotPassTest1() {
         //Given
@@ -124,7 +141,19 @@ public class IOCrapsConsoleTest {
     }
 
     public void printContinueMessage() {
-        System.out.println("You did not win yet !! But good news is that you did not lose yet!! ");
+        //Given
+        String tossResultsMessage = "The number rolled is %d.";
+        Integer tossResult = 4;
+        String expectedOutput = String.format(tossResultsMessage, tossResult) +"\n";
+
+        //When
+        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
+        crapsIO.printTossOutcome(tossResult);
+        String actual = testOutStream.toString();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actual);
+//        System.out.println("You did not win yet !! But good news is that you did not lose yet!! ");
     }
 
     public void printResult() {

@@ -3,7 +3,6 @@ package io.zipcoder.casino.ioconsoles;
 import io.zipcoder.casino.utilities.Console;
 
 import java.io.InputStream;
-import java.util.Scanner;
 
 public class IOCrapsConsole extends IOConsole{
     String name;
@@ -33,6 +32,10 @@ public class IOCrapsConsole extends IOConsole{
         crapsConsole.println("Time to roll the dice!");
     }
 
+    public void setPointMessage(Integer setPoint) {
+        crapsConsole.println("The set point is %d.", setPoint);
+    }
+
     public void printTossOutcome(Integer diceTossResult) {
         crapsConsole.println("The number rolled is %d.", diceTossResult);
     }
@@ -40,6 +43,9 @@ public class IOCrapsConsole extends IOConsole{
     public void printContinueMessage() {
         System.out.println("You did not win yet !! But good news is that you did not lose yet!! ");
     }
+
+
+
 
     public void printResult() {
 
