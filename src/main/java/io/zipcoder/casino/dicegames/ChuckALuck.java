@@ -38,7 +38,6 @@ public class ChuckALuck extends DiceGame {
     }
 
     public void play() {
-
         guesses = console.getGuesses();
         rollDices();
         int matches = getMatches(guesses, results);
