@@ -84,5 +84,5 @@ public class ChuckALuckTest {
 
         Assert.assertEquals(expected, actualMatch);
     }
-
+// If there is an unexpected input, ask user to "please enter a number from 1-6"
 }

@@ -35,6 +35,6 @@ public class IOChuckALuckConsole extends IOConsole{
 
 
 
-
+//add "please enter a number from 1-6" if they
 
 }

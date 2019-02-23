@@ -77,13 +77,14 @@ public class ChuckALuck extends DiceGame {
 
     }
 
-    public static void main(String[] args) {
-        Player player = new Player(10, "A");
-        DicePlayer dicePlayer = new DicePlayer(player);
-
-        ChuckALuck game = new ChuckALuck(dicePlayer);
-        game.play();
-    }
+//   public static void main(String[] args) {
+//        Player player = new Player(10, "A");
+//        DicePlayer dicePlayer = new DicePlayer(player);
+//
+//        ChuckALuck game = new ChuckALuck(dicePlayer);
+//        game.play();
+//    }
 }
 
+//
 
