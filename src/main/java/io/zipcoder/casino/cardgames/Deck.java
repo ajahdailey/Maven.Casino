@@ -10,7 +10,7 @@ public class Deck {
         this.numberOfCards = numberOfCards;
     }
 
-    public Object draw(){
+    public Card draw(){
         return null;
     }
 

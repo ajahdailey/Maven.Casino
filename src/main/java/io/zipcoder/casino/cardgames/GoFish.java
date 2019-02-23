@@ -21,4 +21,9 @@ public class GoFish extends CardGame {
     public void exit() {
 
     }
+
+    @Override
+    public void takeTurn() {
+
+    }
 }
