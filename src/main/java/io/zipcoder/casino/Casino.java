@@ -13,7 +13,7 @@ public class Casino {
     List<Player> players;
     GameType currentSelectedGame;
 
-    public static void main(String[] args) {
+   public static void main(String[] args) {
         // write your tests before you start fucking with this
     }
 
