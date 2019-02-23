@@ -4,20 +4,23 @@ import io.zipcoder.casino.GameType;
 
 public class IOCrapsConsole extends IOConsole{
 
-    public IOCrapsConsole(GameType game) {
-        //super(game);
+    public IOCrapsConsole() {
+        gameType = (GameType.Crapes);
     }
 
     public void promptRollDice() {
-
+        System.out.println("Rolling");
     }
 
-    public void printOutcome(Integer[] diceTossResults) {
-
+    public void printOutcome(Integer diceTossResult) {
+        System.out.println("Rolled" + diceTossResult);
     }
 
 
-    public void printResult() {
+    public void printContinueMessage() {
+        System.out.println("You did not win yet !! But good news is that you did not lose yet!! ");
+    }
+    public void printGameResults() {
 
     }
 
@@ -25,8 +28,9 @@ public class IOCrapsConsole extends IOConsole{
         return 0;
     }
 
-    public void passOrNotPass() {
+    public boolean passOrNotPass() {
 
+        return true;
     }
 
 }

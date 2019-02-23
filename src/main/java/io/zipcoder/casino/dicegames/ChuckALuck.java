@@ -15,7 +15,8 @@ public class ChuckALuck extends DiceGame {
 
 
     public void play() {
-        super.play();
+
+        //super.play();
     }
 
 

@@ -5,16 +5,19 @@ import io.zipcoder.casino.utilities.Game;
 public abstract class DiceGame implements Game {
 
     private int numberOfDice;
-    private Dice dice;
-
+    protected Dice dice;
+    protected boolean didWin;
 
     public void roll() {
-
+        dice.toss();
     }
 
-    public void play() {
+    public abstract void play() ;
 
+    public DiceGame(){
+        numberOfDice = 3;
+        dice = new Dice(numberOfDice);
+        didWin = false;
     }
-
 
 }
