@@ -44,11 +44,39 @@ public class IOCrapsConsoleTest {
         Assert.assertEquals(expectedOutput, actual);
 
     }
+    @Test
+    public void PassOrNotPassTest() {
+        //Given
+        String welcomeMessage = "Are you betting on Pass or No Pass?\nType P for Pass. NP for No Pass";
+        String expectedOutput = String.format(welcomeMessage) +"\n";
 
+        //When
+        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
+        crapsIO.passOrNotPass();
+        String actual = testOutStream.toString();
 
-    public void promptRollDice() {
+        //Then
+        Assert.assertEquals(expectedOutput, actual);
 
     }
+
+    @Test
+    public void promptRollDice() {
+        //Given
+        String welcomeMessage = "Welcome to craps, %s. Let's play!";
+        String expectedOutput = String.format(welcomeMessage, playerName) +"\n";
+
+        //When
+        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
+        crapsIO.crapsWelcome();
+        String actual = testOutStream.toString();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actual);
+
+    }
+
+
 
     public void printOutcome(Integer[] diceTossResults) {
 
@@ -63,7 +91,5 @@ public class IOCrapsConsoleTest {
         return 0;
     }
 
-    public void passOrNotPass() {
 
-    }
 }

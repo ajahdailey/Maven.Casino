@@ -2,6 +2,8 @@ package io.zipcoder.casino.ioconsoles;
 
 import io.zipcoder.casino.utilities.Console;
 
+import java.util.Scanner;
+
 public class IOCrapsConsole extends IOConsole{
     String name;
     Console crapsConsole;
@@ -9,13 +11,16 @@ public class IOCrapsConsole extends IOConsole{
     public IOCrapsConsole(String name) {
         this.name = name;
         this.crapsConsole = new Console(System.in, System.out);
-
     }
 
     public void crapsWelcome() {
         crapsConsole.println("Welcome to craps, %s. Let's play!", name);
     }
 
+    public void passOrNotPass() {
+        crapsConsole.println("Are you betting on Pass or No Pass?\nType P for Pass. NP for No Pass");
+
+    }
 
     public void promptRollDice() {
 
@@ -34,8 +39,6 @@ public class IOCrapsConsole extends IOConsole{
         return 0;
     }
 
-    public void passOrNotPass() {
 
-    }
 
 }
