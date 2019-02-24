@@ -38,24 +38,24 @@ public class IOConsole {
                 "777777777777777777777777");
     }
 
-        public String getPlayerName() {
+    public String getPlayerName() {
         playerName = casinoConsole.getStringInput("What is your name?");
         return playerName;
     }
 
-    // TODO should the player be created by the IO Console or by the casino?? -kb
     public Player getPlayer(){
         String name = getPlayerName();
         return new Player(100, name);
     }
 
     public void printGameIntro(String playerName) {
-        casinoConsole.println("Welcome, %s. We have four games you can play. Black Jack and Craps require bets. Chuck-A-Luck and Go Fish do not. We've given you $100 to play in the betting games.", playerName);
+        casinoConsole.println("Welcome, %s. We have four games you can play.\n" +
+                "Black Jack and Craps require bets. Chuck-A-Luck and Go Fish do not.\n" +
+                "We've given you $100 to play in the betting games.\n" +
+                "\n", playerName);
     }
 
     public GameType getGameSelection(){
-//        System.out.println("Which Game you would like to play ? ");
-//        return GameType.ChuckALuck;
         String gameSelection = casinoConsole.getStringInput("Which game do you want to play?\n" +
                 "Press 1 for BlackJack\n" +
                 "Press 2 for Chuck-A-Luck\n" +
@@ -85,11 +85,18 @@ public class IOConsole {
 
 
     public void printPlayerAccount(Integer balance) {
-        casinoConsole.println("Your current balance for betting games is $%d", balance);
+        casinoConsole.println("\nYour current balance for betting games is $%d", balance);
     }
 
     public boolean askPlayAgain() {
-        return false;
+        String playAgain = casinoConsole.getStringInput("Do you want to play another game?\n" +
+                "Enter Y for Yes, or N for No.");
+
+        return playAgain.compareToIgnoreCase("Y") == 0;
+    }
+
+    public void goodbye(String name) {
+        casinoConsole.println("Thanks for playing, %s. Goodbye!", name);
     }
 
     public void invalidEntryMessage() {

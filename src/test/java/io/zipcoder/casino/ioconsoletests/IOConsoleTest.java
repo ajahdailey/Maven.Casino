@@ -80,7 +80,10 @@ public class IOConsoleTest {
     @Test
     public void printGameIntroTest() {
         //Given
-        String gameIntro = "Welcome, %s. We have four games you can play. Black Jack and Craps require bets. Chuck-A-Luck and Go Fish do not. We've given you $100 to play in the betting games.";
+        String gameIntro = "Welcome, %s. We have four games you can play.\n" +
+                "Black Jack and Craps require bets. Chuck-A-Luck and Go Fish do not.\n" +
+                "We've given you $100 to play in the betting games.\n" +
+                "\n";
         String expectedOutput = String.format(gameIntro, playerName) + "\n";
 
         //When
@@ -160,7 +163,7 @@ public class IOConsoleTest {
     public void printPlayerAccount() {
         //Given
         Integer balance = 90;
-        String balanceMessage = "Your current balance for betting games is $%d";
+        String balanceMessage = "\nYour current balance for betting games is $%d";
         String expectedOutput = String.format(balanceMessage, balance) + "\n";
 
         //When
@@ -172,6 +175,61 @@ public class IOConsoleTest {
         Assert.assertEquals(expectedOutput, actual);
     }
 
+    @Test
+    public void askPlayAgain1() {
+        //Given
+        String playAgain = "Y";
+        byte[] inputBytes = playAgain.getBytes();
+        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
 
+        //When
+        IOConsole casinoIO = new IOConsole(inputByteArray );
+        boolean actualOutput = casinoIO.askPlayAgain();
+        //Then
+        Assert.assertTrue(actualOutput);
+    }
+
+    @Test
+    public void askPlayAgain2() {
+        //Given
+        String playAgain = "y";
+        byte[] inputBytes = playAgain.getBytes();
+        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
+
+        //When
+        IOConsole casinoIO = new IOConsole(inputByteArray );
+        boolean actualOutput = casinoIO.askPlayAgain();
+        //Then
+        Assert.assertTrue(actualOutput);
+    }
+
+    @Test
+    public void askPlayAgain3() {
+        //Given
+        String playAgain = "N";
+        byte[] inputBytes = playAgain.getBytes();
+        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
+
+        //When
+        IOConsole casinoIO = new IOConsole(inputByteArray );
+        boolean actualOutput = casinoIO.askPlayAgain();
+        //Then
+        Assert.assertFalse(actualOutput);
+    }
+
+    @Test
+    public void goodbye() {
+        //Given
+        String goodbyeMessage = "Thanks for playing, %s. Goodbye!";
+        String expectedOutput = String.format(goodbyeMessage, playerName) + "\n";
+
+        //When
+        IOConsole casinoIO = new IOConsole();
+        casinoIO.goodbye(playerName);
+        String actual = testOutStream.toString();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actual);
+    }
 
 }
