@@ -22,4 +22,8 @@ public class Player {
     public void addMoney(int money) {
         this.money += money;
     }
+
+    public String getName() {
+        return name;
+    }
 }

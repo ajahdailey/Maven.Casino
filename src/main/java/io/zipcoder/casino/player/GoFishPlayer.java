@@ -6,5 +6,4 @@ public class GoFishPlayer extends CardPlayer{
         super(player);
     }
 
-
 }

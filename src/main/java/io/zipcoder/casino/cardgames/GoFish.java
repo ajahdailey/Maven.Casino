@@ -1,10 +1,13 @@
 package io.zipcoder.casino.cardgames;
 
+
 import io.zipcoder.casino.Facilitator;
+import io.zipcoder.casino.ioconsoles.IOConsole;
 import io.zipcoder.casino.player.CardPlayer;
 import io.zipcoder.casino.ioconsoles.IOGoFishConsole;
 import io.zipcoder.casino.player.GoFishPlayer;
 import io.zipcoder.casino.player.Player;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +35,10 @@ public class GoFish extends CardGame {
         deck = new Deck(52);
         facilitator = new Facilitator(playerList, deck);
 
+
+    }
+
+    public GoFish(GoFishPlayer goFishPlayer, IOConsole console) {
 
     }
 
@@ -64,6 +71,9 @@ public class GoFish extends CardGame {
     }
 
     @Override
+    public void printResults() {
+
+    }
     public void takeTurn() {
 
     }

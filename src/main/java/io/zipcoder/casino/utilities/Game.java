@@ -7,6 +7,6 @@ public interface Game {
     void exit();
 
 
-
+    void printResults();
 }
 

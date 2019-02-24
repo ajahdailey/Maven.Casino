@@ -10,6 +10,10 @@ public class CrapsPlayer extends DicePlayer implements GamblingPlayer {
 
     private static final int CrapsBetMoney = 10;
 
+    public CrapsPlayer(Player player) {
+        super(player);
+    }
+
     public int betMoney(){
         int betMoney = -1;
         if (player.getMoney() > CrapsBetMoney){
@@ -24,4 +28,7 @@ public class CrapsPlayer extends DicePlayer implements GamblingPlayer {
     }
 
 
+    public void addMoney(int money) {
+        player.addMoney(money);
+    }
 }

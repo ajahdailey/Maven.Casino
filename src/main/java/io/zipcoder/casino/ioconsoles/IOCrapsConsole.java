@@ -40,6 +40,7 @@ public class IOCrapsConsole extends IOConsole{
         crapsConsole.println("The number rolled is %d.", diceTossResult);
     }
 
+
     public void printContinueMessage() {
         crapsConsole.println("The set point wasn't rolled, so the game continues!");
     }
@@ -52,5 +53,8 @@ public class IOCrapsConsole extends IOConsole{
         }
     }
 
+
+    public void SetPointMessage(int setPoint) {
+    }
 
 }
