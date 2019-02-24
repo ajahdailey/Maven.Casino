@@ -12,12 +12,14 @@ public class Hand {
 
 
     List<Card> cardsInHand;
+    List<Card> matchedCards = new ArrayList<Card>();
+    Card card;
 
     public Hand(List<Card> cards){
     this.cardsInHand = cards;
     }
 
-    public Hand() {
+    public Hand(int numberOfCards) {
         this.cardsInHand = new ArrayList<>();
 
     }
@@ -47,5 +49,26 @@ public class Hand {
     public int getNumberOfCardsInHand() {
 
         return cardsInHand.size();
+    }
+
+    public void manageDuplicateCards() {
+        boolean foundMatch = false;
+
+        for (int i = 0; i < cardsInHand.size(); ) {
+            foundMatch = false;
+            for (int j = i; j < cardsInHand.size(); j++) {
+                if (cardsInHand.get(j).equals(cardsInHand.get(i))) {
+                    matchedCards.add(card);
+
+                   // cardsInHand.remove(cardsInHand.get(j));
+                    //cardsInHand.remove(cardsInHand.get(i));
+                    foundMatch = true;
+                    break;
+                }
+            }
+            if(!foundMatch)
+                i++;
+
+        }
     }
 }

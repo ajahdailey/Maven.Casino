@@ -9,7 +9,7 @@ public class CardPlayer {
 
     public  CardPlayer(Player player){
         this.player = player;
-        cardsInHand = new Hand();
+        cardsInHand = new Hand(getNumberOfCardsInHand());
     }
 
 
@@ -20,5 +20,9 @@ public class CardPlayer {
     public Integer getNumberOfCardsInHand() {
         return cardsInHand.getNumberOfCardsInHand();
 
+    }
+
+    public void discardMatchedCards() {
+        cardsInHand.manageDuplicateCards();
     }
 }

@@ -8,6 +8,8 @@ public class Deck {
 
     public Deck(int numberOfCards) {
         this.numberOfCards = numberOfCards;
+        //You construct the deck
+        shuffle();
     }
 
     public Card draw(){
