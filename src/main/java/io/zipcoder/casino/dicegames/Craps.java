@@ -115,7 +115,7 @@ public class Craps extends DiceGame implements GamblingGame {
 
     @Override
     public void printResults() {
-
+        console.printResult(didWin);
     }
 
     public static void main(String[] args) {

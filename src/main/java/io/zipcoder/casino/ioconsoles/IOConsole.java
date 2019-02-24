@@ -25,7 +25,7 @@ public class IOConsole {
 
 
     public void startCasinoConsole() {
-        System.out.println("777777777777777777777777\n" +
+        casinoConsole.println("777777777777777777777777\n" +
                 "7                      7\n" +
                 "7   THE SEVES CASINO   7\n" +
                 "7    ____              7\n" +
@@ -45,7 +45,8 @@ public class IOConsole {
 
     // TODO should the player be created by the IO Console or by the casino?? -kb
     public Player getPlayer(){
-        return new Player(200, "Aswathy");
+        String name = getPlayerName();
+        return new Player(100, name);
     }
 
     public void printGameIntro(String playerName) {
