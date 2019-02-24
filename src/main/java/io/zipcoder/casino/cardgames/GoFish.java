@@ -32,4 +32,7 @@ public class GoFish extends CardGame {
     public void printResults() {
 
     }
+    public void takeTurn() {
+
+    }
 }

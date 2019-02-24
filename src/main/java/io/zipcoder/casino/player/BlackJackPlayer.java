@@ -7,9 +7,9 @@ public class BlackJackPlayer extends CardPlayer implements GamblingPlayer {
     private int score;
 
     public BlackJackPlayer(Player player) {
-        super();
-    }
 
+        super(player);
+    }
 
     public int betMoney() {
         return 0;
