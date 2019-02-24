@@ -11,10 +11,7 @@ public abstract class CardGame implements Game {
 
 
 
-    public void takeTurn() {
-
-    }
-
+    public abstract void takeTurn();
 }
 
 
