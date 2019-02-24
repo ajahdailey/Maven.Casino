@@ -15,9 +15,9 @@ public class IOChuckALuckConsole extends IOConsole{
     }
     public List<Integer> getGuesses(){
         List<Integer> userGuesses = new ArrayList<Integer>();
-        Integer guess1 = console.getIntegerInput("Guess the outcome ");
-        Integer guess2 = console.getIntegerInput("Guess the outcome ");
-        Integer guess3 = console.getIntegerInput("Guess the outcome ");
+        Integer guess1 = console.getIntegerInput("Guess the outcome of the first dice ");
+        Integer guess2 = console.getIntegerInput("Guess the outcome of the second dice ");
+        Integer guess3 = console.getIntegerInput("Guess the outcome of the third dice");
         userGuesses.add(guess1);
         userGuesses.add(guess2);
         userGuesses.add(guess3);
@@ -35,6 +35,6 @@ public class IOChuckALuckConsole extends IOConsole{
 
 
 
-//add "please enter a number from 1-6" if they
+//add "please enter a number from 1-6" if they enter any value other than 1-6.
 
 }

@@ -54,6 +54,7 @@ public class ChuckALuck extends DiceGame {
             results.add(diceResult);
         }
     }
+    //use evaluateGame to get result of game
 
     public int getMatches(List<Integer> userGuesses, List<Integer> diceResults) {
         int numOfMatch = 0;
@@ -68,11 +69,11 @@ public class ChuckALuck extends DiceGame {
         return numOfMatch;
     }
 
-
+    //If the player wins or lose. 3 match is a win?
     public void evaluateGame(){
 
     }
-
+    //Will ask if they want to play another game or continue playing this game or exit. Will come from the console.
     public void exit() {
 
     }
