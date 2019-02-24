@@ -1,8 +1,10 @@
 package io.zipcoder.casino.ioconsoletests;
 
+import io.zipcoder.casino.GameType;
 import io.zipcoder.casino.ioconsoles.IOConsole;
 import io.zipcoder.casino.ioconsoles.IOCrapsConsole;
 import io.zipcoder.casino.utilities.Console;
+import io.zipcoder.casino.utilities.Game;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -12,6 +14,8 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.io.PrintStream;
+
+import static io.zipcoder.casino.GameType.*;
 
 public class IOConsoleTest {
 
@@ -86,6 +90,74 @@ public class IOConsoleTest {
         //Then
         Assert.assertEquals(expectedOutput, actual);
     }
+
+    @Test
+    public void getGameSelectionTest1() {
+        //Given
+        String gameSelection = "1";
+        GameType expectedOutput = BlackJack;
+        byte[] inputBytes = gameSelection.getBytes();
+        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
+
+        //When
+        IOConsole casinoIO = new IOConsole(inputByteArray);
+        GameType actualOutput = casinoIO.getGameSelection();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void getGameSelectionTest2() {
+        //Given
+        String gameSelection = "2";
+        GameType expectedOutput = ChuckALuck;
+        byte[] inputBytes = gameSelection.getBytes();
+        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
+
+        //When
+        IOConsole casinoIO = new IOConsole(inputByteArray);
+        GameType actualOutput = casinoIO.getGameSelection();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void getGameSelectionTest3() {
+        //Given
+        String gameSelection = "3";
+        GameType expectedOutput = Crapes;
+        byte[] inputBytes = gameSelection.getBytes();
+        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
+
+        //When
+        IOConsole casinoIO = new IOConsole(inputByteArray);
+        GameType actualOutput = casinoIO.getGameSelection();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+    @Test
+    public void getGameSelectionTest4() {
+        //Given
+        String gameSelection = "4";
+        GameType expectedOutput = GoFish;
+        byte[] inputBytes = gameSelection.getBytes();
+        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
+
+        //When
+        IOConsole casinoIO = new IOConsole(inputByteArray);
+        GameType actualOutput = casinoIO.getGameSelection();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actualOutput);
+    }
+
+
+
+
 
 
 }

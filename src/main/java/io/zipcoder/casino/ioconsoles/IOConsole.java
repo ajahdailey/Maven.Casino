@@ -43,7 +43,7 @@ public class IOConsole {
         return playerName;
     }
 
-    // should the player be created by the IO Console or by the casino?? -kb
+    // TODO should the player be created by the IO Console or by the casino?? -kb
     public Player getPlayer(){
         return new Player(200, "Aswathy");
     }
@@ -52,11 +52,33 @@ public class IOConsole {
         casinoConsole.println("Welcome, %s. We have four games you can play. Black Jack and Craps require bets. Chuck-A-Luck and Go Fish do not. We've given you $100 to play in the betting games.", playerName);
     }
 
-
     public GameType getGameSelection(){
-        System.out.println("Which Game you would like to play ? ");
-        return GameType.ChuckALuck;
-    }
+//        System.out.println("Which Game you would like to play ? ");
+//        return GameType.ChuckALuck;
+        String gameSelection = casinoConsole.getStringInput("Which game do you want to play?\n" +
+                "Press 1 for BlackJack\n" +
+                "Press 2 for Chuck-A-Luck\n" +
+                "Press 3 for Craps\n" +
+                "Press 4 for Go Fish");
+
+        GameType selection = null;
+
+        switch(gameSelection) {
+            case "1":
+                selection = GameType.BlackJack;
+            break;
+            case "2":
+                selection = GameType.ChuckALuck;
+            break;
+            case "3":
+                selection = GameType.Crapes;
+            break;
+            case "4":
+                selection = GameType.GoFish;
+            break;
+        }
+        return selection;
+        }
 
 
 
@@ -67,5 +89,9 @@ public class IOConsole {
 
     public boolean askPlayAgain() {
         return false;
+    }
+
+    public void invalidEntryMessage() {
+        casinoConsole.println("I'm sorry I didn't understand your selection. Please try again.");
     }
 }
