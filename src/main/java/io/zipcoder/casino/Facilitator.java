@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Facilitator {
 
-    private CardPlayer currentPlayer;
+
     private List<CardPlayer > playerList;
 
     public CardPlayer getWinner() {
@@ -29,16 +29,16 @@ public class Facilitator {
 
     public boolean evaluateTurn() {
 
-        boolean didWin = false;
+        boolean isGameOver = false;
         for(CardPlayer player : playerList) {
             if(player.getNumberOfCardsInHand() == 0){
                 winner = player;
-                didWin = true;
+                isGameOver = true;
                 break;
             }
         }
 
-        return didWin;
+        return isGameOver;
 
     }
 
@@ -52,6 +52,13 @@ public class Facilitator {
                 Card card = deck.draw();
                 player.addCardToHand(card);
             }
+        }
+    }
+
+
+    public void discardMatchedCards() {
+        for(CardPlayer player : playerList){
+            player.discardMatchedCards();
         }
     }
 }
