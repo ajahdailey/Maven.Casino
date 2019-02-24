@@ -5,7 +5,7 @@ import io.zipcoder.casino.utilities.Console;
 import java.io.InputStream;
 
 public class IOCrapsConsole extends IOConsole{
-    String name;
+    private String name;
     Console crapsConsole;
 
     public IOCrapsConsole(String name) {

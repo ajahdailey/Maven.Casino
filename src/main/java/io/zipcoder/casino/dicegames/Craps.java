@@ -76,7 +76,7 @@ public class Craps extends DiceGame implements GamblingGame {
                     didWin = false;
                 }else{
                     setPoint = result;
-                    console.SetPointMessage(setPoint);
+                    console.setPointMessage(setPoint);
                 }
             }else{
                 if(result == 7){
