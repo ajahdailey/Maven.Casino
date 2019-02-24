@@ -13,6 +13,13 @@ public class IOChuckALuckConsole extends IOConsole{
         this.console = console;
 
     }
+
+
+    public IOChuckALuckConsole(String name) {
+        super();
+        this.console = new Console(System.in, System.out);
+    }
+
     public List<Integer> getGuesses(){
         List<Integer> userGuesses = new ArrayList<Integer>();
         Integer guess1 = console.getIntegerInput("Guess the outcome ");

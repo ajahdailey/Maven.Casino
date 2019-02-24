@@ -4,7 +4,7 @@ public interface GamblingGame {
 
     public void bet();
 
-    public int giveMoney();
+    public void giveMoney();
 
 
 

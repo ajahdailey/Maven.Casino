@@ -3,6 +3,7 @@ package io.zipcoder.casino;
 
 import io.zipcoder.casino.ioconsoles.IOConsole;
 import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.utilities.GamblingGame;
 import io.zipcoder.casino.utilities.Game;
 
 import java.util.List;
@@ -14,13 +15,32 @@ public class Casino {
     GameType currentSelectedGame;
 
    public static void main(String[] args) {
-        // write your tests before you start fucking with this
+       new Casino().start();
     }
 
     public void start() {
 
-//        uses GameFactory, IOConsoleFactory, PlayerFactor
+       IOConsole console = new IOConsole();
+       Player player = console.getPlayer();
+       boolean playAgain;
+       do {
+           playAgain = false;
+           GameType gameType = console.getGameSelection();
+           IOConsole gameConsole = IOConsoleFactory.CreateIOConsole(gameType, player);
 
+           Game gameObject = GameFactory.CreateGameObject(player, gameType, gameConsole);
+           gameObject.play();
+           gameObject.printResults();
+
+           if (gameObject instanceof GamblingGame) {
+               GamblingGame gamblingGame = (GamblingGame) gameObject;
+               gamblingGame.giveMoney();
+
+           }
+
+           console.printPlayerAccount(player);
+           playAgain = console.askPlayAgain();
+       }while(playAgain);
 
 
     }

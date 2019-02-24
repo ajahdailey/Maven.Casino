@@ -2,6 +2,8 @@ package io.zipcoder.casino.cardgames;
 
 import io.zipcoder.casino.*;
 import io.zipcoder.casino.ioconsoles.IOBlackJackConsole;
+import io.zipcoder.casino.ioconsoles.IOConsole;
+import io.zipcoder.casino.player.BlackJackPlayer;
 import io.zipcoder.casino.player.Dealer;
 import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.utilities.GamblingGame;
@@ -14,6 +16,11 @@ public class BlackJack extends CardGame implements GamblingGame {
     private Facilitator facilitator;
     private Dealer dealer;
 
+    public BlackJack(BlackJackPlayer bjPlayer, IOConsole console) {
+        super();
+    }
+
+
     public void play() {
 
     }
@@ -22,8 +29,8 @@ public class BlackJack extends CardGame implements GamblingGame {
 
     }
 
-    public int giveMoney() {
-        return 0;
+    public void giveMoney() {
+
     }
 
     public void takeTurn() {
@@ -37,6 +44,11 @@ public class BlackJack extends CardGame implements GamblingGame {
 
 
     public void exit() {
+
+    }
+
+    @Override
+    public void printResults() {
 
     }
 }
