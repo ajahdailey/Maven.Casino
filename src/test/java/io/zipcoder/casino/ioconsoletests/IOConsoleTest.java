@@ -3,6 +3,7 @@ package io.zipcoder.casino.ioconsoletests;
 import io.zipcoder.casino.GameType;
 import io.zipcoder.casino.ioconsoles.IOConsole;
 import io.zipcoder.casino.ioconsoles.IOCrapsConsole;
+import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.utilities.Console;
 import io.zipcoder.casino.utilities.Game;
 import org.junit.After;
@@ -155,8 +156,21 @@ public class IOConsoleTest {
         Assert.assertEquals(expectedOutput, actualOutput);
     }
 
+    @Test
+    public void printPlayerAccount() {
+        //Given
+        Integer balance = 90;
+        String balanceMessage = "Your current balance for betting games is $%d";
+        String expectedOutput = String.format(balanceMessage, balance) + "\n";
 
+        //When
+        IOConsole casinoIO = new IOConsole();
+        casinoIO.printPlayerAccount(balance);
+        String actual = testOutStream.toString();
 
+        //Then
+        Assert.assertEquals(expectedOutput, actual);
+    }
 
 
 

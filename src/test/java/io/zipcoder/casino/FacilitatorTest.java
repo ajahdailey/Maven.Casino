@@ -29,7 +29,7 @@ public class FacilitatorTest {
         playerList.add(cardPlayer);
         Card card1=new Card(2);
         Card card2=new Card(5);
-        Hand hand=new Hand();
+        Hand hand=new Hand(52);
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
 
@@ -58,7 +58,7 @@ public class FacilitatorTest {
         playerList.add(cardPlayer);
         Card card1=new Card(2);
         Card card2=new Card(5);
-        Hand hand=new Hand();
+        Hand hand=new Hand(52);
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
 

@@ -38,7 +38,7 @@ public class Casino {
 
            }
 
-           console.printPlayerAccount(player);
+           console.printPlayerAccount(player.getMoney());
            playAgain = console.askPlayAgain();
        }while(playAgain);
 

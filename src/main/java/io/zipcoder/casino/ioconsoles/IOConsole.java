@@ -76,15 +76,15 @@ public class IOConsole {
             case "4":
                 selection = GameType.GoFish;
             break;
+            //TODO the casino or game factory may need to handle restarting the game selection with since this will return null
+            //see invalidEntryMessage method below
         }
         return selection;
         }
 
 
-
-
-    public void printPlayerAccount(Player player) {
-
+    public void printPlayerAccount(Integer balance) {
+        casinoConsole.println("Your current balance for betting games is $%d", balance);
     }
 
     public boolean askPlayAgain() {
