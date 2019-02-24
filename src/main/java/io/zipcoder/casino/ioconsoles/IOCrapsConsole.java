@@ -43,4 +43,6 @@ public class IOCrapsConsole extends IOConsole{
         return true;
     }
 
+    public void SetPointMessage(int setPoint) {
+    }
 }

@@ -4,7 +4,6 @@ import io.zipcoder.casino.ioconsoles.IOConsole;
 import io.zipcoder.casino.player.CrapsPlayer;
 import io.zipcoder.casino.player.DicePlayer;
 import io.zipcoder.casino.ioconsoles.IOCrapsConsole;
-import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.utilities.GamblingGame;
 
 import java.util.Arrays;
@@ -15,8 +14,10 @@ public class Craps extends DiceGame implements GamblingGame {
     private IOCrapsConsole console;
     private int setPoint;
     private boolean passChoice;
-    public int giveMoney() {
-        return 0;
+    public void giveMoney() {
+
+        if(didWin)
+            player.addMoney(10);
     }
     int turnNumber = 1;
 
@@ -44,6 +45,7 @@ public class Craps extends DiceGame implements GamblingGame {
     public void play() {
 
         boolean isDone = false;
+        bet();
         console.crapsWelcome();
         passChoice = console.passOrNotPass();
 
@@ -74,6 +76,7 @@ public class Craps extends DiceGame implements GamblingGame {
                     didWin = false;
                 }else{
                     setPoint = result;
+                    console.SetPointMessage(setPoint);
                 }
             }else{
                 if(result == 7){
@@ -107,6 +110,11 @@ public class Craps extends DiceGame implements GamblingGame {
 
     }
     public void exit() {
+
+    }
+
+    @Override
+    public void printResults() {
 
     }
 

@@ -5,7 +5,7 @@ import io.zipcoder.casino.GameType;
 public class IOGoFishConsole extends IOConsole{
 
 
-    public IOGoFishConsole(GameType game) {
+    public IOGoFishConsole(String game) {
         //super(game);
     }
 

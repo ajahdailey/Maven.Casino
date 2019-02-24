@@ -4,4 +4,7 @@ public class GoFishPlayer extends CardPlayer{
     int numberOfMatches;
 
 
+    public GoFishPlayer(Player player) {
+
+    }
 }
