@@ -25,5 +25,11 @@ public class Card {
         return SignType.Spade;
     }
 
-
+    @Override
+    public String toString() {
+        return "Card{" +
+                "value=" + value +
+                ", sign=" + sign +
+                '}';
+    }
 }

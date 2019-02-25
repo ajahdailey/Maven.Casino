@@ -31,12 +31,14 @@ public class Facilitator {
 
         boolean isGameOver = false;
         for(CardPlayer player : playerList) {
-            if(player.getNumberOfCardsInHand() == 0){
+
+            if(player.getNumberOfCardsInHand() == 0)
+                {
                 winner = player;
                 isGameOver = true;
                 break;
-            }
-        }
+            } }
+
 
         return isGameOver;
 

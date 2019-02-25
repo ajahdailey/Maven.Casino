@@ -19,7 +19,7 @@ public class Hand {
     this.cardsInHand = cards;
     }
 
-    public Hand(int numberOfCards) {
+    public Hand() {
         this.cardsInHand = new ArrayList<>();
 
     }
@@ -56,12 +56,12 @@ public class Hand {
 
         for (int i = 0; i < cardsInHand.size(); ) {
             foundMatch = false;
-            for (int j = i; j < cardsInHand.size(); j++) {
+            for (int j = i + 1; j < cardsInHand.size(); j++) {
                 if (cardsInHand.get(j).equals(cardsInHand.get(i))) {
                     matchedCards.add(card);
 
-                   // cardsInHand.remove(cardsInHand.get(j));
-                    //cardsInHand.remove(cardsInHand.get(i));
+                    cardsInHand.remove(cardsInHand.get(j));
+                    cardsInHand.remove(cardsInHand.get(i));
                     foundMatch = true;
                     break;
                 }
