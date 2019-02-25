@@ -20,6 +20,7 @@ public class BlackJack extends CardGame implements GamblingGame {
     private IOBlackJackConsole console;
     private Deck deck;
     private Dealer dealer;
+    private Facilitator facilitator;
     private boolean continueFlagMain;
     private boolean gameOver;
 
@@ -32,15 +33,20 @@ public class BlackJack extends CardGame implements GamblingGame {
          */
 public BlackJack(Player player,IOBlackJackConsole console )
 {
-            this.player = player;
+    {
+        this.player = player;
 
-            List<Player> playerList = new ArrayList<Player>();
-            //Adding the dealer / House player
-            playerList.add(new Player(new Player(0 , "House")));
-            // Add the player
-            playerList.add(player);
+        List<Player> playerList = new ArrayList<Player>();
+        //Adding the dealer / House player
+        playerList.add(new Player(new Player(0, "House")));
+        // Add the player
+        playerList.add(player);
+
+    this.console = console;
+    deck = new Deck(52);
 
 
+    }
 }
 
     public BlackJack(BlackJackPlayer bjPlayer, IOConsole console) {
@@ -107,7 +113,6 @@ public BlackJack(Player player,IOBlackJackConsole console )
         2. If no body did, check if anybody has 21, if so set the gameOver variable to true and evaluate winner
         3. If nobody did, continue
          */
-
 
 
 
