@@ -84,7 +84,7 @@ IOCrapsConsole
    - constructor
    DONE crapsWelcome
    DONE passOrNotPass
-   DONE-ISH promptRollDice (This worked before I added the press return to roll - not sure how to test that"
+   - promptRollDice
    DONE setPointMessage
    DONE printTossOutcome
    DONE printContinueMessage
@@ -136,7 +136,7 @@ Dice
    DONE getSum
    - randomDieToss
 
-DiceGame **why is this an abstract class? we have a constructor. who uses it.
+DiceGame **why is this an abstract class? we have a constructor. who uses it. -kb
    - constructor
    DONE roll
    DONE didWin
@@ -167,7 +167,7 @@ Card
    - toString
 
 CardGame
-   - constructor * why is this an abstract class? we have a constructor
+   - constructor
    - didWin
 
 Deck
