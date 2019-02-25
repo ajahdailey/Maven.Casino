@@ -15,7 +15,6 @@ public class GameFactory {
 
 
     public static Game CreateGameObject(Player player, GameType gameType, IOConsole console) {
-            Dice dice = null;
         Game gameObject = null;
         DicePlayer dicePlayer = null ;
         switch(gameType) {
@@ -25,7 +24,7 @@ public class GameFactory {
                 break;
             case ChuckALuck:
                 dicePlayer = new DicePlayer(player);
-                gameObject = new ChuckALuck(dicePlayer, (IOChuckALuckConsole) console, dice);
+                gameObject = new ChuckALuck(dicePlayer, (IOChuckALuckConsole) console);
                 break;
             case BlackJack:
                 BlackJackPlayer bjPlayer = new BlackJackPlayer(player);

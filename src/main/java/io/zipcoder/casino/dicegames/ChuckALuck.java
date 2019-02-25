@@ -33,10 +33,10 @@ public class ChuckALuck extends DiceGame {
         this.dice = new Dice(numberOfDice);
     }
 
-    public ChuckALuck(DicePlayer player, IOChuckALuckConsole console, Dice dice){
-      this.player = player;
-      this.console = console;
-      this.dice = dice;
+    public ChuckALuck(DicePlayer player, IOChuckALuckConsole console){
+        this.player = player;
+        this.console = console;
+        this.dice = new Dice(numberOfDice);
     }
 
     public void play() {
