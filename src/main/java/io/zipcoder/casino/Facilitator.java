@@ -49,7 +49,9 @@ public class Facilitator {
         for (int cardNo = 0; cardNo < numberOfCardsToBeDistributed; cardNo++) {
             for (CardPlayer player : playerList) {
                 Card card = deck.draw();
-                player.addCardToHand(card);
+                if(card!=null) {
+                    player.addCardToHand(card);
+                }
             }
         }
     }
@@ -66,38 +68,40 @@ public class Facilitator {
         CardPlayer currentPlayer = playerList.get(currentPlayerIdx);
         CardPlayer opponentPlayer = null;
         Card cardChosen;
-        console.displayTurn(currentPlayer);
         console.setPlayerName(currentPlayer.getName());
+        console.displayTurnMessage();
         if(isCurrentPlayerDealer()) {
             opponentPlayer = playerList.get(playerIdx);
             cardChosen = currentPlayer.getRandomCardFromHand();
-            console.cardToAskForMessage(currentPlayer.getName(), cardChosen);
+            console.cardToAskForMessage(cardChosen);
 
         }else {
             opponentPlayer = playerList.get(dealerIdx);
             List<Card> hand = playerList.get(playerIdx).getHandCards();
             cardChosen = console.pickACardForPlayerMessage(hand);
         }
-        if(opponentPlayer.hasCard(card)) {
-            console.doesHaveCardMessage(card);
-            opponentPlayer.removeCardFromHand(card);
-            currentPlayer.removeCardFromHand(card);
+
+        if(opponentPlayer.hasCard(cardChosen)) {
+            console.doesHaveCardMessage(cardChosen);
+            opponentPlayer.removeCardFromHand(cardChosen);
+            currentPlayer.removeCardFromHand(cardChosen);
         }else {
-            console.doesNotHaveCardMessage(card);
+            console.doesNotHaveCardMessage(cardChosen);
             Card newCard = deck.draw();
-            currentPlayer.addCardToHand(card);
+            currentPlayer.addCardToHand(cardChosen);
         }
+        List<Card> hand = playerList.get(playerIdx).getHandCards();
+        console.displayCurrentHand(hand);
 
         if(isCurrentPlayerDealer()){
             currentPlayerIdx = playerIdx;
         }else{
-            List<Card> hand = playerList.get(playerIdx).getHandCards();
-            console.displayHandCard(hand);
             currentPlayerIdx = dealerIdx;
         }
 
     }
+
     private boolean isCurrentPlayerDealer(){
-        return true;
+        return currentPlayerIdx == dealerIdx ? true : false;
     }
 }
