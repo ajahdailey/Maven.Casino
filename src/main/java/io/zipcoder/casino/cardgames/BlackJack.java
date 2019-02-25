@@ -9,6 +9,8 @@ import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.utilities.GamblingGame;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
@@ -17,7 +19,6 @@ public class BlackJack extends CardGame implements GamblingGame {
     private int score;
     private IOBlackJackConsole console;
     private Deck deck;
-    private Facilitator facilitator; //is the difference between facilitator and dealer?
     private Dealer dealer;
     private boolean continueFlagMain;
     private boolean gameOver;
@@ -29,9 +30,21 @@ public class BlackJack extends CardGame implements GamblingGame {
         3. Current cards in hand
         4. Current cards in dealer hand (their number value)
          */
+public BlackJack(Player player,IOBlackJackConsole console )
+{
+            this.player = player;
+
+            List<Player> playerList = new ArrayList<Player>();
+            //Adding the dealer / House player
+            playerList.add(new Player(new Player(0 , "House")));
+            // Add the player
+            playerList.add(player);
+
+            
+}
 
     public BlackJack(BlackJackPlayer bjPlayer, IOConsole console) {
-        super();
+       super();
     }
 
 
@@ -130,9 +143,7 @@ public class BlackJack extends CardGame implements GamblingGame {
     }
 
 
-    public void exit() {
-        // Don't have to use this method
-    }
+    public void exit() { }
 
     private static String getStringResponse() {
         String ret = "";
