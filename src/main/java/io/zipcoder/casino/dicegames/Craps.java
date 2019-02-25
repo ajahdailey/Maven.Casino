@@ -19,7 +19,7 @@ public class Craps extends DiceGame implements GamblingGame {
     public void giveMoney() {
 
         if(didWin)
-            player.addMoney(10);
+            player.winMoney();
     }
     int turnNumber = 1;
 

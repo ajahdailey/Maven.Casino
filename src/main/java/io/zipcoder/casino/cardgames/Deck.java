@@ -18,7 +18,13 @@ public class Deck {
         Collections.shuffle(deckOfcards);
 
     }
+    //Provided for testing
+    protected Deck() {
+        numberOfCards = 5;
+        this.signArray = new SignType[]{SignType.Heart, SignType.Diamond, SignType.Clover, SignType.Heart};
 
+
+    }
 
     public void createCards(){
         for (int i = 0; i < signArray.length; i++) {
@@ -36,4 +42,7 @@ public class Deck {
         return deckOfcards.size() > 0 ? deckOfcards.pop() : null;
     }
 
+    public int getNumberOfCards() {
+        return deckOfcards.size();
+    }
 }
