@@ -10,10 +10,9 @@ public class DeckTest {
     public void createCards() {
         //Given
         Deck deck = new Deck(52);
-
         //When
         //deck.createCards();
-        System.out.println(deck.cards+"\n");
+        System.out.println(deck.deckOfcards+"\n");
 
 
 
@@ -21,6 +20,14 @@ public class DeckTest {
 
     @Test
     public void draw() {
+        //Given
+        Deck deck = new Deck(52);
+
+        //When
+        System.out.println(deck.draw());
+      
+
+
     }
 
     @Test
