@@ -33,12 +33,14 @@ public class Facilitator {
 
         boolean isGameOver = false;
         for(CardPlayer player : playerList) {
-            if(player.getNumberOfCardsInHand() == 0){
+
+            if(player.getNumberOfCardsInHand() == 0)
+                {
                 winner = player;
                 isGameOver = true;
                 break;
-            }
-        }
+            } }
+
 
         return isGameOver;
 
@@ -77,7 +79,7 @@ public class Facilitator {
 
         }else {
             opponentPlayer = playerList.get(dealerIdx);
-            List<Card> hand = playerList.get(playerIdx).getHandCards();
+            List<Card> hand = currentPlayer.getHandCards();
             cardChosen = console.pickACardForPlayerMessage(hand);
         }
 
@@ -88,7 +90,11 @@ public class Facilitator {
         }else {
             console.doesNotHaveCardMessage(cardChosen);
             Card newCard = deck.draw();
-            currentPlayer.addCardToHand(cardChosen);
+            //Add a drawn message
+
+            currentPlayer.addCardToHand(newCard);
+            if(currentPlayer.discardMatchedCards());
+                console.doesHaveCardMessage();
         }
         List<Card> hand = playerList.get(playerIdx).getHandCards();
         console.displayCurrentHand(hand);

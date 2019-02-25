@@ -54,7 +54,7 @@ public class FacilitatorTest {
         //When
         Deck deck = new Deck(52);
         List<CardPlayer> playerList = new ArrayList<CardPlayer>();
-        CardPlayer cardPlayer=new CardPlayer(new Player(200, "Swapna"));
+        CardPlayer cardPlayer=new CardPlayer(new Player(0, "Swapna"));
         playerList.add(cardPlayer);
         Card card1=new Card(2);
         Card card2=new Card(5);

@@ -51,8 +51,9 @@ public class Hand {
         return cardsInHand.size();
     }
 
-    public void manageDuplicateCards() {
-        boolean foundMatch = false;
+    public boolean manageDuplicateCards() {
+        boolean anyMatchFound = false;
+        boolean foundMatch;
 
         for (int i = 0; i < cardsInHand.size(); ) {
             foundMatch = false;
@@ -63,6 +64,7 @@ public class Hand {
                     cardsInHand.remove(cardsInHand.get(j));
                     cardsInHand.remove(cardsInHand.get(i));
                     foundMatch = true;
+                    anyMatchFound = true;
                     break;
                 }
             }
@@ -70,6 +72,7 @@ public class Hand {
                 i++;
 
         }
+        return anyMatchFound;
     }
 
     public Card getRandomCard() {

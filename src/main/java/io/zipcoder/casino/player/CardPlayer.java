@@ -16,6 +16,7 @@ public class CardPlayer {
 
 
     public void addCardToHand(Card card) {
+        if(card != null)
         cardsInHand.addCardToHand(card);
     }
 
@@ -24,8 +25,8 @@ public class CardPlayer {
 
     }
 
-    public void discardMatchedCards() {
-        cardsInHand.manageDuplicateCards();
+    public boolean discardMatchedCards() {
+        return cardsInHand.manageDuplicateCards();
     }
 
     public String getName() {

@@ -51,7 +51,7 @@ public class IOConsoleTest {
                 "7   \\/___/  \\'  '\\  /  7\n" +
                 "7            \\'__'\\/   7\n" +
                 "7                      7\n" +
-                "777777777777777777777777";
+                "777777777777777777777777\n";
         String expectedOutput = String.format(casinoStart) + "\n";
 
         //When
@@ -80,10 +80,10 @@ public class IOConsoleTest {
     @Test
     public void printGameIntroTest() {
         //Given
-        String gameIntro = "Welcome, %s. We have four games you can play.\n" +
-                "Black Jack and Craps require bets. Chuck-A-Luck and Go Fish do not.\n" +
-                "We've given you $100 to play in the betting games.\n" +
-                "\n";
+        String gameIntro = "\nWelcome, %s. We have four games you can play.\n\n" +
+                "Black Jack and Craps require bets.\n" +
+                "We've given you $100 to play in the betting games.\n\n" +
+                "Chuck-A-Luck and Go Fish do not require bets.\n";
         String expectedOutput = String.format(gameIntro, playerName) + "\n";
 
         //When
@@ -163,7 +163,10 @@ public class IOConsoleTest {
     public void printPlayerAccount() {
         //Given
         Integer balance = 90;
-        String balanceMessage = "\nYour current balance for betting games is $%d";
+        String balanceMessage = "\n" +
+                "------------------------------------------------------\n" +
+                "Your current balance for betting games is $%d\n" +
+                "------------------------------------------------------\n";
         String expectedOutput = String.format(balanceMessage, balance) + "\n";
 
         //When
@@ -220,7 +223,17 @@ public class IOConsoleTest {
     @Test
     public void goodbye() {
         //Given
-        String goodbyeMessage = "Thanks for playing, %s. Goodbye!";
+        String goodbyeMessage = "" +
+                " _____\n" +
+                "|A .  | _____\n" +
+                "| /.\\ ||A ^  | _____\n" +
+                "|(_._)|| / \\ ||A _  | _____\n" +
+                "|  |  || \\ / || ( ) ||A_ _ |\n" +
+                "|____V||  .  ||(_'_)||( v )|\n" +
+                "       |____V||  |  || \\ / |\n" +
+                "Thanks        |____V||  .  |\n" +
+                "for playing!         |____V|\n" +
+                "Goodbye, %s!\n";
         String expectedOutput = String.format(goodbyeMessage, playerName) + "\n";
 
         //When

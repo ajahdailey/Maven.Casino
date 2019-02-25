@@ -50,7 +50,7 @@ public class HandTest {
 
 
     @Test
-    public void clearAllCardsInHand() {
+    public void clearAllCardsInHandTest() {
         //Given
 
          Card card1 = new Card(4, SignType.Clover);
@@ -71,6 +71,23 @@ public class HandTest {
     }
 
 
+    @Test
+    public void clearAllCardsInHandTest1() {
+        //Given
+
+        Card card1 = new Card(4, SignType.Clover);
+        Card card2 = new Card(4, SignType.Clover);
+
+        //When
+        Hand hand=new Hand();
+
+
+        hand.clearAllCardsInHand();
+        int actual=hand.getNumberOfCardsInHand();
+        System.out.println(actual);
+        //Then
+        Assert.assertEquals(0, actual);
+    }
 
     @Test
     public void addCardToHandTest() {
@@ -90,5 +107,76 @@ public class HandTest {
         //Then
         Assert.assertEquals(2,actual);
     }
-}
+
+    @Test
+    public void manageDuplicateCardsTest() {
+        //Given
+
+            Card card1 = new Card(4, SignType.Clover);
+            Card card2 = new Card(4, SignType.Clover);
+            Card card3 = new Card(5, SignType.Diamond);
+            Card card4 = new Card(6, SignType.Clover);
+            Hand hand=new Hand();
+            hand.addCardToHand(card1);
+            hand.addCardToHand(card1);
+            hand.addCardToHand(card3);
+            hand.addCardToHand(card4);
+
+        //When
+            hand.manageDuplicateCards();
+
+            int actual=hand.getNumberOfCardsInHand();
+            System.out.println(actual);
+            //Then
+            Assert.assertEquals(2, actual);
+        }
+
+
+    @Test
+    public void manageDuplicateCardsTest1() {
+        //Given
+
+        Card card1 = new Card(1, SignType.Clover);
+        Card card2 = new Card(4, SignType.Clover);
+        Card card3 = new Card(5, SignType.Diamond);
+        Card card4 = new Card(6, SignType.Clover);
+        Hand hand=new Hand();
+        hand.addCardToHand(card1);
+        hand.addCardToHand(card2);
+        hand.addCardToHand(card3);
+        hand.addCardToHand(card4);
+
+        //When
+        hand.manageDuplicateCards();
+
+        int actual=hand.getNumberOfCardsInHand();
+        System.out.println(actual);
+        //Then
+        Assert.assertEquals(4, actual);
+    }
+
+    @Test
+    public void manageDuplicateCardsTest2() {
+        //Given
+
+        Card card1 = new Card(4, SignType.Clover);
+        Card card2 = new Card(4, SignType.Clover);
+        Card card3 = new Card(5, SignType.Diamond);
+        Card card4 = new Card(6, SignType.Clover);
+        Hand hand=new Hand();
+        hand.addCardToHand(card1);
+        hand.addCardToHand(card1);
+        hand.addCardToHand(card1);
+        hand.addCardToHand(card4);
+
+        //When
+        hand.manageDuplicateCards();
+
+        int actual=hand.getNumberOfCardsInHand();
+        System.out.println(actual);
+        //Then
+        Assert.assertEquals(2, actual);
+    }
+    }
+
 
