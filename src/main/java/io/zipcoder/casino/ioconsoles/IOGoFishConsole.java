@@ -1,13 +1,6 @@
 package io.zipcoder.casino.ioconsoles;
 
-import io.zipcoder.casino.GameType;
 import io.zipcoder.casino.cardgames.Card;
-import io.zipcoder.casino.cardgames.GoFish;
-import io.zipcoder.casino.cardgames.Hand;
-import io.zipcoder.casino.player.CardPlayer;
-import io.zipcoder.casino.player.Dealer;
-import io.zipcoder.casino.player.GoFishPlayer;
-import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.utilities.Console;
 
 import java.util.List;
@@ -37,11 +30,12 @@ public class IOGoFishConsole extends IOConsole {
         goFishConsole.println("The dealer has distributed the cards.");
     }
 
+
     public void displayCurrentHand(List<Card> hand) {
         if(hand == null) {
             goFishConsole.println("You don't have any cards in your hand.");
         } else {
-            displayCurrentHand(hand);
+            System.out.println(hand);
         }
 
     }
@@ -55,7 +49,7 @@ public class IOGoFishConsole extends IOConsole {
         //Which number will you pick?
         //return hand.get(i-1)
         goFishConsole.println("What card would the player like to choose?");
-        return hand.get(1);
+        return hand.get(0);
     }
 
     public void doesHaveCardMessage() {
@@ -69,6 +63,7 @@ public class IOGoFishConsole extends IOConsole {
     public void doesNotHaveCardMessage(Card card) {
         goFishConsole.println("Dealer does not have the card you requested. Go Fish!");
     }
+
 
     public void doesHaveCardMessage(Card card) {
         goFishConsole.println(name + " have taken the number " + card + " from the dealer. You have a match.");

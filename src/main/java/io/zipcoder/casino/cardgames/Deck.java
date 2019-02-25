@@ -31,16 +31,9 @@ public class Deck {
         System.out.println(deckOfcards);
     }
 
-    public Card draw() {
 
-        Card drawnCard = null;
-
-        if (deckOfcards.size() > 0) {
-            drawnCard = deckOfcards.get(deckOfcards.size() - 1);
-            deckOfcards.remove(deckOfcards.size() - 1);
-            System.out.println("Deck Size after drawing Card "+deckOfcards.size());
-
-        }
-        return (Card)drawnCard;
+    public Card draw(){
+        return deckOfcards.size() > 0 ? deckOfcards.pop() : null;
     }
+
 }

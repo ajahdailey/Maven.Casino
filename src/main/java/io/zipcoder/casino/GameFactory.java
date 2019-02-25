@@ -31,8 +31,8 @@ public class GameFactory {
                 gameObject = new BlackJack(bjPlayer, console);
                 break;
             case GoFish:
-                GoFishPlayer goFishPlayer = new GoFishPlayer(player);
-                gameObject = new GoFish(goFishPlayer, console);
+                CardPlayer goFishPlayer = new CardPlayer(player);
+                gameObject = new GoFish(goFishPlayer, (IOGoFishConsole)console);
                 break;
         }
         return gameObject;

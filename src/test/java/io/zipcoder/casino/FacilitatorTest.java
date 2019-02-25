@@ -33,7 +33,7 @@ public class FacilitatorTest {
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
 
-        Facilitator facilitator = new Facilitator(playerList, deck);
+        Facilitator facilitator = new Facilitator(playerList, deck, 5);
 
 
         boolean actual = facilitator.evaluateTurn();
@@ -62,7 +62,7 @@ public class FacilitatorTest {
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
 
-        Facilitator facilitator = new Facilitator(playerList, deck);
+        Facilitator facilitator = new Facilitator(playerList, deck, 5);
 
         facilitator.distributeCards();
 
