@@ -15,7 +15,7 @@ public class BlackJack extends CardGame implements GamblingGame {
     private int score;
     private IOBlackJackConsole console;
     private Deck deck;
-    private Facilitator facilitator; //wtf is the difference between facilitator and dealer?
+    private Facilitator facilitator; //is the difference between facilitator and dealer?
     private Dealer dealer;
     private boolean continueFlagMain;
     private boolean gameOver;
@@ -51,7 +51,7 @@ public class BlackJack extends CardGame implements GamblingGame {
             if (getStringResponse().equals("p")) {
                 System.out.println("\n\n\nDealer is dealing...\n\n\n");
                 this.bet();
-                this.deal();
+                this.distributeCards();
                 TimeUnit.SECONDS.sleep(5);
                 this.gameOver = false;
 
@@ -87,6 +87,13 @@ public class BlackJack extends CardGame implements GamblingGame {
         2. If no body did, check if anybody has 21, if so set the gameOver variable to true and evaluate winner
         3. If nobody did, continue
          */
+
+
+
+
+
+
+
     }
 
     private void hitDealer() {
@@ -101,7 +108,7 @@ public class BlackJack extends CardGame implements GamblingGame {
         // Should just print out the users hand and the dealers hand to the console
     }
 
-    private void deal() {
+    public void distributeCards() {
         // This should give the user and the dealer's hand their first two cards
 
     }
