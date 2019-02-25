@@ -5,7 +5,7 @@ import io.zipcoder.casino.utilities.Console;
 import java.io.InputStream;
 
 public class IOCrapsConsole extends IOConsole{
-    String name;
+    private String name;
     Console crapsConsole;
 
     public IOCrapsConsole(String name) {
@@ -39,6 +39,7 @@ public class IOCrapsConsole extends IOConsole{
     public void printTossOutcome(Integer diceTossResult) {
         crapsConsole.println("The number rolled is %d.", diceTossResult);
     }
+
 
     public void printContinueMessage() {
         crapsConsole.println("The set point wasn't rolled, so the game continues!");

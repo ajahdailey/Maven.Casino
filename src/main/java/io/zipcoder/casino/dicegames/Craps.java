@@ -4,7 +4,6 @@ import io.zipcoder.casino.ioconsoles.IOConsole;
 import io.zipcoder.casino.player.CrapsPlayer;
 import io.zipcoder.casino.player.DicePlayer;
 import io.zipcoder.casino.ioconsoles.IOCrapsConsole;
-import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.utilities.GamblingGame;
 
 import java.util.Arrays;
@@ -15,8 +14,12 @@ public class Craps extends DiceGame implements GamblingGame {
     private IOCrapsConsole console;
     private int setPoint;
     private boolean passChoice;
-    public int giveMoney() {
-        return 0;
+
+
+    public void giveMoney() {
+
+        if(didWin)
+            player.addMoney(10);
     }
     int turnNumber = 1;
 
@@ -29,20 +32,27 @@ public class Craps extends DiceGame implements GamblingGame {
 
     }
 
+
+    //Constructor used only by the test
+    public Craps(DicePlayer player, IOCrapsConsole console, Dice dice) {
+        this.player = (CrapsPlayer) player;
+        this.console = console;
+        this.dice = dice;
+        passChoice = true;
+    }
+
+
     public void bet() {
-
+        player.betMoney();
     }
 
 
-    public void evaluateGame(){
-        if(didWin){
-            console.printResult(didWin);
-        }
-    }
+
 
     public void play() {
 
         boolean isDone = false;
+        bet();
         console.crapsWelcome();
         passChoice = console.passOrNotPass();
 
@@ -53,15 +63,15 @@ public class Craps extends DiceGame implements GamblingGame {
             console.printTossOutcome(result);
             isDone = evaluateTurn(turnNumber, result);
 
-            if(!isDone)
+            if(!isDone ) {
                 console.printContinueMessage();
-            turnNumber ++;
+                turnNumber++;
+            }
 
         }while(!isDone);
     }
 
     private boolean evaluateTurn(int turnNumber, int result){
-
         boolean isDone = false;
         if(passChoice){
             if(turnNumber == 1 ) {
@@ -73,6 +83,7 @@ public class Craps extends DiceGame implements GamblingGame {
                     didWin = false;
                 }else{
                     setPoint = result;
+                    console.setPointMessage(setPoint);
                 }
             }else{
                 if(result == 7){
@@ -97,20 +108,29 @@ public class Craps extends DiceGame implements GamblingGame {
     private boolean isInPassList(int result){
         final int [] passList = {4,5,6,8,9,10};
         int isPresent = Arrays.binarySearch(passList,result);
-        return isPresent > 0;
+        return isPresent >= 0;
     }
     private boolean isInDoNotPassList(int result){
         final int [] passList = {2, 3, 12};
         int isPresent = Arrays.binarySearch(passList,result);
-        return isPresent > 0;
+        return isPresent >= 0;
 
     }
     public void exit() {
 
     }
 
+    @Override
+    public void printResults() {
+        console.printResult(didWin);
+    }
+
     public static void main(String[] args) {
         Craps craps = new Craps(null, new IOCrapsConsole("Aswathy"));
         craps.play();
+    }
+
+    public int getTurnNumber() {
+        return turnNumber;
     }
 }

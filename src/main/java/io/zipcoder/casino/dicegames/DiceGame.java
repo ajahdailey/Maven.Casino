@@ -6,15 +6,12 @@ public abstract class DiceGame implements Game {
 
     private int numberOfDice;
     protected Dice dice;
-
     protected boolean didWin;
-
+    public abstract void play() ;
 
     public void roll() {
         dice.toss();
     }
-
-    public abstract void play() ;
 
     public DiceGame(){
         numberOfDice = 3;
@@ -22,4 +19,15 @@ public abstract class DiceGame implements Game {
         didWin = false;
     }
 
+    public boolean didWin(){
+        return didWin;
+    }
+
+    public void setWin(boolean didWin){
+        this.didWin = didWin;
+    }
+
+    public Integer[] getResults(){
+        return dice.getResults();
+    }
 }

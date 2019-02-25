@@ -9,6 +9,11 @@ public abstract class CardGame implements Game {
     private Deck deck;
     private Facilitator facilitator;
 
+    public boolean didWin() {
+        return didWin;
+    }
+
+    protected boolean didWin = false;
 
 
     public abstract void takeTurn();

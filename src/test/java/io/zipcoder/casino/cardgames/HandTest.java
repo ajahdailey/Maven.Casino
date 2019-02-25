@@ -11,7 +11,7 @@ public class HandTest {
     @Test
     public void discardCardTest1() {
         //Given
-        Hand hand=new Hand();
+        Hand hand=new Hand(52);
 
         Card card = new Card(3,SignType.Clover);
         hand.addCardToHand(card);
@@ -31,7 +31,7 @@ public class HandTest {
     public void discardCardNullTest1() {
         //Given
         Hand cardsInHand;
-        Hand hand=new Hand();
+        Hand hand=new Hand(52);
 
         List<Card> expectedCardsInhand = new ArrayList<>(4);
         Card card = new Card(3,SignType.Clover);
@@ -59,7 +59,7 @@ public class HandTest {
 
 
         //When
-        Hand hand=new Hand();
+        Hand hand=new Hand(52);
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
 
@@ -80,7 +80,7 @@ public class HandTest {
         Card card1 = new Card(3, SignType.Diamond);
         Card card2 = new Card(5, SignType.Diamond);
         //When
-        Hand hand=new Hand();
+        Hand hand=new Hand(52);
 
          hand.addCardToHand(card1);
         hand.addCardToHand(card2);

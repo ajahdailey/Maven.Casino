@@ -105,7 +105,7 @@ public class ChuckALuckTest { ChuckALuck game;
         game.play();
 
         //When
-        game.evaluateGame();
+        game.printResults();
 
         //Then
         String output = outputStream.toString();

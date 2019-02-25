@@ -8,7 +8,7 @@ public class Dice {
 
     private int numberOfDice;
     Random random ;
-    private ArrayList<Integer> tossResults;
+    protected ArrayList<Integer> tossResults;
 
     public Dice(Integer numberOfDice) {
         this.numberOfDice = numberOfDice;

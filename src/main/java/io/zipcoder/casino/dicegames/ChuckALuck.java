@@ -58,7 +58,7 @@ public class ChuckALuck extends DiceGame {
         int numOfMatch = 0;
         for(int i = 0; i < userGuesses.size(); i++){
 
-            if(diceResults.contains(userGuesses.get(i))){
+            if(userGuesses.contains(diceResults.get(i))){
                 numOfMatch++;
 
             }
@@ -67,24 +67,28 @@ public class ChuckALuck extends DiceGame {
         return numOfMatch;
     }
 
-    //Not sure what to do yet
-    public void evaluateGame(){
-        int matches = getMatches(guesses, results);
-        console.printResult(matches);
-    }
 
     //Will ask if they want to play another game or continue playing this game or exit. Will come from the console.
     public void exit() {
 
     }
-//
+
+
+    //Todo: Implement printResults
+
+    @Override
+    public void printResults() {
+        int matches = getMatches(guesses, results);
+        console.printResult(matches);
+    }
+
 //   public static void main(String[] args) {
 //        Player player = new Player(10, "A");
 //        DicePlayer dicePlayer = new DicePlayer(player);
 //
 //        ChuckALuck game = new ChuckALuck(dicePlayer);
 //        game.play();
-//        game.evaluateGame();
+//        game.printResults();
 //    }
 }
 
