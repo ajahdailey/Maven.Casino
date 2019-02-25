@@ -1,6 +1,7 @@
 package io.zipcoder.casino.ioconsoles;
 
 import io.zipcoder.casino.GameType;
+import io.zipcoder.casino.cardgames.Card;
 
 public class IOGoFishConsole extends IOConsole{
 
@@ -15,9 +16,9 @@ public class IOGoFishConsole extends IOConsole{
         return 0;
     }
 
-    public int cardToAskFor() {
+    public Card cardToAskFor() {
 
-        return 0;
+        return null;
     }
 
     public void printResultofTurn() {

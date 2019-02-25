@@ -57,7 +57,9 @@ public class GoFish extends CardGame {
         }while(!done);
 
         if(facilitator.getWinner() == player)
-        {didWin = true;}
+        {
+            didWin = true;
+        }
 
     }
 
@@ -75,6 +77,7 @@ public class GoFish extends CardGame {
 
     }
     public void takeTurn() {
+        facilitator.facilitateTurn(console);
 
     }
 }

@@ -71,4 +71,22 @@ public class Hand {
 
         }
     }
+
+    public Card getRandomCard() {
+        Random random = new Random();
+        int randomIdx = random.nextInt(cardsInHand.size());
+        return cardsInHand.get(randomIdx);
+    }
+
+    public void removeCardFromHand(Card card) {
+        cardsInHand.remove(card);
+    }
+
+    public boolean hasCard(Card card) {
+        return cardsInHand.contains(card);
+    }
+
+    public List<Card> getHandCards() {
+        return new ArrayList<Card>(this.cardsInHand);
+    }
 }
