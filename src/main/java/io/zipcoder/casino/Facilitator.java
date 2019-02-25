@@ -39,11 +39,23 @@ public class Facilitator {
                 winner = player;
                 isGameOver = true;
                 break;
-            } }
-
+            }
+        }
+        if(deck.getNumberOfCards() == 0 && !anyCommonCardsAmongPlayers())
+            isGameOver = true;
 
         return isGameOver;
 
+    }
+
+    private boolean anyCommonCardsAmongPlayers() {
+        List<Card> dealerCards = playerList.get(0).getHandCards();
+        List<Card> playerCards = playerList.get(1).getHandCards();
+        for(Card card : dealerCards){
+            if(playerCards.contains(card))
+                return true;
+        }
+        return false;
     }
 
     public void distributeCards() {
@@ -95,7 +107,7 @@ public class Facilitator {
             //Add a drawn message
 
             currentPlayer.addCardToHand(newCard);
-            if(currentPlayer.discardMatchedCards());
+            if(currentPlayer.discardMatchedCards())
                 console.doesHaveCardMessage();
         }
         List<Card> hand = playerList.get(playerIdx).getHandCards();

@@ -42,4 +42,7 @@ public class Deck {
         return deckOfcards.size() > 0 ? deckOfcards.pop() : null;
     }
 
+    public int getNumberOfCards() {
+        return deckOfcards.size();
+    }
 }
