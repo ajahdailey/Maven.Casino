@@ -1,5 +1,6 @@
 package io.zipcoder.casino.cardgames;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -10,29 +11,31 @@ public class DeckTest {
     public void createCards() {
         //Given
         Deck deck = new Deck(52);
-        //When
-        //deck.createCards();
-        System.out.println(deck.deckOfcards+"\n");
-
-
 
     }
 
     @Test
-    public void draw() {
+    public void drawTest() {
         //Given
         Deck deck = new Deck(52);
 
         //When
         System.out.println(deck.draw());
-      
 
 
     }
 
     @Test
-    public void shuffle() {
+    public void drawTest1() {
+        //Given
+        Deck deck = new Deck(52);
+
+        //When
+        for(int i=0; i<52;i++)
+        System.out.println(deck.draw());
+
     }
+
 
 
 }
