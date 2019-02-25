@@ -4,6 +4,7 @@ import io.zipcoder.casino.cardgames.BlackJack;
 import io.zipcoder.casino.cardgames.GoFish;
 import io.zipcoder.casino.dicegames.ChuckALuck;
 import io.zipcoder.casino.dicegames.Craps;
+import io.zipcoder.casino.dicegames.Dice;
 import io.zipcoder.casino.ioconsoles.*;
 import io.zipcoder.casino.player.*;
 import io.zipcoder.casino.utilities.Game;
@@ -14,7 +15,6 @@ public class GameFactory {
 
 
     public static Game CreateGameObject(Player player, GameType gameType, IOConsole console) {
-
         Game gameObject = null;
         DicePlayer dicePlayer = null ;
         switch(gameType) {

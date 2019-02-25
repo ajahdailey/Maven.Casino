@@ -13,6 +13,7 @@ import io.zipcoder.casino.utilities.Console;
 import java.util.List;
 
 
+
 public class IOGoFishConsole extends IOConsole {
     Console goFishConsole;
     String name;
