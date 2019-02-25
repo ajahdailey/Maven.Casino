@@ -1,5 +1,7 @@
 package io.zipcoder.casino.cardgames;
 
+import java.util.Objects;
+
 public class Card {
 
     private int value;
@@ -18,12 +20,23 @@ public class Card {
     }
 
     public int getValue(){
-        return 0;
+        return value;
     }
 
     public SignType getSign() {
-        return SignType.Spade;
+        return sign;
     }
 
+    @Override
+    public String toString() {
+        return  value + sign.toString() ;
+    }
 
+    @Override
+    public boolean equals(Object o) {
+        if (!(o instanceof Card)) return false;
+        Card cardToCompare = (Card) o;
+        return cardToCompare.value == this.value;
+
+    }
 }

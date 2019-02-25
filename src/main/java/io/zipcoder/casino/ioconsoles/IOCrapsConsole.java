@@ -8,6 +8,7 @@ public class IOCrapsConsole extends IOConsole{
     private String name;
     Console crapsConsole;
 
+
     public IOCrapsConsole(String name) {
         this.name = name;
         this.crapsConsole = new Console(System.in, System.out);

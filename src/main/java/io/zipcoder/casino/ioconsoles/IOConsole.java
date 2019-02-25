@@ -35,7 +35,7 @@ public class IOConsole {
                 "7   \\/___/  \\'  '\\  /  7\n" +
                 "7            \\'__'\\/   7\n" +
                 "7                      7\n" +
-                "777777777777777777777777");
+                "777777777777777777777777\n");
     }
 
     public String getPlayerName() {
@@ -49,14 +49,15 @@ public class IOConsole {
     }
 
     public void printGameIntro(String playerName) {
-        casinoConsole.println("Welcome, %s. We have four games you can play.\n" +
-                "Black Jack and Craps require bets. Chuck-A-Luck and Go Fish do not.\n" +
-                "We've given you $100 to play in the betting games.\n" +
-                "\n", playerName);
+        casinoConsole.println("\nWelcome, %s. We have four games you can play.\n\n" +
+                "Black Jack and Craps require bets.\n" +
+                "We've given you $100 to play in the betting games.\n\n" +
+                "Chuck-A-Luck and Go Fish do not require bets.\n", playerName);
     }
 
     public GameType getGameSelection(){
         String gameSelection = casinoConsole.getStringInput("Which game do you want to play?\n" +
+                "-------------------------------\n" +
                 "Press 1 for BlackJack\n" +
                 "Press 2 for Chuck-A-Luck\n" +
                 "Press 3 for Craps\n" +
@@ -77,15 +78,16 @@ public class IOConsole {
             case "4":
                 selection = GameType.GoFish;
             break;
-            //TODO the casino or game factory may need to handle restarting the game selection with since this will return null
-            //see invalidEntryMessage method below
         }
         return selection;
         }
 
 
     public void printPlayerAccount(Integer balance) {
-        casinoConsole.println("\nYour current balance for betting games is $%d", balance);
+        casinoConsole.println("\n" +
+                "------------------------------------------------------\n" +
+                "Your current balance for betting games is $%d\n" +
+                "------------------------------------------------------\n", balance);
     }
 
     public boolean askPlayAgain() {
@@ -96,7 +98,17 @@ public class IOConsole {
     }
 
     public void goodbye(String name) {
-        casinoConsole.println("Thanks for playing, %s. Goodbye!", name);
+        casinoConsole.println("" +
+                " _____\n" +
+                "|A .  | _____\n" +
+                "| /.\\ ||A ^  | _____\n" +
+                "|(_._)|| / \\ ||A _  | _____\n" +
+                "|  |  || \\ / || ( ) ||A_ _ |\n" +
+                "|____V||  .  ||(_'_)||( v )|\n" +
+                "       |____V||  |  || \\ / |\n" +
+                "Thanks        |____V||  .  |\n" +
+                "for playing!         |____V|\n" +
+                "Goodbye, %s!\n", name);
     }
 
     public void invalidEntryMessage() {

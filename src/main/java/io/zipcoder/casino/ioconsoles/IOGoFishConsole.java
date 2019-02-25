@@ -1,16 +1,11 @@
 package io.zipcoder.casino.ioconsoles;
 
-import io.zipcoder.casino.GameType;
 import io.zipcoder.casino.cardgames.Card;
-import io.zipcoder.casino.cardgames.GoFish;
-import io.zipcoder.casino.cardgames.Hand;
-import io.zipcoder.casino.player.CardPlayer;
-import io.zipcoder.casino.player.Dealer;
-import io.zipcoder.casino.player.GoFishPlayer;
-import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.cardgames.SignType;
 import io.zipcoder.casino.utilities.Console;
 
 import java.util.List;
+
 
 
 public class IOGoFishConsole extends IOConsole {
@@ -18,7 +13,7 @@ public class IOGoFishConsole extends IOConsole {
     String name;
 
 
-    public void setPlayername(String playername) {
+    public void setPlayerName(String playername) {
         this.name = playername;
     }
 
@@ -36,28 +31,105 @@ public class IOGoFishConsole extends IOConsole {
         goFishConsole.println("The dealer has distributed the cards.");
     }
 
+
     public void displayCurrentHand(List<Card> hand) {
+        if(hand == null) {
+            goFishConsole.println("You don't have any cards in your hand.");
+        } else {
+            for(int i = 0; i <hand.size(); i++) {
+                String value = "";
+                if(hand.get(i).getValue() == 1) {value += "A";}
+                else if(hand.get(i).getValue() == 2) {value += "2";}
+                else if(hand.get(i).getValue() == 3) {value += "3";}
+                else if(hand.get(i).getValue() == 4) {value += "4";}
+                else if(hand.get(i).getValue() == 5) {value += "5";}
+                else if(hand.get(i).getValue() == 6) {value += "6";}
+                else if(hand.get(i).getValue() == 7) {value += "7";}
+                else if(hand.get(i).getValue() == 8) {value += "8";}
+                else if(hand.get(i).getValue() == 9) {value += "9";}
+                else if(hand.get(i).getValue() == 10) {value += "10";}
+                else if(hand.get(i).getValue() == 11) {value += "J";}
+                else if(hand.get(i).getValue() == 12) {value += "Q";}
+                else if (hand.get(i).getValue() == 13) {value += "K";}
+                goFishConsole.print("["+value+"]");
+            }
+            goFishConsole.print("\n");
+
+        }
 
     }
 
+    public void displayTurnMessage() {
+        goFishConsole.println("It is now " + name + " turn.");
+    }
+
+
     public Card pickACardForPlayerMessage(List<Card> hand) {
-        //Display hand()
-        //Which number will you pick?
-        //return hand.get(i-1)
-        goFishConsole.println("What card would the player like to choose?");
-        return hand.get(1);
+        int value =goFishConsole.getIntegerInput("What card would the player like to choose?");
+        Card card = new Card(value, SignType.Spade);
+        return card;
+    }
+
+    public void doesHaveCardMessage() {
+        goFishConsole.println("You have one or more matches in your hand.");
     }
 
     public void cardToAskForMessage( Card card) {
-        goFishConsole.println(name + " has chosen the number " + card + ".");
+        String value = "";
+        if(card.getValue() == 1) {value += "A";}
+        else if(card.getValue() == 2) {value += "2";}
+        else if(card.getValue() == 3) {value += "3";}
+        else if(card.getValue() == 4) {value += "4";}
+        else if(card.getValue() == 5) {value += "5";}
+        else if(card.getValue() == 6) {value += "6";}
+        else if(card.getValue() == 7) {value += "7";}
+        else if(card.getValue() == 8) {value += "8";}
+        else if(card.getValue() == 9) {value += "9";}
+        else if(card.getValue() == 10) {value += "10";}
+        else if(card.getValue() == 11) {value += "J";}
+        else if (card.getValue() == 12) {value += "Q";}
+        else if (card.getValue() == 13) {value += "K";}
+
+        goFishConsole.println(name + " has chosen a ["+ value + "].");
     }
 
     public void doesNotHaveCardMessage(Card card) {
-        goFishConsole.println("Dealer does not have the card you requested. Go Fish!");
+        String value = "";
+        if(card.getValue() == 1) {value += "A";}
+        else if(card.getValue() == 2) {value += "2";}
+        else if(card.getValue() == 3) {value += "3";}
+        else if(card.getValue() == 4) {value += "4";}
+        else if(card.getValue() == 5) {value += "5";}
+        else if(card.getValue() == 6) {value += "6";}
+        else if(card.getValue() == 7) {value += "7";}
+        else if(card.getValue() == 8) {value += "8";}
+        else if(card.getValue() == 9) {value += "9";}
+        else if(card.getValue() == 10) {value += "10";}
+        else if(card.getValue() == 11) {value += "J";}
+        else if (card.getValue() == 12) {value += "Q";}
+        else if (card.getValue() == 13) {value += "K";}
+
+        goFishConsole.println("Dealer does not have a [" +value+"]. Go Fish!");
     }
 
-    public void doesHaveCardMessage(int number) {
-        goFishConsole.println(name + " have taken the number " + number + " from the dealer. You have a match.");
+
+    public void doesHaveCardMessage(Card card) {
+        String value = "";
+        if(card.getValue() == 1) {value += "A";}
+        else if(card.getValue() == 2) {value += "2";}
+        else if(card.getValue() == 3) {value += "3";}
+        else if(card.getValue() == 4) {value += "4";}
+        else if(card.getValue() == 5) {value += "5";}
+        else if(card.getValue() == 6) {value += "6";}
+        else if(card.getValue() == 7) {value += "7";}
+        else if(card.getValue() == 8) {value += "8";}
+        else if(card.getValue() == 9) {value += "9";}
+        else if(card.getValue() == 10) {value += "10";}
+        else if(card.getValue() == 11) {value += "J";}
+        else if (card.getValue() == 12) {value += "Q";}
+        else if (card.getValue() == 13) {value += "K";}
+
+        goFishConsole.println(name + " have taken the [" + value + "] from the dealer. You have a match.");
     }
 
 

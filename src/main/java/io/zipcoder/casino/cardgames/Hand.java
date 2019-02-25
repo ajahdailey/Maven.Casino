@@ -19,7 +19,7 @@ public class Hand {
     this.cardsInHand = cards;
     }
 
-    public Hand(int numberOfCards) {
+    public Hand() {
         this.cardsInHand = new ArrayList<>();
 
     }
@@ -51,18 +51,20 @@ public class Hand {
         return cardsInHand.size();
     }
 
-    public void manageDuplicateCards() {
-        boolean foundMatch = false;
+    public boolean manageDuplicateCards() {
+        boolean anyMatchFound = false;
+        boolean foundMatch;
 
         for (int i = 0; i < cardsInHand.size(); ) {
             foundMatch = false;
-            for (int j = i; j < cardsInHand.size(); j++) {
+            for (int j = i + 1; j < cardsInHand.size(); j++) {
                 if (cardsInHand.get(j).equals(cardsInHand.get(i))) {
                     matchedCards.add(card);
 
-                   // cardsInHand.remove(cardsInHand.get(j));
-                    //cardsInHand.remove(cardsInHand.get(i));
+                    cardsInHand.remove(cardsInHand.get(j));
+                    cardsInHand.remove(cardsInHand.get(i));
                     foundMatch = true;
+                    anyMatchFound = true;
                     break;
                 }
             }
@@ -70,5 +72,24 @@ public class Hand {
                 i++;
 
         }
+        return anyMatchFound;
+    }
+
+    public Card getRandomCard() {
+        Random random = new Random();
+        int randomIdx = random.nextInt(cardsInHand.size());
+        return cardsInHand.get(randomIdx);
+    }
+
+    public void removeCardFromHand(Card card) {
+        cardsInHand.remove(card);
+    }
+
+    public boolean hasCard(Card card) {
+        return cardsInHand.contains(card);
+    }
+
+    public List<Card> getHandCards() {
+        return new ArrayList<Card>(this.cardsInHand);
     }
 }

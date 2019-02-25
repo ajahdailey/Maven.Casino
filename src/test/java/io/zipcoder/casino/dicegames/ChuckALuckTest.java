@@ -101,7 +101,7 @@ public class ChuckALuckTest { ChuckALuck game;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
         IOChuckALuckConsole console = createConsole(inputStream, outputStream);
 
-        ChuckALuck game = new ChuckALuck(dicePlayer, console, dice);
+        ChuckALuck game = new ChuckALuck(dicePlayer, console);
         game.play();
 
         //When
@@ -124,7 +124,7 @@ public class ChuckALuckTest { ChuckALuck game;
 
         IOChuckALuckConsole console = createConsole(inputStream, outputStream);
 
-        ChuckALuck game = new ChuckALuck(dicePlayer, console, dice);
+        ChuckALuck game = new ChuckALuck(dicePlayer, console);
 
         //When
         game.play();
