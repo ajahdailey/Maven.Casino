@@ -66,6 +66,7 @@ public class IOGoFishConsole extends IOConsole {
 
     public Card pickACardForPlayerMessage(List<Card> hand) {
         int value =goFishConsole.getIntegerInput("What card would the player like to choose?");
+        //Your input will choose the card from your opponent hand, it is by index  and not actual card number.
         Card card = new Card(value, SignType.Spade);
         return card;
     }

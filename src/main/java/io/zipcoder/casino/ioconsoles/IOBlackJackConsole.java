@@ -1,6 +1,9 @@
 package io.zipcoder.casino.ioconsoles;
 
+import io.zipcoder.casino.cardgames.Card;
 import io.zipcoder.casino.utilities.Console;
+
+import java.util.List;
 
 public class IOBlackJackConsole extends IOConsole {
     Console blackJackConsole;
@@ -16,15 +19,16 @@ public class IOBlackJackConsole extends IOConsole {
         blackJackConsole.println("Welcome " + name + ", to the Black Jack room");
     }
 
-    public void betMessage() {
-        blackJackConsole.println("How much are you betting?");
-    }
+    //This is if we implement a bet method that allows user to input amount
+//    public void betMessage() {
+//        blackJackConsole.println("How much are you betting?");
+//    }
+//
+//    public void playerBetAmountMessage(String name, int betAmount) {
+//        blackJackConsole.println(name + " is betting " + betAmount + " dollars.");
+//    }
 
-    public void playerBetAmountMessage(String name, int betAmount) {
-        blackJackConsole.println(name + " is betting " + betAmount + " coins.");
-    }
-
-    public void playerHandMessage() {
+    public void playerHandMessage(List<Card> hand) {
         blackJackConsole.println("The dealer has dealt the cards.\nPlayer: [K][8]\nDealer: [Q][?]");
     }
 
