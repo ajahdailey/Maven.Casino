@@ -14,7 +14,7 @@ public class Casino {
     List<Player> players;
     GameType currentSelectedGame;
 
-   public static void main(String[] args) {
+    public static void main(String[] args) {
        new Casino().start();
     }
 
@@ -42,8 +42,8 @@ public class Casino {
 
            console.printPlayerAccount(player.getMoney());
            playAgain = console.askPlayAgain();
-       }while(playAgain);
 
+       }while(playAgain);
 
     }
 

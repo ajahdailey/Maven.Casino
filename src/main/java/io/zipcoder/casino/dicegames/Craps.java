@@ -14,6 +14,8 @@ public class Craps extends DiceGame implements GamblingGame {
     private IOCrapsConsole console;
     private int setPoint;
     private boolean passChoice;
+
+
     public void giveMoney() {
 
         if(didWin)
@@ -29,6 +31,16 @@ public class Craps extends DiceGame implements GamblingGame {
         passChoice = true;
 
     }
+
+
+    //Constructor used only by the test
+    public Craps(DicePlayer player, IOCrapsConsole console, Dice dice) {
+        this.player = (CrapsPlayer) player;
+        this.console = console;
+        this.dice = dice;
+        passChoice = true;
+    }
+
 
     public void bet() {
         player.betMoney();
@@ -56,15 +68,15 @@ public class Craps extends DiceGame implements GamblingGame {
             console.printTossOutcome(result);
             isDone = evaluateTurn(turnNumber, result);
 
-            if(!isDone)
+            if(!isDone ) {
                 console.printContinueMessage();
-            turnNumber ++;
+                turnNumber++;
+            }
 
         }while(!isDone);
     }
 
     private boolean evaluateTurn(int turnNumber, int result){
-
         boolean isDone = false;
         if(passChoice){
             if(turnNumber == 1 ) {
@@ -101,12 +113,12 @@ public class Craps extends DiceGame implements GamblingGame {
     private boolean isInPassList(int result){
         final int [] passList = {4,5,6,8,9,10};
         int isPresent = Arrays.binarySearch(passList,result);
-        return isPresent > 0;
+        return isPresent >= 0;
     }
     private boolean isInDoNotPassList(int result){
         final int [] passList = {2, 3, 12};
         int isPresent = Arrays.binarySearch(passList,result);
-        return isPresent > 0;
+        return isPresent >= 0;
 
     }
     public void exit() {
@@ -121,5 +133,9 @@ public class Craps extends DiceGame implements GamblingGame {
     public static void main(String[] args) {
         Craps craps = new Craps(null, new IOCrapsConsole("Aswathy"));
         craps.play();
+    }
+
+    public int getTurnNumber() {
+        return turnNumber;
     }
 }
