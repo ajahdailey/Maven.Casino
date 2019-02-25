@@ -18,11 +18,11 @@ public class Card {
     }
 
     public int getValue(){
-        return 0;
+        return value;
     }
 
     public SignType getSign() {
-        return SignType.Spade;
+        return sign;
     }
 
     @Override
