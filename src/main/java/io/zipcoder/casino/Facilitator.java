@@ -73,6 +73,8 @@ public class Facilitator {
         console.setPlayerName(currentPlayer.getName());
         console.displayTurnMessage();
         if(isCurrentPlayerDealer()) {
+            List<Card> hand = currentPlayer.getHandCards();
+            console.displayCurrentHand(hand);
             opponentPlayer = playerList.get(playerIdx);
             cardChosen = currentPlayer.getRandomCardFromHand();
             console.cardToAskForMessage(cardChosen);
