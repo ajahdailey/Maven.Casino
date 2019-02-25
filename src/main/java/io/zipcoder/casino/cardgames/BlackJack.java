@@ -2,6 +2,8 @@ package io.zipcoder.casino.cardgames;
 
 import io.zipcoder.casino.*;
 import io.zipcoder.casino.ioconsoles.IOBlackJackConsole;
+import io.zipcoder.casino.ioconsoles.IOConsole;
+import io.zipcoder.casino.player.BlackJackPlayer;
 import io.zipcoder.casino.player.Dealer;
 import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.utilities.GamblingGame;
@@ -27,6 +29,11 @@ public class BlackJack extends CardGame implements GamblingGame {
         3. Current cards in hand
         4. Current cards in dealer hand (their number value)
          */
+
+    public BlackJack(BlackJackPlayer bjPlayer, IOConsole console) {
+        super();
+    }
+
 
     public void play() {
         try {
@@ -68,7 +75,7 @@ public class BlackJack extends CardGame implements GamblingGame {
                 }
 
 
-                this.evaluateGame();
+                this.printResults();
                 this.giveMoney();
 
             } else {
@@ -100,6 +107,7 @@ public class BlackJack extends CardGame implements GamblingGame {
         // Give the dealer one more card
     }
 
+
     private void hitUser() {
         // Give the user one more card
     }
@@ -117,13 +125,10 @@ public class BlackJack extends CardGame implements GamblingGame {
         // Take money away from user for their bet in the game (I would just make it $15)
     }
 
-    public int giveMoney() {
-        return 0;
+    public void giveMoney() {
+       // return 0;
     }
 
-    public void evaluateGame() {
-        // This method should count the payout of the user and print out their results (how much they won or lost)
-    }
 
     public void exit() {
         // Don't have to use this method
@@ -141,5 +146,15 @@ public class BlackJack extends CardGame implements GamblingGame {
 
     private static Scanner getInScanner() throws IOException {
         return new Scanner(System.in);
+    }
+
+    @Override
+    public void printResults() {
+
+    }
+
+    @Override
+    public void takeTurn() {
+
     }
 }

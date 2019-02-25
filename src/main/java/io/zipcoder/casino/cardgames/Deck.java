@@ -8,9 +8,11 @@ public class Deck {
 
     public Deck(int numberOfCards) {
         this.numberOfCards = numberOfCards;
+        //You construct the deck
+        shuffle();
     }
 
-    public Object draw(){
+    public Card draw(){
         return null;
     }
 
