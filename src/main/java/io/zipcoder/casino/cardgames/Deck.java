@@ -18,7 +18,7 @@ public class Deck {
         Collections.shuffle(deckOfcards);
 
     }
-    
+
 
     public void createCards(){
         for (int i = 0; i < signArray.length; i++) {
@@ -26,19 +26,21 @@ public class Deck {
             for (int value = 1; value <= 13; value++) {
                 Card card = new Card(value, signType);
                 this.deckOfcards.push(card);
-               // System.out.println(deck.cards);
             }
         }
+        System.out.println(deckOfcards);
     }
 
     public Card draw() {
 
-        Card drwanCard = null;
+        Card drawnCard = null;
+
         if (deckOfcards.size() > 0) {
-            drwanCard = deckOfcards.get(deckOfcards.size() - 1);
+            drawnCard = deckOfcards.get(deckOfcards.size() - 1);
             deckOfcards.remove(deckOfcards.size() - 1);
             System.out.println("Deck Size after drawing Card "+deckOfcards.size());
+
         }
-        return (Card)drwanCard;
+        return (Card)drawnCard;
     }
 }
