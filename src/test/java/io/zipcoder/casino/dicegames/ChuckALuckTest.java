@@ -1,5 +1,6 @@
 package io.zipcoder.casino.dicegames;
 
+import io.zipcoder.casino.ioconsoles.IOChuckALuckConsole;
 import io.zipcoder.casino.player.DicePlayer;
 import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.utilities.Console;
@@ -7,20 +8,21 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-import static org.junit.Assert.*;
-
-public class ChuckALuckTest {
-    ChuckALuck game;
+public class ChuckALuckTest { ChuckALuck game;
 
     @Before
     public void setup(){
         Player player = new Player(10, "A");
         DicePlayer dicePlayer = new DicePlayer(player);
 
-        game = new ChuckALuck(dicePlayer);
+       game = new ChuckALuck(dicePlayer);
     }
 
 
@@ -84,5 +86,59 @@ public class ChuckALuckTest {
 
         Assert.assertEquals(expected, actualMatch);
     }
-// If there is an unexpected input, ask user to "please enter a number from 1-6"
+
+    @Test
+    public void evaluateGame() {
+        //Given
+        Random random = new Random(5);
+        Dice dice = new Dice(1, random);
+
+        Player player = new Player(10, "A");
+        DicePlayer dicePlayer = new DicePlayer(player);
+
+        String input = "3\n1\n6";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        IOChuckALuckConsole console = createConsole(inputStream, outputStream);
+
+        ChuckALuck game = new ChuckALuck(dicePlayer, console);
+        game.play();
+
+        //When
+        game.printResults();
+
+        //Then
+        String output = outputStream.toString();
+        Assert.assertTrue(output.contains("You have 2 matches"));
+    }
+
+    @Test
+    public void testPlay(){
+        Dice dice = new Dice(1);
+
+        Player player = new Player(10, "A");
+        DicePlayer dicePlayer = new DicePlayer(player);
+        String input = "3\n1\n6";
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+        IOChuckALuckConsole console = createConsole(inputStream, outputStream);
+
+        ChuckALuck game = new ChuckALuck(dicePlayer, console);
+
+        //When
+        game.play();
+
+        //Then
+        String output = outputStream.toString();
+        Assert.assertTrue(output.contains("Guess the outcome"));
+
+    }
+
+    private IOChuckALuckConsole createConsole(ByteArrayInputStream inputStream, ByteArrayOutputStream outputStream) {
+        Console c = new Console(inputStream, new PrintStream(outputStream));
+        IOChuckALuckConsole console = new IOChuckALuckConsole(c);
+        return console;
+    }
+
 }

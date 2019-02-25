@@ -21,6 +21,7 @@ public class ChuckALuck extends DiceGame {
     private static final int NUMBER_OF_GUESS = 3;
 
     private int numberOfDice;
+    private Dice dice;
     private DicePlayer player;
     private IOChuckALuckConsole console;
     private List<Integer> guesses;
@@ -33,15 +34,14 @@ public class ChuckALuck extends DiceGame {
     }
 
     public ChuckALuck(DicePlayer player, IOChuckALuckConsole console){
-      this.player = player;
-      this.console = console;
+        this.player = player;
+        this.console = console;
+        this.dice = new Dice(numberOfDice);
     }
 
     public void play() {
         guesses = console.getGuesses();
         rollDices();
-        int matches = getMatches(guesses, results);
-        console.printResult(matches);
     }
 
     public void rollDices(){
@@ -54,12 +54,11 @@ public class ChuckALuck extends DiceGame {
             results.add(diceResult);
         }
     }
-
     public int getMatches(List<Integer> userGuesses, List<Integer> diceResults) {
         int numOfMatch = 0;
         for(int i = 0; i < userGuesses.size(); i++){
 
-            if(diceResults.contains(userGuesses.get(i))){
+            if(userGuesses.contains(diceResults.get(i))){
                 numOfMatch++;
 
             }
@@ -69,19 +68,18 @@ public class ChuckALuck extends DiceGame {
     }
 
 
-    public void evaluateGame(){
-
-    }
-
+    //Will ask if they want to play another game or continue playing this game or exit. Will come from the console.
     public void exit() {
 
     }
+
 
     //Todo: Implement printResults
 
     @Override
     public void printResults() {
-
+        int matches = getMatches(guesses, results);
+        console.printResult(matches);
     }
 
 //   public static void main(String[] args) {
@@ -90,6 +88,7 @@ public class ChuckALuck extends DiceGame {
 //
 //        ChuckALuck game = new ChuckALuck(dicePlayer);
 //        game.play();
+//        game.printResults();
 //    }
 }
 
