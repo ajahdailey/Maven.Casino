@@ -6,16 +6,16 @@ import java.util.Random;
 import java.util.Stack;
 
 public class Deck {
-    protected Stack<Card> cards;
+    protected Stack<Card> deckOfcards;
     private int numberOfCards;
     private final   SignType[] signArray;
 
     public Deck(int numberOfCards) {
         this.numberOfCards = numberOfCards;
-        this.cards = new Stack<>();
+        this.deckOfcards = new Stack<>();
         this.signArray = new SignType[]{SignType.Heart, SignType.Diamond, SignType.Clover, SignType.Heart};
         createCards();
-        Collections.shuffle(cards);
+        Collections.shuffle(deckOfcards);
 
     }
 
@@ -25,20 +25,15 @@ public class Deck {
             SignType signType = signArray[i];
             for (int value = 1; value <= 13; value++) {
                 Card card = new Card(value, signType);
-                this.cards.push(card);
-               // System.out.println(deck.cards);
+                this.deckOfcards.push(card);
             }
-
         }
-
+        System.out.println(deckOfcards);
     }
+
 
     public Card draw(){
-        return null;
-    }
-
-    public void shuffle() {
-
+        return deckOfcards.size() > 0 ? deckOfcards.pop() : null;
     }
 
 }

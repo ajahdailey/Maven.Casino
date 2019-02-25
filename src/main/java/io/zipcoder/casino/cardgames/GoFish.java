@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GoFish extends CardGame {
+    private final int noOfCardsToBeDistributed = 5;
     //Todo : add the new to constructor
     private CardPlayer player;
 
@@ -33,12 +34,8 @@ public class GoFish extends CardGame {
 
         this.console = console;
         deck = new Deck(52);
-        facilitator = new Facilitator(playerList, deck);
+        facilitator = new Facilitator(playerList, deck, noOfCardsToBeDistributed);
 
-
-    }
-
-    public GoFish(GoFishPlayer goFishPlayer, IOConsole console) {
 
     }
 
@@ -46,8 +43,20 @@ public class GoFish extends CardGame {
     public void play() {
           //List<CardPlayer> players;
 
+        console.goFishWelcomeMessage();
         facilitator.distributeCards();
+        console.distributeCardMessage();
+        List<Card> hand = player.getHandCards();
+        console.displayCurrentHand(hand);
+        int numberofCards = hand.size();
         facilitator.discardMatchedCards();
+        hand = player.getHandCards();
+
+        if(numberofCards != hand.size()){
+            console.doesHaveCardMessage();
+            console.displayCurrentHand(hand);
+        }
+
 
         boolean done = false;
         do{
@@ -57,14 +66,11 @@ public class GoFish extends CardGame {
         }while(!done);
 
         if(facilitator.getWinner() == player)
-        {didWin = true;}
+        {
+            didWin = true;
+        }
 
-    }
-
-    public void evaluateGame() {
-//Todo : uncomment
-      //return didWin;
-    }
+   }
 
     public void exit() {
 
@@ -75,6 +81,7 @@ public class GoFish extends CardGame {
 
     }
     public void takeTurn() {
+        facilitator.facilitateTurn(console);
 
     }
 }

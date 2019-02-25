@@ -8,12 +8,9 @@ public class DummyDiceForCrapsTest extends Dice {
         super(2);
         this.possibleToss1 = possibleToss1;
         this.possibleToss2 = possibleToss2;
-
     }
 
-
-
-    @Override
+   @Override
     public void toss() {
 
         tossResults.clear();
@@ -23,6 +20,4 @@ public class DummyDiceForCrapsTest extends Dice {
             tossNumber++;
         }
     }
-
-
 }

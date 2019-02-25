@@ -1,13 +1,7 @@
 package io.zipcoder.casino.ioconsoles;
 
-import io.zipcoder.casino.GameType;
 import io.zipcoder.casino.cardgames.Card;
-import io.zipcoder.casino.cardgames.GoFish;
-import io.zipcoder.casino.cardgames.Hand;
-import io.zipcoder.casino.player.CardPlayer;
-import io.zipcoder.casino.player.Dealer;
-import io.zipcoder.casino.player.GoFishPlayer;
-import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.cardgames.SignType;
 import io.zipcoder.casino.utilities.Console;
 
 import java.util.List;
@@ -37,6 +31,7 @@ public class IOGoFishConsole extends IOConsole {
         goFishConsole.println("The dealer has distributed the cards.");
     }
 
+
     public void displayCurrentHand(List<Card> hand) {
         if(hand == null) {
             goFishConsole.println("You don't have any cards in your hand.");
@@ -59,6 +54,7 @@ public class IOGoFishConsole extends IOConsole {
                 goFishConsole.print("["+value+"]");
             }
             goFishConsole.print("\n");
+
         }
 
     }
@@ -67,9 +63,11 @@ public class IOGoFishConsole extends IOConsole {
         goFishConsole.println("It is now " + name + " turn.");
     }
 
-    public void pickACardForPlayerMessage(List<Card> hand) {
-        goFishConsole.getIntegerInput("What card would the player like to choose?");
-        displayCurrentHand(hand);
+
+    public Card pickACardForPlayerMessage(List<Card> hand) {
+        int value =goFishConsole.getIntegerInput("What card would the player like to choose?");
+        Card card = new Card(value, SignType.Spade);
+        return card;
     }
 
     public void doesHaveCardMessage() {
@@ -113,6 +111,7 @@ public class IOGoFishConsole extends IOConsole {
 
         goFishConsole.println("Dealer does not have a [" +value+"]. Go Fish!");
     }
+
 
     public void doesHaveCardMessage(Card card) {
         String value = "";
