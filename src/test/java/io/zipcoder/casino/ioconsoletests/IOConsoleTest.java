@@ -78,6 +78,24 @@ public class IOConsoleTest {
     }
 
     @Test
+    public void getPlayer() {
+        //Given
+        byte[] inputBytes = playerName.getBytes();
+        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
+
+        //When
+        IOConsole casinoIO = new IOConsole(inputByteArray);
+        Player testPlayer = casinoIO.getPlayer();
+        String actualName = testPlayer.getName();
+        Integer expectedMoney = 100;
+        Integer actualMoney = testPlayer.getMoney();
+
+        //Then
+        Assert.assertEquals(playerName, actualName);
+        Assert.assertEquals(expectedMoney, actualMoney);
+    }
+
+    @Test
     public void printGameIntroTest() {
         //Given
         String gameIntro = "\nWelcome, %s. We have four games you can play.\n\n" +
@@ -221,7 +239,7 @@ public class IOConsoleTest {
     }
 
     @Test
-    public void goodbye() {
+    public void goodbyeTest() {
         //Given
         String goodbyeMessage = "" +
                 " _____\n" +
@@ -239,6 +257,21 @@ public class IOConsoleTest {
         //When
         IOConsole casinoIO = new IOConsole();
         casinoIO.goodbye(playerName);
+        String actual = testOutStream.toString();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actual);
+    }
+
+    @Test
+    public void invalidMessageTest() {
+        //Given
+        String invalidMessage = "I'm sorry I didn't understand your selection. Please try again." + "\n";
+        String expectedOutput = String.format(invalidMessage);
+
+        //When
+        IOConsole casinoIO = new IOConsole();
+        casinoIO.invalidEntryMessage();
         String actual = testOutStream.toString();
 
         //Then
