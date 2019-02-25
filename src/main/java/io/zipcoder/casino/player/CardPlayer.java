@@ -9,7 +9,7 @@ public class CardPlayer {
 
     public  CardPlayer(Player player){
         this.player = player;
-        cardsInHand = new Hand(getNumberOfCardsInHand());
+        cardsInHand = new Hand();
     }
 
 
