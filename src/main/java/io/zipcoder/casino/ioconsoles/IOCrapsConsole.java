@@ -20,7 +20,18 @@ public class IOCrapsConsole extends IOConsole{
     }
 
     public void crapsWelcome() {
-        crapsConsole.println("Welcome to craps, %s. Let's play!", name);
+        crapsConsole.println("" +
+                "  ____\n" +
+                " /\\' .\\    _____\n" +
+                "/: \\___\\  / .  /\\\n" +
+                "\\' / . / /____/..\\\n" +
+                " \\/___/  \\'  '\\  /\n" +
+                "          \\'__'\\/\n" +
+                "WELCOME\n" +
+                "TO CRAPS! \n" +
+                "------------------\n" +
+                "Let's play, %s!\n" +
+                "------------------", name);
     }
 
     public boolean passOrNotPass() {
@@ -30,6 +41,7 @@ public class IOCrapsConsole extends IOConsole{
 
     public void promptRollDice() {
         crapsConsole.println("Time to roll the dice!");
+        crapsConsole.getStringInput("Press enter to continue.");
     }
 
     public void setPointMessage(Integer setPoint) {
