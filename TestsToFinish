@@ -1,0 +1,191 @@
+Checking Tests
+-------------------------------
+Facilitator
+   - getWinner
+   DONE evaluateTurn
+   DONE distributeCards
+   - discardMatchedCards
+
+Casino
+   - start
+
+GameFactory
+   - CreateGameObject
+
+GameType & SignType - do we need to do tests for enums??
+
+IOConsoleFactory
+    - CreateIOConsole
+
+BlackJackPlayer
+   - constructor
+   - betMoney
+   - winMoney
+
+CardPlayer
+   - constructor
+   DONE addCardToHand
+   DONE getNumberOfCardsInHand
+   DONE discardMatchedCards
+
+CrapsPlayer
+   - constructor
+   - betMoney
+   - winMoney
+   - addMoney
+
+Dealer
+   - constructor
+
+DicePlayer
+   - constructor
+
+GoFishPlayer
+   - constructor
+
+Player
+   - constructor
+   - getMoney
+   - reduceMoney
+   - addMoney
+   - getName
+
+IOBlackJackConsole
+   - constructor
+   - blackJackWelcomeMessage
+   - betMessage
+   - playerBetAmountMessage
+   - playerHandMessage
+   - needMoreCards
+   - ?? dealerTurnMessage
+   - ?? printResultMessage
+   - tryAgainMessage
+
+IOChuckALuckConsole
+   - constructor
+   DONE getGuesses
+   DONE getGuess
+   DONE printDiceResult
+   DONE printResult
+
+IOConsole
+   - constructor
+   DONE startCasinoConsole
+   DONE getPlayerName
+   DONE getPlayer
+   DONE printGameIntro
+   DONE getGameSelection
+   DONE printPlayerAccount
+   DONE askPlayAgain
+   DONE goodbye
+   DONE invalidEntryMessage
+
+IOCrapsConsole
+   - constructor
+   DONE crapsWelcome
+   DONE passOrNotPass
+   DONE-ISH promptRollDice (This worked before I added the press return to roll - not sure how to test that"
+   DONE setPointMessage
+   DONE printTossOutcome
+   DONE printContinueMessage
+   DONE printResult
+
+IOGoFishConsole
+   - constructor
+   DONE goFishWelcomeMessage
+   DONE distributeCardMessage
+   - displayCurrentHand
+   - displayTurnMessage
+   - pickACardForPlayerMessage
+   DONE doesHaveCardMessage
+   DONE cardToAskForMessage
+   DONE doesNotHaveCardMessage
+   - doesHaveCardMessage
+   DONE winningMessage
+   DONE losingMessage
+   DONE result
+
+Bin
+   - constructor
+   DONE add
+   DONE getResult
+   DONE getSum
+
+ChuckALuck
+   - constructor
+   DONE play
+   DONE getMatches
+   - exit
+   DONE printResults
+
+Craps
+   - constructor
+   - giveMoney
+   - bet
+   DONE play
+   - evaluateTurn
+   - isInPassList
+   - isInDoNotPassList
+   DONE printResults
+   DONE getTurnNumber
+
+Dice
+   - constructor
+   - roll
+   DONE toss
+   DONE getSum
+   - randomDieToss
+
+DiceGame **why is this an abstract class? we have a constructor. who uses it.
+   - constructor
+   DONE roll
+   DONE didWin
+   - setWin
+   - getResults
+
+BlackJack
+   - constructor
+   - play
+   - mainLoop
+   - bustOr21
+   - hitDealer
+   - hituser
+   - showHands
+   - distributeCards
+   - bet
+   - giveMoney
+   - exit
+   - getStringResponse
+   - getInScanner
+   - printResults
+   - takeTurn
+
+Card
+   - constructor
+   - getValue
+   - getSign
+   - toString
+
+CardGame
+   - constructor * why is this an abstract class? we have a constructor
+   - didWin
+
+Deck
+   - constructor
+   DONE createCards
+   DONE draw
+
+GoFish
+   - constructor
+   DONE play
+   - evaluateGame
+   - exit
+   - printResults
+   - takeTurn
+Hand
+   - constructor
+   DONE discardCard
+   DONE clearAllCardsInHand
+   DONE addCardToHand
+   - getNumberOfCardsInHand
+   DONE manageDuplicateCards
