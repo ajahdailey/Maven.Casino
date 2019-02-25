@@ -70,7 +70,7 @@ public class GoFish extends CardGame {
             didWin = true;
         }
 
-    }
+   }
 
     public void exit() {
 
