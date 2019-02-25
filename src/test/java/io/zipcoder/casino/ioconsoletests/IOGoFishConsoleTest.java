@@ -120,7 +120,7 @@ public class IOGoFishConsoleTest {
         IOGoFishConsole goFishConsole = new IOGoFishConsole(name);
 
         goFishConsole.doesHaveCardMessage(card);
-        goFishConsole.doesHaveCardMessage();
+        //goFishConsole.doesHaveCardMessage();
         String actual = testOutStream.toString();
 
         //Then
