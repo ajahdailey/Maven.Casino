@@ -22,15 +22,26 @@ public class IOChuckALuckConsole extends IOConsole{
 
     public List<Integer> getGuesses(){
         List<Integer> userGuesses = new ArrayList<Integer>();
-        Integer guess1 = console.getIntegerInput("Guess the outcome ");
-        Integer guess2 = console.getIntegerInput("Guess the outcome ");
-        Integer guess3 = console.getIntegerInput("Guess the outcome ");
-        userGuesses.add(guess1);
-        userGuesses.add(guess2);
-        userGuesses.add(guess3);
+
+        int guessInput1 =getGuess("first");
+        int guessInput2 =getGuess("second");
+        int guessInput3 =getGuess("third");
+        userGuesses.add(guessInput1);
+        userGuesses.add(guessInput2);
+        userGuesses.add(guessInput3);
 
         return userGuesses;
     }
+
+    public Integer getGuess(String numberDice) {
+
+        Integer guess = console.getIntegerInput("Guess the outcome of the " + numberDice +" dice");
+        while (guess < 1 || guess > 6) {
+            guess = console.getIntegerInput("Please enter a number between 1 -6");
+        }
+        return guess;
+    }
+
     public void printDiceResult(int result){
         console.println("The number is " + result);
     }
@@ -39,9 +50,5 @@ public class IOChuckALuckConsole extends IOConsole{
     public void printResult(Integer matches) {
         console.println("You have " + matches + " matches");
     }
-
-
-
-//add "please enter a number from 1-6" if they
 
 }
