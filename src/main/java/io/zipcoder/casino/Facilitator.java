@@ -2,41 +2,45 @@ package io.zipcoder.casino;
 
 import io.zipcoder.casino.cardgames.Card;
 import io.zipcoder.casino.cardgames.Deck;
-import io.zipcoder.casino.cardgames.SignType;
+import io.zipcoder.casino.ioconsoles.IOGoFishConsole;
 import io.zipcoder.casino.player.CardPlayer;
-import io.zipcoder.casino.player.Player;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Facilitator {
 
-
+    private int numberOfCardsToBeDistributed;
     private List<CardPlayer > playerList;
+    private final int playerIdx = 1;
+    private final int dealerIdx = 0;
 
     public CardPlayer getWinner() {
         return winner;
     }
 
+    public int currentPlayerIdx = 1;
     private CardPlayer winner;
     Deck deck;
 
 
-    public Facilitator(List<CardPlayer> playerList, Deck deck) {
+    public Facilitator(List<CardPlayer> playerList, Deck deck, int numberOfCardsToBeDistributed) {
         this.playerList = playerList;
         this.deck = deck;
+        this.numberOfCardsToBeDistributed = numberOfCardsToBeDistributed;
     }
 
     public boolean evaluateTurn() {
 
         boolean isGameOver = false;
         for(CardPlayer player : playerList) {
-            if(player.getNumberOfCardsInHand() == 0){
+
+            if(player.getNumberOfCardsInHand() == 0)
+                {
                 winner = player;
                 isGameOver = true;
                 break;
-            }
-        }
+            } }
+
 
         return isGameOver;
 
@@ -44,13 +48,12 @@ public class Facilitator {
 
     public void distributeCards() {
 
-        int i = 0;
-        int currentCard;
-
-        for (int rank = 1; rank <= 5; rank++) {
+        for (int cardNo = 0; cardNo < numberOfCardsToBeDistributed; cardNo++) {
             for (CardPlayer player : playerList) {
                 Card card = deck.draw();
-                player.addCardToHand(card);
+                if(card!=null) {
+                    player.addCardToHand(card);
+                }
             }
         }
     }
@@ -60,5 +63,51 @@ public class Facilitator {
         for(CardPlayer player : playerList){
             player.discardMatchedCards();
         }
+    }
+
+    public void facilitateTurn(IOGoFishConsole console) {
+
+        CardPlayer currentPlayer = playerList.get(currentPlayerIdx);
+        CardPlayer opponentPlayer = null;
+        Card cardChosen;
+        console.setPlayerName(currentPlayer.getName());
+        console.displayTurnMessage();
+        if(isCurrentPlayerDealer()) {
+            opponentPlayer = playerList.get(playerIdx);
+            cardChosen = currentPlayer.getRandomCardFromHand();
+            console.cardToAskForMessage(cardChosen);
+
+        }else {
+            opponentPlayer = playerList.get(dealerIdx);
+            List<Card> hand = currentPlayer.getHandCards();
+            cardChosen = console.pickACardForPlayerMessage(hand);
+        }
+
+        if(opponentPlayer.hasCard(cardChosen)) {
+            console.doesHaveCardMessage(cardChosen);
+            opponentPlayer.removeCardFromHand(cardChosen);
+            currentPlayer.removeCardFromHand(cardChosen);
+        }else {
+            console.doesNotHaveCardMessage(cardChosen);
+            Card newCard = deck.draw();
+            //Add a drawn message
+
+            currentPlayer.addCardToHand(newCard);
+            if(currentPlayer.discardMatchedCards());
+                console.doesHaveCardMessage();
+        }
+        List<Card> hand = playerList.get(playerIdx).getHandCards();
+        console.displayCurrentHand(hand);
+
+        if(isCurrentPlayerDealer()){
+            currentPlayerIdx = playerIdx;
+        }else{
+            currentPlayerIdx = dealerIdx;
+        }
+
+    }
+
+    private boolean isCurrentPlayerDealer(){
+        return currentPlayerIdx == dealerIdx ? true : false;
     }
 }

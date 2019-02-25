@@ -40,7 +40,7 @@ public BlackJack(Player player,IOBlackJackConsole console )
             // Add the player
             playerList.add(player);
 
-            
+
 }
 
     public BlackJack(BlackJackPlayer bjPlayer, IOConsole console) {

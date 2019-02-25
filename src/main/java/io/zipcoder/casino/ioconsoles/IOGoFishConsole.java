@@ -1,13 +1,6 @@
 package io.zipcoder.casino.ioconsoles;
 
-import io.zipcoder.casino.GameType;
 import io.zipcoder.casino.cardgames.Card;
-import io.zipcoder.casino.cardgames.GoFish;
-import io.zipcoder.casino.cardgames.Hand;
-import io.zipcoder.casino.player.CardPlayer;
-import io.zipcoder.casino.player.Dealer;
-import io.zipcoder.casino.player.GoFishPlayer;
-import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.utilities.Console;
 
 import java.util.List;
@@ -19,7 +12,7 @@ public class IOGoFishConsole extends IOConsole {
     String name;
 
 
-    public void setPlayername(String playername) {
+    public void setPlayerName(String playername) {
         this.name = playername;
     }
 
@@ -37,8 +30,18 @@ public class IOGoFishConsole extends IOConsole {
         goFishConsole.println("The dealer has distributed the cards.");
     }
 
-    public void displayCurrentHand(List<Card> hand) {
 
+    public void displayCurrentHand(List<Card> hand) {
+        if(hand == null) {
+            goFishConsole.println("You don't have any cards in your hand.");
+        } else {
+            System.out.println(hand);
+        }
+
+    }
+
+    public void displayTurnMessage() {
+        goFishConsole.println("It is now " + name + " turn.");
     }
 
     public Card pickACardForPlayerMessage(List<Card> hand) {
@@ -46,7 +49,11 @@ public class IOGoFishConsole extends IOConsole {
         //Which number will you pick?
         //return hand.get(i-1)
         goFishConsole.println("What card would the player like to choose?");
-        return hand.get(1);
+        return hand.get(0);
+    }
+
+    public void doesHaveCardMessage() {
+        goFishConsole.println("You have one or more matches in your hand.");
     }
 
     public void cardToAskForMessage( Card card) {
@@ -57,8 +64,9 @@ public class IOGoFishConsole extends IOConsole {
         goFishConsole.println("Dealer does not have the card you requested. Go Fish!");
     }
 
-    public void doesHaveCardMessage(int number) {
-        goFishConsole.println(name + " have taken the number " + number + " from the dealer. You have a match.");
+
+    public void doesHaveCardMessage(Card card) {
+        goFishConsole.println(name + " have taken the number " + card + " from the dealer. You have a match.");
     }
 
 
