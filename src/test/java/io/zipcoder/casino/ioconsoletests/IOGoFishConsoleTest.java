@@ -113,7 +113,7 @@ public class IOGoFishConsoleTest {
 
         //When
         IOGoFishConsole goFishConsole = new IOGoFishConsole(name);
-        goFishConsole.doesHaveCardMessage(4);
+        goFishConsole.doesHaveCardMessage();
         String actual = testOutStream.toString();
 
         //Then
