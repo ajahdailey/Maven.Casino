@@ -21,6 +21,7 @@ public class ChuckALuck extends DiceGame {
     private static final int NUMBER_OF_GUESS = 3;
 
     private int numberOfDice;
+    private Dice dice;
     private DicePlayer player;
     private IOChuckALuckConsole console;
     private List<Integer> guesses;
@@ -32,16 +33,15 @@ public class ChuckALuck extends DiceGame {
         this.dice = new Dice(numberOfDice);
     }
 
-    public ChuckALuck(DicePlayer player, IOChuckALuckConsole console){
+    public ChuckALuck(DicePlayer player, IOChuckALuckConsole console, Dice dice){
       this.player = player;
       this.console = console;
+      this.dice = dice;
     }
 
     public void play() {
         guesses = console.getGuesses();
         rollDices();
-        int matches = getMatches(guesses, results);
-        console.printResult(matches);
     }
 
     public void rollDices(){
@@ -54,8 +54,6 @@ public class ChuckALuck extends DiceGame {
             results.add(diceResult);
         }
     }
-    //use evaluateGame to get result of game
-
     public int getMatches(List<Integer> userGuesses, List<Integer> diceResults) {
         int numOfMatch = 0;
         for(int i = 0; i < userGuesses.size(); i++){
@@ -69,22 +67,25 @@ public class ChuckALuck extends DiceGame {
         return numOfMatch;
     }
 
-    //If the player wins or lose. 3 match is a win?
+    //Not sure what to do yet
     public void evaluateGame(){
-
+        int matches = getMatches(guesses, results);
+        console.printResult(matches);
     }
+
     //Will ask if they want to play another game or continue playing this game or exit. Will come from the console.
     public void exit() {
 
     }
-
-   public static void main(String[] args) {
-        Player player = new Player(10, "A");
-        DicePlayer dicePlayer = new DicePlayer(player);
-
-        ChuckALuck game = new ChuckALuck(dicePlayer);
-        game.play();
-    }
+//
+//   public static void main(String[] args) {
+//        Player player = new Player(10, "A");
+//        DicePlayer dicePlayer = new DicePlayer(player);
+//
+//        ChuckALuck game = new ChuckALuck(dicePlayer);
+//        game.play();
+//        game.evaluateGame();
+//    }
 }
 
 //

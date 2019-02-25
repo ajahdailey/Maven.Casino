@@ -54,7 +54,7 @@ public class IOChuckALuckConsoleTest {
     public void printDiceResult() {
         //Given
         IOChuckALuckConsole console = createConsole();
-        String expected = " the number is 4\n";
+        String expected = "The number is 4\n";
 
         //When
         console.printDiceResult(4);
