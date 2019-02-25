@@ -21,7 +21,9 @@ public class Casino {
     public void start() {
 
        IOConsole console = new IOConsole();
+       console.startCasinoConsole();
        Player player = console.getPlayer();
+       console.printGameIntro(player.getName());
        boolean playAgain;
        do {
            playAgain = false;
@@ -38,7 +40,7 @@ public class Casino {
 
            }
 
-           console.printPlayerAccount(player);
+           console.printPlayerAccount(player.getMoney());
            playAgain = console.askPlayAgain();
 
        }while(playAgain);
