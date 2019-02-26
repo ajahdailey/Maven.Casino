@@ -7,8 +7,9 @@ import java.util.Stack;
 
 public class Deck {
     protected Stack<Card> deckOfcards;
-    private int numberOfCards;
-    private final   SignType[] signArray;
+    protected int numberOfCards;
+    protected final   SignType[] signArray;
+
 
     public Deck(int numberOfCards) {
         this.numberOfCards = numberOfCards;

@@ -1,9 +1,13 @@
 package io.zipcoder.casino.cardgames;
 
 import io.zipcoder.casino.Facilitator;
+import io.zipcoder.casino.ioconsoles.IOConsole;
 import io.zipcoder.casino.ioconsoles.IOGoFishConsole;
 import io.zipcoder.casino.player.CardPlayer;
+import io.zipcoder.casino.player.DicePlayer;
+import io.zipcoder.casino.player.GoFishPlayer;
 import io.zipcoder.casino.player.Player;
+import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -12,6 +16,19 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class GoFishTest {
+
+    @Test
+    public void goFishConstructorTest() {
+        //Given
+        String name = "kate";
+        IOGoFishConsole console = new IOGoFishConsole(name);
+        Player player = new Player(100, name);
+        GoFishPlayer newPlayer = new GoFishPlayer(player);
+        GoFish newgame = new GoFish(newPlayer, console);
+
+        //Then
+        Assert.assertNotNull(newgame);
+    }
 
     @Test
     public void playTestDealerWins() {

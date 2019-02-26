@@ -10,7 +10,7 @@ import java.util.List;
 public class Facilitator {
 
     private int numberOfCardsToBeDistributed;
-    private List<CardPlayer > playerList;
+    private List<CardPlayer> playerList;
     private final int playerIdx = 1;
     private final int dealerIdx = 0;
     private boolean isQuit = false;
