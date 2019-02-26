@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Card {
 
-    private int value;
+    protected int value;
     private SignType sign ;
 
     public Card(){
@@ -45,3 +45,4 @@ public class Card {
 
     }
 }
+
