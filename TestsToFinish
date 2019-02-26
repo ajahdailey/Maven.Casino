@@ -162,7 +162,7 @@ BlackJack- kate
    - printResults
    - takeTurn
 
-Card?
+Card ✔
     - constructor
     - getValue
     - getSign
