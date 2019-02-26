@@ -98,6 +98,7 @@ public class ChuckALuckTest { ChuckALuck game;
 
     @Test
     public void evaluateGame() {
+        //sometimes pass
         //Given
         Random random = new Random(5);
         Dice dice = new Dice(1, random);
