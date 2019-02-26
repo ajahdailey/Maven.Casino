@@ -65,6 +65,7 @@ public class Craps extends DiceGame implements GamblingGame {
             isDone = evaluateTurn(turnNumber, result);
 
             if(!isDone ) {
+                if(turnNumber != 1)
                 console.printContinueMessage();
                 turnNumber++;
             }

@@ -172,7 +172,7 @@ public class BlackJack extends CardGame implements GamblingGame {
         console.printDealerHand(dealer);
     }
 
-    private int valueOfAllCardsInHand(CardPlayer player){
+    public int valueOfAllCardsInHand(CardPlayer player){
         List<Card> hand = player.getHandCards();
         int sumOfValue = 0;
         for(Card card : hand){
@@ -212,5 +212,13 @@ public class BlackJack extends CardGame implements GamblingGame {
     @Override
     public void takeTurn() {
 
+    }
+
+    public BlackJackPlayer getPlayer() {
+        return  player;
+    }
+
+    public CardPlayer getDealer() {
+        return  dealer;
     }
 }
