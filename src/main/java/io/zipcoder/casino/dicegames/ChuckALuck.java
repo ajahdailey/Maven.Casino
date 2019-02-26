@@ -40,11 +40,15 @@ public class ChuckALuck extends DiceGame {
     }
 
     public void play() {
+        console.welcome();
         guesses = console.getGuesses();
         rollDices();
+
+
     }
 
     public void rollDices(){
+        console.diceRoll();
         for(int i = 1; i <= NUMBER_OF_GUESS; i++){
             //for every round, generate a random number form 1 -6
             int diceResult = dice.roll();
