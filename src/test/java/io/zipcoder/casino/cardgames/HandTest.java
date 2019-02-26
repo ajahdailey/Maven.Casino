@@ -1,9 +1,13 @@
 package io.zipcoder.casino.cardgames;
 
+import io.zipcoder.casino.player.CardPlayer;
 import io.zipcoder.casino.player.Player;
 import org.junit.Assert;
 import org.junit.Test;
+
+import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HandTest {
@@ -177,6 +181,112 @@ public class HandTest {
         //Then
         Assert.assertEquals(2, actual);
     }
+
+    @Test
+    public void getRandomCard() {
+
+        //Given
+
+        Hand hand = new Hand();
+        Card card = new Card(1);
+        Card card1 = new Card(2);
+        Card card2 = new Card(4);
+        hand.addCardToHand(card);
+        hand.addCardToHand(card1);
+
+
+
+        //When
+        System.out.println(hand.getRandomCard());
+
     }
+
+    @Test
+    public void removeCardFromHand() {
+        //Given
+
+        Hand hand = new Hand();
+        Card card = new Card(1);
+        Card card1 = new Card(2);
+        Card card2 = new Card(4);
+        hand.addCardToHand(card);
+        hand.addCardToHand(card1);
+        int expected = 1;
+
+        //When
+        hand.removeCardFromHand(card);
+        int actual = hand.getNumberOfCardsInHand();
+
+        //Then
+        Assert.assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void hasCard() {
+
+        //Given
+
+        Hand hand = new Hand();
+        Card card = new Card(1);
+        Card card1 = new Card(2);
+        Card card2 = new Card(4);
+        hand.addCardToHand(card);
+        hand.addCardToHand(card1);
+        boolean expected = true;
+
+        //When
+       boolean actual = hand.hasCard(card);
+
+        //Then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void hasCardTest() {
+
+        //Given
+
+        Hand hand = new Hand();
+        Card card = new Card(1);
+        Card card1 = new Card(2);
+        Card card2 = new Card(4);
+        hand.addCardToHand(card);
+        hand.addCardToHand(card1);
+        boolean expected = false;
+
+        //When
+        boolean actual = hand.hasCard(card2);
+
+        //Then
+        Assert.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void getHandCards() {
+
+
+            //Given
+
+            Hand hand = new Hand();
+            Card card = new Card(4, SignType.Clover);
+            Card card2 = new Card(1, SignType.Diamond);
+            Card card1 = new Card(2, SignType.Clover);
+            hand.addCardToHand(card);
+            hand.addCardToHand(card1);
+            hand.addCardToHand(card2);
+
+            //When
+        Card[] expectedArray =  new Card[]{card, card1, card2};
+        String expectedString = Arrays.toString(expectedArray);
+        String actualString = hand.getHandCards().toString();
+
+            //Then
+        Assert.assertEquals(expectedString, actualString);
+
+
+        }
+    }
+
 
 

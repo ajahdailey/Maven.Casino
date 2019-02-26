@@ -1,6 +1,7 @@
 package io.zipcoder.casino.ioconsoles;
 
 import io.zipcoder.casino.cardgames.Card;
+import io.zipcoder.casino.cardgames.SignType;
 import io.zipcoder.casino.utilities.Console;
 
 import java.util.List;
@@ -35,7 +36,25 @@ public class IOGoFishConsole extends IOConsole {
         if(hand == null) {
             goFishConsole.println("You don't have any cards in your hand.");
         } else {
-            System.out.println(hand);
+            for(int i = 0; i <hand.size(); i++) {
+                String value = "";
+                if(hand.get(i).getValue() == 1) {value += "A";}
+                else if(hand.get(i).getValue() == 2) {value += "2";}
+                else if(hand.get(i).getValue() == 3) {value += "3";}
+                else if(hand.get(i).getValue() == 4) {value += "4";}
+                else if(hand.get(i).getValue() == 5) {value += "5";}
+                else if(hand.get(i).getValue() == 6) {value += "6";}
+                else if(hand.get(i).getValue() == 7) {value += "7";}
+                else if(hand.get(i).getValue() == 8) {value += "8";}
+                else if(hand.get(i).getValue() == 9) {value += "9";}
+                else if(hand.get(i).getValue() == 10) {value += "10";}
+                else if(hand.get(i).getValue() == 11) {value += "J";}
+                else if(hand.get(i).getValue() == 12) {value += "Q";}
+                else if (hand.get(i).getValue() == 13) {value += "K";}
+                goFishConsole.print("["+value+"]");
+            }
+            goFishConsole.print("\n");
+
         }
 
     }
@@ -44,12 +63,20 @@ public class IOGoFishConsole extends IOConsole {
         goFishConsole.println("It is now " + name + " turn.");
     }
 
+
     public Card pickACardForPlayerMessage(List<Card> hand) {
-        //Display hand()
-        //Which number will you pick?
-        //return hand.get(i-1)
-        goFishConsole.println("What card would the player like to choose?");
-        return hand.get(0);
+        int idx = 1;
+        goFishConsole.println(name + " Your hand cards !!");
+        for(Card card : hand){
+            goFishConsole.println(idx + ". " + getDisplayString(card));
+            idx++;
+        }
+        int value = 0;
+        do {
+            value = goFishConsole.getIntegerInput("What card would the player like to choose? " +
+                    "\nEnter the Number choice - 1 to " + hand.size());
+        }while(value >= hand.size());
+        return hand.get(value - 1);
     }
 
     public void doesHaveCardMessage() {
@@ -57,16 +84,38 @@ public class IOGoFishConsole extends IOConsole {
     }
 
     public void cardToAskForMessage( Card card) {
-        goFishConsole.println(name + " has chosen the number " + card + ".");
-    }
 
+        String value = getDisplayString(card);
+        goFishConsole.println(name + " has chosen a ["+ value + "].");
+    }
+    private String getDisplayString(Card card){
+        String value = card.getSign().toString() + " ";
+        if(card.getValue() == 1) {value += "A";}
+        else if(card.getValue() == 2) {value += "2";}
+        else if(card.getValue() == 3) {value += "3";}
+        else if(card.getValue() == 4) {value += "4";}
+        else if(card.getValue() == 5) {value += "5";}
+        else if(card.getValue() == 6) {value += "6";}
+        else if(card.getValue() == 7) {value += "7";}
+        else if(card.getValue() == 8) {value += "8";}
+        else if(card.getValue() == 9) {value += "9";}
+        else if(card.getValue() == 10) {value += "10";}
+        else if(card.getValue() == 11) {value += "J";}
+        else if (card.getValue() == 12) {value += "Q";}
+        else if (card.getValue() == 13) {value += "K";}
+        return value;
+    }
     public void doesNotHaveCardMessage(Card card) {
-        goFishConsole.println("Dealer does not have the card you requested. Go Fish!");
+        String value = getDisplayString(card);
+
+        goFishConsole.println("Dealer does not have a [" +value+"]. Go Fish!");
     }
 
 
     public void doesHaveCardMessage(Card card) {
-        goFishConsole.println(name + " have taken the number " + card + " from the dealer. You have a match.");
+        String value = getDisplayString(card);
+
+        goFishConsole.println(name + " have taken the [" + value + "] from the dealer. You have a match.");
     }
 
 
