@@ -13,6 +13,7 @@ public class Facilitator {
     private List<CardPlayer > playerList;
     private final int playerIdx = 1;
     private final int dealerIdx = 0;
+    private boolean isQuit = false;
 
     public CardPlayer getWinner() {
         return winner;
@@ -32,6 +33,9 @@ public class Facilitator {
     public boolean evaluateTurn() {
 
         boolean isGameOver = false;
+        if(isQuit){
+            return true;
+        }
         for(CardPlayer player : playerList) {
 
             if(player.getNumberOfCardsInHand() == 0)
@@ -97,28 +101,32 @@ public class Facilitator {
             List<Card> hand = currentPlayer.getHandCards();
             cardChosen = console.pickACardForPlayerMessage(hand);
         }
+        if(cardChosen != null) {
 
-        if(opponentPlayer.hasCard(cardChosen)) {
-            console.doesHaveCardMessage(cardChosen);
-            opponentPlayer.removeCardFromHand(cardChosen);
-            currentPlayer.removeCardFromHand(cardChosen);
-        }else {
-            console.doesNotHaveCardMessage(cardChosen);
-            Card newCard = deck.draw();
-            //Add a drawn message
+            if (opponentPlayer.hasCard(cardChosen)) {
+                console.doesHaveCardMessage(cardChosen);
+                opponentPlayer.removeCardFromHand(cardChosen);
+                currentPlayer.removeCardFromHand(cardChosen);
+            } else {
+                console.doesNotHaveCardMessage(cardChosen);
+                Card newCard = deck.draw();
+                console.cardDrawnMessage(cardChosen);
 
-            currentPlayer.addCardToHand(newCard);
-            if(currentPlayer.discardMatchedCards())
-                console.doesHaveCardMessage();
+                currentPlayer.addCardToHand(newCard);
+                if (currentPlayer.discardMatchedCards())
+                    console.doesHaveCardMessage();
+            }
+            List<Card> hand = playerList.get(playerIdx).getHandCards();
+            console.displayCurrentHand(hand);
+
+            if (isCurrentPlayerDealer()) {
+                currentPlayerIdx = playerIdx;
+            } else {
+                currentPlayerIdx = dealerIdx;
+            }
         }
-        List<Card> hand = playerList.get(playerIdx).getHandCards();
-        console.displayCurrentHand(hand);
-
-        if(isCurrentPlayerDealer()){
-            currentPlayerIdx = playerIdx;
-        }else{
-            currentPlayerIdx = dealerIdx;
-        }
+        else
+            isQuit = true;
 
     }
 

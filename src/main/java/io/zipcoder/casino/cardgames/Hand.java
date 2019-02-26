@@ -12,8 +12,8 @@ public class Hand {
 
 
     List<Card> cardsInHand;
-    List<Card> matchedCards = new ArrayList<Card>();
-    Card card;
+    //List<Card> matchedCards = new ArrayList<Card>();
+    //Card card;
 
     public Hand(List<Card> cards){
     this.cardsInHand = cards;
@@ -57,12 +57,14 @@ public class Hand {
 
         for (int i = 0; i < cardsInHand.size(); ) {
             foundMatch = false;
+            Card cardTobeMatched = cardsInHand.get(i);
             for (int j = i + 1; j < cardsInHand.size(); j++) {
-                if (cardsInHand.get(j).equals(cardsInHand.get(i))) {
-                    matchedCards.add(card);
+                Card thisCard = cardsInHand.get(j);
+                if (thisCard.equals(cardTobeMatched)) {
+                    //matchedCards.add(card);
 
-                    cardsInHand.remove(cardsInHand.get(j));
-                    cardsInHand.remove(cardsInHand.get(i));
+                    cardsInHand.remove(cardTobeMatched);
+                    cardsInHand.remove(thisCard);
                     foundMatch = true;
                     anyMatchFound = true;
                     break;
