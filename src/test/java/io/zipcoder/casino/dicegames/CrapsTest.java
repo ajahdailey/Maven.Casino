@@ -13,8 +13,8 @@ public class CrapsTest {
     @Test
     public void crapsConstructorTest() {
         //Given
-        IOConsole console = new IOConsole();
-        DicePlayer newPlayer = new DicePlayer();
+        IOConsole console = new IOCrapsConsole("Aswathy");
+        CrapsPlayer newPlayer = new CrapsPlayer(new Player(100, "Aswathy"));
         Craps newgame = new Craps(newPlayer, console);
 
         //Then

@@ -39,11 +39,11 @@ public class Facilitator {
         for(CardPlayer player : playerList) {
 
             if(player.getNumberOfCardsInHand() == 0)
-                {
+             {
                 winner = player;
                 isGameOver = true;
                 break;
-            }
+             }
         }
         if(deck.getNumberOfCards() == 0 && !anyCommonCardsAmongPlayers())
             isGameOver = true;
@@ -74,12 +74,13 @@ public class Facilitator {
         }
     }
 
-
     public void discardMatchedCards() {
-        for(CardPlayer player : playerList){
+        for (CardPlayer player : playerList) {
             player.discardMatchedCards();
+
         }
     }
+
 
     public void facilitateTurn(IOGoFishConsole console) {
 
