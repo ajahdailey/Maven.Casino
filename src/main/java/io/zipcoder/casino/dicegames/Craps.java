@@ -57,7 +57,11 @@ public class Craps extends DiceGame implements GamblingGame {
         passChoice = console.passOrNotPass();
 
         do{
-            console.promptRollDice();
+            try {
+                console.promptRollDice();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
             roll();
             int result = dice.getSum();
             console.printTossOutcome(result);
