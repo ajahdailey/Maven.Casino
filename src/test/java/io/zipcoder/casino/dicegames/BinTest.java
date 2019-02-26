@@ -16,6 +16,15 @@ public class BinTest {
     }
 
     @Test
+    public void binConstructorTest() {
+        //Given
+        Bin newBin = new Bin();
+
+        //Then
+        Assert.assertNotNull(newBin);
+    }
+
+    @Test
     public void addTest(){ // This Covers the test of getResult api as well
 
         bin.add(givenResults);

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CardPlayer {
     private Hand cardsInHand;
-    private Player player;
+    protected Player player;
 
     public  CardPlayer(Player player){
         this.player = player;

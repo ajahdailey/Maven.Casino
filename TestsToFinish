@@ -1,49 +1,49 @@
 Checking Tests
 -------------------------------
-Facilitator
+Facilitator- swapna
    - getWinner
    DONE evaluateTurn
    DONE distributeCards
    - discardMatchedCards
 
 Casino
-   - start
+   - start - not sure how to test this other than running the game -kb
 
 GameFactory
-   - CreateGameObject
+   DONE CreateGameObject
 
-GameType & SignType - do we need to do tests for enums??
+GameType & SignType - do we need to do tests for enums?? kb
 
 IOConsoleFactory
-    - CreateIOConsole
+    DONE CreateIOConsole
 
 BlackJackPlayer
-   - constructor
-   - betMoney
-   - winMoney
+   DONE constructor
+   DONE betMoney
+   DONE winMoney
 
-CardPlayer
+CardPlayer - Thao
    - constructor
    DONE addCardToHand
    DONE getNumberOfCardsInHand
    DONE discardMatchedCards
 
 CrapsPlayer
-   - constructor
-   - betMoney
-   - winMoney
-   - addMoney
+   DONE constructor
+   DONE betMoney
+   DONE winMoney
+   DONE addMoney
 
 Dealer
    - constructor
 
-DicePlayer
+DicePlayer ✔
    - constructor
 
 GoFishPlayer
-   - constructor
+   DONE constructor
 
-Player
+Player?
    - constructor
    - getMoney
    - reduceMoney
@@ -51,7 +51,7 @@ Player
    - getName
 
 IOBlackJackConsole
-   - constructor
+   DONE constructor
    - blackJackWelcomeMessage
    - betMessage
    - playerBetAmountMessage
@@ -62,14 +62,14 @@ IOBlackJackConsole
    - tryAgainMessage
 
 IOChuckALuckConsole
-   - constructor
+   DONE constructor
    DONE getGuesses
    DONE getGuess
    DONE printDiceResult
    DONE printResult
 
 IOConsole
-   - constructor
+   DONE constructor
    DONE startCasinoConsole
    DONE getPlayerName
    DONE getPlayer
@@ -81,17 +81,17 @@ IOConsole
    DONE invalidEntryMessage
 
 IOCrapsConsole
-   - constructor
+   DONE constructor
    DONE crapsWelcome
    DONE passOrNotPass
-   DONE-ISH promptRollDice (This worked before I added the press return to roll - not sure how to test that"
+   - promptRollDice
    DONE setPointMessage
    DONE printTossOutcome
    DONE printContinueMessage
    DONE printResult
 
 IOGoFishConsole
-   - constructor
+   DONE constructor
    DONE goFishWelcomeMessage
    DONE distributeCardMessage
    - displayCurrentHand
@@ -106,20 +106,20 @@ IOGoFishConsole
    DONE result
 
 Bin
-   - constructor
+   DONE constructor
    DONE add
    DONE getResult
    DONE getSum
 
 ChuckALuck
-   - constructor
+   DONE constructor
    DONE play
    DONE getMatches
    - exit
    DONE printResults
 
 Craps
-   - constructor
+   DONE constructor - but throws an exception kb
    - giveMoney
    - bet
    DONE play
@@ -136,14 +136,16 @@ Dice
    DONE getSum
    - randomDieToss
 
-DiceGame **why is this an abstract class? we have a constructor. who uses it.
+
+DiceGame? **why is this an abstract class? we have a constructor. who uses it.
+
    - constructor
    DONE roll
    DONE didWin
    - setWin
    - getResults
 
-BlackJack
+BlackJack- kate
    - constructor
    - play
    - mainLoop
@@ -160,20 +162,19 @@ BlackJack
    - printResults
    - takeTurn
 
-Card
-   - constructor
-   - getValue
-   - getSign
-   - toString
+Card?
+    - constructor
+    - getValue
+    - getSign
+    - toString
 
-CardGame
+
+CardGame ✔
    - constructor * why is this an abstract class? we have a constructor
+
    - didWin
 
-Deck
-   - constructor
-   DONE createCards
-   DONE draw
+
 
 GoFish
    - constructor
@@ -182,10 +183,3 @@ GoFish
    - exit
    - printResults
    - takeTurn
-Hand
-   - constructor
-   DONE discardCard
-   DONE clearAllCardsInHand
-   DONE addCardToHand
-   - getNumberOfCardsInHand
-   DONE manageDuplicateCards

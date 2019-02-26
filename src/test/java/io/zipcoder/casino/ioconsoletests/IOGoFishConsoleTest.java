@@ -41,6 +41,17 @@ public class IOGoFishConsoleTest {
 
 
     @Test
+    public void iOGoFishConsoleConstructorTest() {
+        //Given
+        String name = "Kate";
+        IOGoFishConsole newConsole = new IOGoFishConsole(name);
+
+        //Then
+        Assert.assertNotNull(newConsole);
+    }
+
+
+    @Test
     public void goFishWelcomeMessageTest() {
         //Given
         String name = "John";
@@ -118,7 +129,9 @@ public class IOGoFishConsoleTest {
 
         //When
         IOGoFishConsole goFishConsole = new IOGoFishConsole(name);
-        goFishConsole.doesHaveCardMessage();
+
+        goFishConsole.doesHaveCardMessage(card);
+        //goFishConsole.doesHaveCardMessage();
         String actual = testOutStream.toString();
 
         //Then
