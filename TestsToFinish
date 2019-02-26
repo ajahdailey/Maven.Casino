@@ -29,10 +29,10 @@ CardPlayer - Thao
    DONE discardMatchedCards
 
 CrapsPlayer
-   - constructor
-   - betMoney
-   - winMoney
-   - addMoney
+   DONE constructor
+   DONE betMoney
+   DONE winMoney
+   DONE addMoney
 
 Dealer
    - constructor
