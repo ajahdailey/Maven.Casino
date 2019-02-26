@@ -36,9 +36,26 @@ public class IOGoFishConsole extends IOConsole {
         if(hand == null) {
             goFishConsole.println("You don't have any cards in your hand.");
         } else {
+            for(int i = 0; i <hand.size(); i++) {goFishConsole.print("┌─────────┐ ");}
+            goFishConsole.print("\n");
             for(int i = 0; i <hand.size(); i++) {
-                goFishConsole.print("["+getDisplayString(hand.get(i),"")+"]");
+                if(hand.get(i).getValue() == 10) {goFishConsole.print("│"+getDisplayString(hand.get(i),"")+"       │ ");}
+                else{goFishConsole.print("│"+getDisplayString(hand.get(i),"")+"        │ ");}
             }
+            goFishConsole.print("\n");
+            for(int i = 0; i <hand.size(); i++) {goFishConsole.print("│         │ ");}
+            goFishConsole.print("\n");
+            for(int i = 0; i <hand.size(); i++) {goFishConsole.print("│    "+getDisplaySymbol(hand.get(i),"")+"    │ ");}
+            goFishConsole.print("\n");
+            for(int i = 0; i <hand.size(); i++) {goFishConsole.print("│         │ ");}
+            goFishConsole.print("\n");
+            for(int i = 0; i <hand.size(); i++){
+                if(hand.get(i).getValue() == 10){goFishConsole.print("│       "+getDisplayString(hand.get(i),"")+"│ ");}
+                else{goFishConsole.print("│       "+getDisplayString(hand.get(i),"")+" │ ");}
+            }
+            goFishConsole.print("\n");
+            for(int i = 0; i <hand.size(); i++) {goFishConsole.print("└─────────┘ ");}
+
             goFishConsole.print("\n");
 
         }
@@ -51,6 +68,7 @@ public class IOGoFishConsole extends IOConsole {
 
 
     public Card pickACardForPlayerMessage(List<Card> hand) {
+
         int idx = 1;
         goFishConsole.println(name + " Your hand cards !!");
 
@@ -74,10 +92,11 @@ public class IOGoFishConsole extends IOConsole {
     }
 
     public void doesHaveCardMessage() {
-        goFishConsole.println("You have one or more matches in your hand.");
+        goFishConsole.println("You have a match in your hand.");
     }
 
     public void cardToAskForMessage( Card card) {
+
 
         String value = getDisplayString(card, card.getSign().toString() + " ");
         goFishConsole.println(name + " has chosen a ["+ value + "].");
@@ -103,10 +122,12 @@ public class IOGoFishConsole extends IOConsole {
         String value = getDisplayString(card, "");
 
         goFishConsole.println(name + " - Your opponent does not have a [" +value+"]. Go Fish!");
+
     }
 
 
     public void doesHaveCardMessage(Card card) {
+
         String value = getDisplayString(card, "");
 
         goFishConsole.println(name + " have taken the [" + value + "] from his opponent. "+
@@ -115,14 +136,14 @@ public class IOGoFishConsole extends IOConsole {
 
 
     public void winningMessage() {
-        goFishConsole.println("You have won! Would you like to play again?");
+        goFishConsole.println(name +" have won! Would you like to play again?");
     }
 
     public void losingMessage() {
         goFishConsole.println("You Lose. Would you like to try again?");
     }
 
-    public void result(boolean gameReuslt) {
+    public void printResult(boolean gameReuslt) {
         if(gameReuslt = true) {
             winningMessage();
         } else if (gameReuslt = false) {
@@ -136,8 +157,20 @@ public class IOGoFishConsole extends IOConsole {
 
     }
 
-    public void exitMessage() {
-        goFishConsole.println("Comeback!! bye bye");
+    private String getDisplaySymbol(Card card, String initalString){
+        String value = initalString;
+        if(card.getSign() == SignType.Spade) {value += "♠";}
+        else if(card.getSign() == SignType.Clover) {value += "♣";}
+        else if(card.getSign() == SignType.Diamond) {value += "♦";}
+        else if(card.getSign() == SignType.Heart) {value += "♥";}
+
+        return value;
     }
+
+    public void exitMessage() {
+        goFishConsole.println("Thank you for playing. Have a good day! ♠♦♥♣");
+    }
+
+
 }
 

@@ -63,4 +63,16 @@ public class BlackJackPlayerTests {
         //Then
         Assert.assertEquals(expectedOutput,actualOutput);
     }
+    @Test
+    public void getMoneyTest(){
+        //Given
+        Integer blackJackBet = 15;
+        Player newPlayer = new Player(100, "Kate");
+        BlackJackPlayer testPlayer = new BlackJackPlayer(newPlayer);
+
+        int retrievedMoney = testPlayer.getMoney();
+
+        //Then
+        Assert.assertEquals(retrievedMoney,100);
+    }
 }
