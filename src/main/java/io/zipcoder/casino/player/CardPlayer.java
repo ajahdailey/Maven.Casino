@@ -5,9 +5,9 @@ import io.zipcoder.casino.cardgames.Hand;
 
 import java.util.List;
 
-public class CardPlayer {
-    private Hand cardsInHand;
-    private Player player;
+public class   CardPlayer {
+    protected Hand cardsInHand;
+    protected Player player;
 
     public  CardPlayer(Player player){
         this.player = player;
