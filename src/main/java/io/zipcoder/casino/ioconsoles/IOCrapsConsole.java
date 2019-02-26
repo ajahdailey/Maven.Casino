@@ -44,7 +44,7 @@ public class IOCrapsConsole extends IOConsole{
 
     public void promptRollDice() throws Exception {
 //        crapsConsole.println("Time to roll the dice!");
-        TimeUnit.SECONDS.sleep(1);
+//        TimeUnit.SECONDS.sleep(1);
 
         crapsConsole.println("" +
                 "               (( _______\n" +
@@ -70,7 +70,7 @@ public class IOCrapsConsole extends IOConsole{
 
 
     public void printContinueMessage() {
-        crapsConsole.println("The set point wasn't rolled, so the game continues!");
+        crapsConsole.println("The set point wasn't rolled, so the game continues!\n");
     }
 
     public void printResult(boolean gameResult) {
@@ -81,5 +81,8 @@ public class IOCrapsConsole extends IOConsole{
         }
     }
 
+    public void tooLittleMoney() {
+        crapsConsole.println("You have too little money to bet. Please choose Go Fish or Chuck-A-Luck");
+    }
 
 }
