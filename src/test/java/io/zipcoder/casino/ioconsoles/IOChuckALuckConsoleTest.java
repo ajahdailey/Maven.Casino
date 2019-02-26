@@ -14,6 +14,17 @@ public class IOChuckALuckConsoleTest {
     ByteArrayOutputStream outputStream;
 
     @Test
+    public void ioChuckALuckConsoleConstructorTest() {
+        //Given
+        Console console = new Console(System.in, System.out);
+        IOChuckALuckConsole newConsole = new IOChuckALuckConsole(console);
+
+        //Then
+        Assert.assertNotNull(newConsole);
+    }
+
+
+    @Test
     public void getGuesses() {
         //Testing to see if a list was created using the inputs from the user
         //simulating the user input as 4,2,5

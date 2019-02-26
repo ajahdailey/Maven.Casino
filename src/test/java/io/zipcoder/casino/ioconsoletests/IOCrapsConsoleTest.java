@@ -31,6 +31,16 @@ public class IOCrapsConsoleTest {
         System.setOut(oldPrintStream);
     }
 
+
+    @Test
+    public void iOCrapsConsoleConstructorTest() {
+        //Given
+        IOCrapsConsole newConsole = new IOCrapsConsole(playerName);
+
+        //Then
+        Assert.assertNotNull(newConsole);
+    }
+
     @Test
     public void crapsWelcomeTest() {
         //Given

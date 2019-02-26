@@ -5,8 +5,10 @@ import io.zipcoder.casino.cardgames.Hand;
 
 import java.util.List;
 
+
 public class   CardPlayer {
     protected Hand cardsInHand;
+
     protected Player player;
 
     public  CardPlayer(Player player){

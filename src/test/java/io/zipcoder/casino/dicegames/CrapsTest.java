@@ -1,12 +1,26 @@
 package io.zipcoder.casino.dicegames;
 
+import io.zipcoder.casino.ioconsoles.IOConsole;
 import io.zipcoder.casino.ioconsoles.IOCrapsConsole;
 import io.zipcoder.casino.player.CrapsPlayer;
+import io.zipcoder.casino.player.DicePlayer;
 import io.zipcoder.casino.player.Player;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class CrapsTest {
+
+    @Test
+    public void crapsConstructorTest() {
+        //Given
+        IOConsole console = new IOCrapsConsole("Aswathy");
+        CrapsPlayer newPlayer = new CrapsPlayer(new Player(100, "Aswathy"));
+        Craps newgame = new Craps(newPlayer, console);
+
+        //Then
+        Assert.assertNotNull(newgame);
+    }
+
 
     //Pass - First Round Win 7
     @Test
