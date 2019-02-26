@@ -14,7 +14,6 @@ import java.util.List;
 
 public class GoFish extends CardGame {
     private final int noOfCardsToBeDistributed = 5;
-    //Todo : add the new to constructor
     private CardPlayer player;
 
     private IOGoFishConsole console;
@@ -56,8 +55,6 @@ public class GoFish extends CardGame {
 
 
     public void play() {
-          //List<CardPlayer> players;
-
         console.goFishWelcomeMessage();
         facilitator.distributeCards();
         console.distributeCardMessage();

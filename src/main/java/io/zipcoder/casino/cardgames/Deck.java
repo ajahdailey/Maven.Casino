@@ -16,8 +16,8 @@ public class Deck {
         this.signArray = new SignType[]{SignType.Heart, SignType.Diamond, SignType.Clover, SignType.Heart};
         createCards();
         Collections.shuffle(deckOfcards);
-
     }
+
     //Provided for testing
     protected Deck() {
         numberOfCards = 5;
@@ -34,11 +34,12 @@ public class Deck {
                 this.deckOfcards.push(card);
             }
         }
-        System.out.println(deckOfcards);
+        //System.out.println(deckOfcards);
     }
 
 
     public Card draw(){
+
         return deckOfcards.size() > 0 ? deckOfcards.pop() : null;
     }
 
