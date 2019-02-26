@@ -14,7 +14,6 @@ import java.util.List;
 
 public class GoFish extends CardGame {
     private final int noOfCardsToBeDistributed = 5;
-    //Todo : add the new to constructor
     private CardPlayer player;
 
     private IOGoFishConsole console;
@@ -39,10 +38,23 @@ public class GoFish extends CardGame {
 
     }
 
+    public GoFish(CardPlayer player, IOGoFishConsole console, Deck deck) {
+
+        this.player = player;
+
+        List<CardPlayer> playerList = new ArrayList<CardPlayer>();
+        //Adding the Dealer /House Player
+        playerList.add(new CardPlayer(new Player(0, "House")));
+        //Add the player
+        playerList.add(player);
+
+        this.console = console;
+        this.deck = deck;
+        facilitator = new Facilitator(playerList, deck, noOfCardsToBeDistributed);
+    }
+
 
     public void play() {
-          //List<CardPlayer> players;
-
         console.goFishWelcomeMessage();
         facilitator.distributeCards();
         console.distributeCardMessage();
@@ -78,6 +90,7 @@ public class GoFish extends CardGame {
 
     @Override
     public void printResults() {
+
 
     }
     public void takeTurn() {
