@@ -130,8 +130,26 @@ public class IOGoFishConsoleTest {
         //When
         IOGoFishConsole goFishConsole = new IOGoFishConsole(name);
 
+
+
+
+        goFishConsole.doesHaveCardMessage(new Card(4, SignType.Clover));
+
+
+        goFishConsole.doesHaveCardMessage();
+
+
+
+        goFishConsole.doesHaveCardMessage(card);
+
+
+
+        goFishConsole.doesHaveCardMessage();
+
+
         goFishConsole.doesHaveCardMessage(card);
         //goFishConsole.doesHaveCardMessage();
+
         String actual = testOutStream.toString();
 
         //Then
