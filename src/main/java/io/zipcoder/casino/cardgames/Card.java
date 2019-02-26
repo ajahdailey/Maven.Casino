@@ -29,7 +29,12 @@ public class Card {
 
     @Override
     public String toString() {
-        return  value + sign.toString() ;
+
+        String cardsStr = String.valueOf(value);
+        if(sign != null ){
+            cardsStr += sign.toString();
+        }
+        return cardsStr;
     }
 
     @Override
