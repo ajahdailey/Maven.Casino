@@ -39,6 +39,16 @@ public class IOConsoleTest {
     }
 
     @Test
+    public void iOConsoleConstructorTest() {
+        //Given
+        IOConsole newConsole = new IOConsole();
+
+        //Then
+        Assert.assertNotNull(newConsole);
+    }
+
+
+    @Test
     public void startCasinoConsoleTest() {
         //Given
         String casinoStart = "777777777777777777777777\n" +
