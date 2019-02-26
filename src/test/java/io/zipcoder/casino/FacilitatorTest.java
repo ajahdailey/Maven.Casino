@@ -3,6 +3,7 @@ package io.zipcoder.casino;
 import io.zipcoder.casino.cardgames.Card;
 import io.zipcoder.casino.cardgames.Deck;
 import io.zipcoder.casino.cardgames.Hand;
+import io.zipcoder.casino.cardgames.SignType;
 import io.zipcoder.casino.player.CardPlayer;
 import io.zipcoder.casino.player.Player;
 import org.junit.Assert;
@@ -25,11 +26,11 @@ public class FacilitatorTest {
         //When
         Deck deck = new Deck(52);
         List<CardPlayer> playerList = new ArrayList<CardPlayer>();
-        CardPlayer cardPlayer=new CardPlayer(new Player(200, "Swapna"));
+        CardPlayer cardPlayer = new CardPlayer(new Player(200, "Swapna"));
         playerList.add(cardPlayer);
-        Card card1=new Card(2);
-        Card card2=new Card(5);
-        Hand hand=new Hand();
+        Card card1 = new Card(2);
+        Card card2 = new Card(5);
+        Hand hand = new Hand();
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
 
@@ -47,32 +48,81 @@ public class FacilitatorTest {
     @Test
     public void distributeCardsTest() {
         //Given
-
-
-        Integer expectedNumOfCards = 2;
-
-        //When
+        Integer expectedNumOfCards = 5;
         Deck deck = new Deck(52);
         List<CardPlayer> playerList = new ArrayList<CardPlayer>();
-        CardPlayer cardPlayer=new CardPlayer(new Player(0, "Swapna"));
+        CardPlayer cardPlayer = new CardPlayer(new Player(0, "Swapna"));
         playerList.add(cardPlayer);
-        Card card1=new Card(2);
-        Card card2=new Card(5);
-        Hand hand=new Hand();
-        hand.addCardToHand(card1);
-        hand.addCardToHand(card2);
 
+        //When
         Facilitator facilitator = new Facilitator(playerList, deck, 5);
-
         facilitator.distributeCards();
 
-        Integer actualCardsInHand = hand.getNumberOfCardsInHand();
-
+        Integer actualCardsInHand = cardPlayer.getNumberOfCardsInHand();
 
         //Then
+        System.out.println(cardPlayer.getNumberOfCardsInHand());
         Assert.assertEquals(expectedNumOfCards, actualCardsInHand);
 
     }
 
-}
+    @Test
+    public void getWinner() {
+        //Given
+        Deck deck = new Deck(52);
+        List<CardPlayer> playerList = new ArrayList<CardPlayer>();
+        CardPlayer cardPlayer = new CardPlayer(new Player(0, "Swapna"));
+        playerList.add(cardPlayer);
+        Facilitator facilitator = new Facilitator(playerList, deck, 5);
+       // facilitator.distributeCards();
+        Card card1 = new Card(2, SignType.Clover);
+        Card card2 = new Card(5, SignType.Clover);
+        Card card3 = new Card(2, SignType.Clover);
+        Card card4 = new Card(5, SignType.Clover);
 
+        cardPlayer.addCardToHand(card1);
+        cardPlayer.addCardToHand(card2);
+        cardPlayer.addCardToHand(card3);
+        cardPlayer.addCardToHand(card4);
+        //When
+        facilitator.discardMatchedCards();
+        facilitator.evaluateTurn();
+
+        System.out.println(facilitator.getWinner());
+
+        //Then
+
+    }
+
+
+    @Test
+    public void facilitateTurnTest() {
+
+
+    }
+
+    @Test
+    public void discardMatchedCards() {
+        Deck deck = new Deck(52);
+        List<CardPlayer> playerList = new ArrayList<CardPlayer>();
+        CardPlayer cardPlayer = new CardPlayer(new Player(0, "Swapna"));
+        playerList.add(cardPlayer);
+        Facilitator facilitator = new Facilitator(playerList, deck, 5);
+       // facilitator.distributeCards();
+        Card card1 = new Card(2, SignType.Clover);
+        Card card2 = new Card(5, SignType.Clover);
+        Card card3 = new Card(2, SignType.Clover);
+        Card card4 = new Card(5, SignType.Clover);
+
+
+        cardPlayer.addCardToHand(card1);
+        cardPlayer.addCardToHand(card2);
+        cardPlayer.addCardToHand(card3);
+        cardPlayer.addCardToHand(card4);
+        facilitator.discardMatchedCards();
+        int actual = playerList.get(0).getNumberOfCardsInHand();
+
+        //When
+        Assert.assertEquals(0, actual);
+    }
+}

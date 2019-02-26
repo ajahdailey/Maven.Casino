@@ -28,7 +28,7 @@ public class GameFactory {
                 break;
             case BlackJack:
                 BlackJackPlayer bjPlayer = new BlackJackPlayer(player);
-                gameObject = new BlackJack(bjPlayer, console);
+                gameObject = new BlackJack(bjPlayer, (IOBlackJackConsole) console);
                 break;
             case GoFish:
                 CardPlayer goFishPlayer = new CardPlayer(player);

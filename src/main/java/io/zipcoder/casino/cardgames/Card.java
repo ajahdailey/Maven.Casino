@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Card {
 
-    private int value;
+    protected int value;
     private SignType sign ;
 
     public Card(){
@@ -29,7 +29,12 @@ public class Card {
 
     @Override
     public String toString() {
-        return  value + sign.toString() ;
+
+        String cardsStr = String.valueOf(value);
+        if(sign != null ){
+            cardsStr += sign.toString();
+        }
+        return cardsStr;
     }
 
     @Override
@@ -40,3 +45,4 @@ public class Card {
 
     }
 }
+
