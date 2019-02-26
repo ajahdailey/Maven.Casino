@@ -174,12 +174,9 @@ CardGame ✔
 
    - didWin
 
-
-
 GoFish
-   - constructor
+   DONE constructor
    DONE play
-   - evaluateGame
-   - exit
-   - printResults
-   - takeTurn
+   - exit - not being used right now
+   - printResults - not being used right now
+   - takeTurn - per Swapna's convo w Leon we can't test facilitateTurn so don't think we can test this.
