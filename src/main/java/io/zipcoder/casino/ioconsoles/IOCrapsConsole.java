@@ -3,6 +3,7 @@ package io.zipcoder.casino.ioconsoles;
 import io.zipcoder.casino.utilities.Console;
 
 import java.io.InputStream;
+import java.util.concurrent.TimeUnit;
 
 public class IOCrapsConsole extends IOConsole{
     private String name;
@@ -40,9 +41,23 @@ public class IOCrapsConsole extends IOConsole{
         return (typeOfBet.compareToIgnoreCase("P") == 0);
     }
 
-    public void promptRollDice() {
-        crapsConsole.println("Time to roll the dice!");
-        crapsConsole.getStringInput("Press enter to continue.");
+
+    public void promptRollDice() throws Exception {
+//        crapsConsole.println("Time to roll the dice!");
+        TimeUnit.SECONDS.sleep(1);
+
+        crapsConsole.println("" +
+                "               (( _______\n" +
+                "     _______     /\\O    O\\\n" +
+                "    /O     /\\   /  \\      \\\n" +
+                "   /   O  /O \\ / O  \\O____O\\ ))\n" +
+                "((/_____O/    \\\\    /O     /\n" +
+                "  \\O    O\\    / \\  /   O  /\n" +
+                "   \\O    O\\ O/   \\/_____O/\n" +
+                "    \\O____O\\/ ))          ))\n" +
+                "  ((\n");
+        TimeUnit.SECONDS.sleep(2);
+
     }
 
     public void setPointMessage(Integer setPoint) {

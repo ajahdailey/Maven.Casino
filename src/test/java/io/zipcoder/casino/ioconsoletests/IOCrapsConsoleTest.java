@@ -129,21 +129,23 @@ public class IOCrapsConsoleTest {
         Assert.assertFalse(actualOutput);
     }
 
-//    TODO This test passed until I added the getStringInput to the method to slow down the gameplay -kb
-//    @Test
-//    public void promptRollDice() {
-//        //Given
-//        String rollDiceMessage = "Time to roll the dice!";
-//        String expectedOutput = String.format(rollDiceMessage) +"\n";
-//
-//        //When
-//        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
-//        crapsIO.promptRollDice();
-//        String actual = testOutStream.toString();
-//
-//        //Then
-//        Assert.assertEquals(expectedOutput, actual);
-//    }
+    public void promptRollDice() {
+        //Given
+        String rollDiceMessage = "Time to roll the dice!";
+        String expectedOutput = String.format(rollDiceMessage) +"\n";
+
+        //When
+        IOCrapsConsole crapsIO = new IOCrapsConsole(playerName);
+        try {
+            crapsIO.promptRollDice();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        String actual = testOutStream.toString();
+
+        //Then
+        Assert.assertEquals(expectedOutput, actual);
+    }
 
     @Test
     public void printTossOutcomeTest() {
