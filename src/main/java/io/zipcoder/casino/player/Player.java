@@ -11,6 +11,9 @@ public class Player {
         this.name = name;
     }
 
+    public Player(Player house) {
+    }
+
     public int getMoney() {
         return money;
     }
@@ -26,4 +29,5 @@ public class Player {
     public String getName() {
         return name;
     }
+
 }

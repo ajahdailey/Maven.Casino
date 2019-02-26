@@ -99,6 +99,4 @@ public class CardTest {
     }
 
 
-
-    //write test for when signs are different but numbers are same.
 }

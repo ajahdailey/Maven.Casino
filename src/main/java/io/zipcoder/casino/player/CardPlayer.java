@@ -5,8 +5,10 @@ import io.zipcoder.casino.cardgames.Hand;
 
 import java.util.List;
 
-public class CardPlayer {
-    private Hand cardsInHand;
+
+public class   CardPlayer {
+    protected Hand cardsInHand;
+
     protected Player player;
 
     public  CardPlayer(Player player){
@@ -48,5 +50,12 @@ public class CardPlayer {
     public List<Card> getHandCards() {
         return cardsInHand.getHandCards();
 
+    }
+
+    public void clearCardsInHand() {
+        cardsInHand.clearAllCardsInHand();
+    }
+    public boolean hasAce(){
+        return cardsInHand.hasCard(new Card(1));
     }
 }
