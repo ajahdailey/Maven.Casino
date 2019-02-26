@@ -51,7 +51,7 @@ Player
    - getName
 
 IOBlackJackConsole
-   - constructor
+   DONE constructor
    - blackJackWelcomeMessage
    - betMessage
    - playerBetAmountMessage
@@ -62,14 +62,14 @@ IOBlackJackConsole
    - tryAgainMessage
 
 IOChuckALuckConsole
-   - constructor
+   DONE constructor
    DONE getGuesses
    DONE getGuess
    DONE printDiceResult
    DONE printResult
 
 IOConsole
-   - constructor
+   DONE constructor
    DONE startCasinoConsole
    DONE getPlayerName
    DONE getPlayer
@@ -81,7 +81,7 @@ IOConsole
    DONE invalidEntryMessage
 
 IOCrapsConsole
-   - constructor
+   DONE constructor
    DONE crapsWelcome
    DONE passOrNotPass
    - promptRollDice
@@ -91,7 +91,7 @@ IOCrapsConsole
    DONE printResult
 
 IOGoFishConsole
-   - constructor
+   DONE constructor
    DONE goFishWelcomeMessage
    DONE distributeCardMessage
    - displayCurrentHand
@@ -106,20 +106,20 @@ IOGoFishConsole
    DONE result
 
 Bin
-   - constructor
+   DONE constructor
    DONE add
    DONE getResult
    DONE getSum
 
 ChuckALuck
-   - constructor
+   DONE constructor
    DONE play
    DONE getMatches
    - exit
    DONE printResults
 
 Craps
-   - constructor
+   DONE constructor - but throws an exception kb
    - giveMoney
    - bet
    DONE play

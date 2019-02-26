@@ -25,6 +25,15 @@ public class ChuckALuckTest { ChuckALuck game;
        game = new ChuckALuck(dicePlayer);
     }
 
+    @Test
+    public void chuckALuckConstructorTest() {
+        //Given
+        DicePlayer newPlayer = new DicePlayer();
+        ChuckALuck newgame = new ChuckALuck(newPlayer);
+
+        //Then
+        Assert.assertNotNull(newgame);
+    }
 
     @Test
     public void getResult_whenThereIsNoMatch() {
