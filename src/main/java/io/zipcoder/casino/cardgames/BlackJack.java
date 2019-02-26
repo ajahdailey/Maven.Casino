@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class BlackJack extends CardGame implements GamblingGame {
     private BlackJackPlayer player;
     private IOBlackJackConsole console;
-    private Deck deck;
+    private BlackJackDeck deck;
     private Dealer dealer;
     private Facilitator facilitator;
     private boolean continueFlagMain;
@@ -23,6 +23,8 @@ public class BlackJack extends CardGame implements GamblingGame {
     private boolean dealerBust;
     private boolean playerWin;
     private boolean dealerWin;
+    private int dealerPoints;
+    private int playerPoints;
 
 
     /*
@@ -39,7 +41,7 @@ public class BlackJack extends CardGame implements GamblingGame {
         dealer = new Dealer(new Player(0, "Dealer"));
 
         this.console = console;
-        deck = new Deck(52);
+        deck = new BlackJackDeck(52);
 
 
     }
@@ -66,10 +68,11 @@ public class BlackJack extends CardGame implements GamblingGame {
                 this.distributeCards();
                 TimeUnit.SECONDS.sleep(5);
                 this.initBooleans();
+                this.showHands();
                 this.bustOr21();
 
                 while (!this.gameOver) {
-                    this.showHands();
+
                     String hitOrStandResponse = console.printHitOrStand().toLowerCase();
                     if (hitOrStandResponse.equals("hit")) {
                         this.hitUser();
@@ -78,8 +81,18 @@ public class BlackJack extends CardGame implements GamblingGame {
                     } else {
                         this.gameOver = true;
                     }
+                    this.showHands();
                 }
+                if(dealerPoints > playerPoints){
+                    this.playerBust = true;
+                    this.dealerWin = true;
 
+                }
+                else{
+                    this.dealerBust = false;
+                    this.playerWin = true;
+
+                }
                 this.whoWon();
                 this.printResults();
 
@@ -91,6 +104,21 @@ public class BlackJack extends CardGame implements GamblingGame {
     }
 
     private void whoWon() {
+    if(playerWin == true && dealerWin == false){
+       console.setResults("Congrats, you won!");
+
+
+    }else if(playerWin == true && dealerWin == true ){
+        console.setResults("Its a tie!");
+
+
+    }else if(playerWin == false && dealerWin == true){
+        console.setResults("Game Over, you lost");}
+
+
+
+
+
 
     }
 
@@ -103,20 +131,22 @@ public class BlackJack extends CardGame implements GamblingGame {
     }
 
     private void bustOr21() {
-        if(this.valueOfAllCardsInHand(player) == 21){
+        playerPoints = this.valueOfAllCardsInHand(player);
+        dealerPoints = this.valueOfAllCardsInHand(dealer);
+        if( playerPoints== 21){
             this.playerWin = true;
             this.gameOver = true;
         }
-        if(this.valueOfAllCardsInHand(dealer) == 21){
+        else if(dealerPoints == 21){
             this.dealerWin = true;
             this.gameOver = true;
         }
-        if(this.valueOfAllCardsInHand(player) > 21 ){
+        else if(playerPoints > 21 ){
             this.playerBust = true;
             this.playerWin = false;
             this.gameOver = true;
         }
-        if(this.valueOfAllCardsInHand(dealer) > 21){
+        else if(dealerPoints > 21){
             this.dealerBust = true;
             this.dealerWin = false;
             this.gameOver = true;
@@ -146,6 +176,7 @@ public class BlackJack extends CardGame implements GamblingGame {
         List<Card> hand = player.getHandCards();
         int sumOfValue = 0;
         for(Card card : hand){
+
             sumOfValue += card.getValue();
         }
         return sumOfValue;
