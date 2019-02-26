@@ -10,12 +10,12 @@ Casino
    - start
 
 GameFactory
-   - CreateGameObject
+   DONE CreateGameObject
 
 GameType & SignType - do we need to do tests for enums??
 
 IOConsoleFactory
-    - CreateIOConsole
+    DONE CreateIOConsole
 
 BlackJackPlayer
    - constructor
