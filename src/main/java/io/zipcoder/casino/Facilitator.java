@@ -13,6 +13,11 @@ public class Facilitator {
     private List<CardPlayer > playerList;
     private final int playerIdx = 1;
     private final int dealerIdx = 0;
+
+    public boolean isQuit() {
+        return isQuit;
+    }
+
     private boolean isQuit = false;
 
     public CardPlayer getWinner() {
@@ -63,7 +68,6 @@ public class Facilitator {
     }
 
     public void distributeCards() {
-
         for (int cardNo = 0; cardNo < numberOfCardsToBeDistributed; cardNo++) {
             for (CardPlayer player : playerList) {
                 Card card = deck.draw();
@@ -110,7 +114,7 @@ public class Facilitator {
             } else {
                 console.doesNotHaveCardMessage(cardChosen);
                 Card newCard = deck.draw();
-                console.cardDrawnMessage(cardChosen);
+                console.cardDrawnMessage(newCard);
 
                 currentPlayer.addCardToHand(newCard);
                 if (currentPlayer.discardMatchedCards())

@@ -136,5 +136,8 @@ public class IOGoFishConsole extends IOConsole {
 
     }
 
+    public void exitMessage() {
+        goFishConsole.println("Comeback!! bye bye");
+    }
 }
 
