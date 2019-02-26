@@ -104,7 +104,7 @@ public class IOBlackJackConsole extends IOConsole {
         blackJackConsole.println(hand.get(0).getValue() + " of " + hand.get(0).getSign() + "s");
         hand.remove(0);
         for(Card card : hand){
-            blackJackConsole.println("Hidden Card");
+            blackJackConsole.println("Hidden Card" + card.getValue());
         }
     }
 

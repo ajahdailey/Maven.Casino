@@ -7,9 +7,13 @@ public class BlackJackCard extends Card {
     }
 
     public int getBlackJackValue(){
-        if(this.value >= 10 )
-        return 10;
-        else
-            return value;
+        int cardValue = value;
+        if(this.value >= 10 ) {
+            cardValue = 10;
+        }
+        else if(value == 1){
+            cardValue = 11;
+        }
+        return cardValue;
     }
 }
