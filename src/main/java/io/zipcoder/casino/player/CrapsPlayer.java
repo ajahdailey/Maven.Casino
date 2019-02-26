@@ -27,5 +27,12 @@ public class CrapsPlayer extends DicePlayer implements GamblingPlayer {
             player.addMoney(CrapsBetMoney * 2);
     }
 
+    public static Integer getCrapsBetAmount() {
+        return CrapsBetMoney;}
+
+    public boolean enoughMoneyToBet() {
+        return player.getMoney() >= CrapsBetMoney;
+        }
+
 
 }

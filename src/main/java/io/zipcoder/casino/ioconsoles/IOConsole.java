@@ -1,6 +1,8 @@
 package io.zipcoder.casino.ioconsoles;
 
 import io.zipcoder.casino.GameType;
+import io.zipcoder.casino.player.BlackJackPlayer;
+import io.zipcoder.casino.player.CrapsPlayer;
 import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.utilities.Console;
 
@@ -12,7 +14,8 @@ public class IOConsole {
 
     protected GameType gameType;
     private String playerName;
-    Console casinoConsole;
+    private Console casinoConsole;
+    private Integer startingMoney;
 
     public IOConsole() {
         this.casinoConsole = new Console(System.in, System.out);
@@ -39,49 +42,71 @@ public class IOConsole {
     }
 
     public String getPlayerName() {
-        playerName = casinoConsole.getStringInput("What is your name?");
+        playerName = casinoConsole.getStringInput("Welcome to our casino.\nWhat is your name?");
         return playerName;
     }
 
-    public Player getPlayer(){
-        String name = getPlayerName();
-        return new Player(100, name);
+    public Integer getStartingMoney() {
+        startingMoney = casinoConsole.getIntegerInput("How much money would you like to start with, %s?", playerName);
+        return startingMoney;
     }
+//
+//    public Player getPlayer(){
+//        String name = getPlayerName();
+//        return new Player(100, name);
+//    }
 
     public void printGameIntro(String playerName) {
-        casinoConsole.println("\nWelcome, %s. We have four games you can play.\n\n" +
+        casinoConsole.println("\nWe have four games you can play, %s.\n\n" +
                 "Black Jack and Craps require bets.\n" +
-                "We've given you $100 to play in the betting games.\n\n" +
                 "Chuck-A-Luck and Go Fish do not require bets.\n", playerName);
     }
 
-    public GameType getGameSelection(){
-        String gameSelection = casinoConsole.getStringInput("Which game do you want to play?\n" +
+    public GameType getGameSelection(Player player) {
+        Integer gameSelection = casinoConsole.getIntegerInput("Which game do you want to play?\n" +
                 "-------------------------------\n" +
                 "Press 1 for BlackJack\n" +
                 "Press 2 for Chuck-A-Luck\n" +
                 "Press 3 for Craps\n" +
-                "Press 4 for Go Fish");
+                "Press 4 for Go Fish"
+        );
 
-        GameType selection = null;
+        GameType finalSelection;
 
-        switch(gameSelection) {
-            case "1":
-                selection = GameType.BlackJack;
-            break;
-            case "2":
-                selection = GameType.ChuckALuck;
-            break;
-            case "3":
-                selection = GameType.Crapes;
-            break;
-            case "4":
-                selection = GameType.GoFish;
-            break;
+        switch (gameSelection) {
+            case 1:
+                finalSelection = GameType.BlackJack;
+                break;
+            case 2:
+                finalSelection = GameType.ChuckALuck;
+                break;
+            case 3:
+                finalSelection = GameType.Crapes;
+                break;
+            case 5:
+                finalSelection = GameType.GoFish;
+                break;
+            default: finalSelection = null;
         }
-        return selection;
-        }
 
+        if (finalSelection == null) {
+            invalidEntryMessage();
+            finalSelection = getGameSelection(player);
+        }
+        if (finalSelection == GameType.BlackJack) {
+            if (player.getMoney() < BlackJackPlayer.getBlackJackBetAmount()) {
+                notEnoughMoneyMessage(player);
+                finalSelection = getGameSelection(player);
+            }
+        }
+        if (finalSelection == GameType.Crapes) {
+            if (player.getMoney() < CrapsPlayer.getCrapsBetAmount()) {
+                notEnoughMoneyMessage(player);
+                finalSelection = getGameSelection(player);
+            }
+        }
+            return finalSelection;
+        }
 
     public void printPlayerAccount(Integer balance) {
         casinoConsole.println("\n" +
@@ -111,7 +136,24 @@ public class IOConsole {
                 "Goodbye, %s!\n", name);
     }
 
-    public void invalidEntryMessage() {
+    public void invalidEntryMessage( ) {
         casinoConsole.println("I'm sorry I didn't understand your selection. Please try again.");
     }
+
+    public void notEnoughMoneyMessage(Player player) {
+        String addMoney = casinoConsole.getStringInput("You don't have enough money to bet in this game.\n" +
+                "Enter Y to add more money.\n" +
+                "Enter N to play a different game.");
+        if(addMoney.compareToIgnoreCase("Y") == 0) {
+            addMoneyMessage(player);
+        }
+    }
+
+    public void addMoneyMessage(Player player) {
+        Integer money = casinoConsole.getIntegerInput("How much would you like to add?");
+        player.addMoney(money);
+        casinoConsole.println("Your new balance is $%d\n", player.getMoney());
+    }
+
 }
+

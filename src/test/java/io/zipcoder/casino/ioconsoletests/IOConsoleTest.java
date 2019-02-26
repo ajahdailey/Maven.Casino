@@ -23,10 +23,12 @@ public class IOConsoleTest {
     private PrintStream oldPrintStream;
     ByteArrayOutputStream testOutStream;
     String playerName;
+    Integer startingMoney;
 
     @Before
     public void setup() {
         playerName = "Kate";
+        startingMoney = 100;
         testOutStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(testOutStream);
         oldPrintStream = System.out;
@@ -88,22 +90,37 @@ public class IOConsoleTest {
     }
 
     @Test
-    public void getPlayer() {
+    public void getStartingBetMoneyTest() {
         //Given
-        byte[] inputBytes = playerName.getBytes();
+        String convertedExpected = startingMoney.toString();
+        byte[] inputBytes = convertedExpected.getBytes();
         ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
 
         //When
         IOConsole casinoIO = new IOConsole(inputByteArray);
-        Player testPlayer = casinoIO.getPlayer();
-        String actualName = testPlayer.getName();
-        Integer expectedMoney = 100;
-        Integer actualMoney = testPlayer.getMoney();
+        Integer actualOutput = casinoIO.getStartingMoney();
 
         //Then
-        Assert.assertEquals(playerName, actualName);
-        Assert.assertEquals(expectedMoney, actualMoney);
+        Assert.assertEquals(startingMoney, actualOutput);
     }
+
+//    @Test
+//    public void getPlayer() {
+//        //Given
+//        byte[] inputBytes = playerName.getBytes();
+//        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
+//
+//        //When
+//        IOConsole casinoIO = new IOConsole(inputByteArray);
+//        Player testPlayer = casinoIO.getPlayer();
+//        String actualName = testPlayer.getName();
+//        Integer expectedMoney = 100;
+//        Integer actualMoney = testPlayer.getMoney();
+//
+//        //Then
+//        Assert.assertEquals(playerName, actualName);
+//        Assert.assertEquals(expectedMoney, actualMoney);
+//    }
 
     @Test
     public void printGameIntroTest() {
@@ -128,12 +145,13 @@ public class IOConsoleTest {
         //Given
         String gameSelection = "1";
         GameType expectedOutput = BlackJack;
+        Player testPlayer = new Player(startingMoney, playerName);
         byte[] inputBytes = gameSelection.getBytes();
         ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
 
         //When
         IOConsole casinoIO = new IOConsole(inputByteArray);
-        GameType actualOutput = casinoIO.getGameSelection();
+        GameType actualOutput = casinoIO.getGameSelection(testPlayer);
 
         //Then
         Assert.assertEquals(expectedOutput, actualOutput);
@@ -144,12 +162,13 @@ public class IOConsoleTest {
         //Given
         String gameSelection = "2";
         GameType expectedOutput = ChuckALuck;
+        Player testPlayer = new Player(startingMoney, playerName);
         byte[] inputBytes = gameSelection.getBytes();
         ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
 
         //When
         IOConsole casinoIO = new IOConsole(inputByteArray);
-        GameType actualOutput = casinoIO.getGameSelection();
+        GameType actualOutput = casinoIO.getGameSelection(testPlayer);
 
         //Then
         Assert.assertEquals(expectedOutput, actualOutput);
@@ -160,12 +179,13 @@ public class IOConsoleTest {
         //Given
         String gameSelection = "3";
         GameType expectedOutput = Crapes;
+        Player testPlayer = new Player(startingMoney, playerName);
         byte[] inputBytes = gameSelection.getBytes();
         ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
 
         //When
         IOConsole casinoIO = new IOConsole(inputByteArray);
-        GameType actualOutput = casinoIO.getGameSelection();
+        GameType actualOutput = casinoIO.getGameSelection(testPlayer);
 
         //Then
         Assert.assertEquals(expectedOutput, actualOutput);
@@ -177,11 +197,12 @@ public class IOConsoleTest {
         String gameSelection = "4";
         GameType expectedOutput = GoFish;
         byte[] inputBytes = gameSelection.getBytes();
+        Player testPlayer = new Player(startingMoney, playerName);
         ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
 
         //When
         IOConsole casinoIO = new IOConsole(inputByteArray);
-        GameType actualOutput = casinoIO.getGameSelection();
+        GameType actualOutput = casinoIO.getGameSelection(testPlayer);
 
         //Then
         Assert.assertEquals(expectedOutput, actualOutput);
@@ -288,4 +309,13 @@ public class IOConsoleTest {
         Assert.assertEquals(expectedOutput, actual);
     }
 
+    @Test
+    public void notEnoughMoneyMessageTest() {
+
+    }
+
+    @Test
+    public void addMoneyMessageTest() {
+
+    }
 }
