@@ -165,7 +165,7 @@ public class IOCrapsConsoleTest {
     @Test
     public void printContinueMessageTest() {
         //Given
-        String continueMessage = "The set point wasn't rolled, so the game continues!";
+        String continueMessage = "The set point wasn't rolled, so the game continues!\n";
         String expectedOutput = continueMessage +"\n";
 
         //When
