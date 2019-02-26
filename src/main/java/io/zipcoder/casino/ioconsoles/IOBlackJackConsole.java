@@ -28,8 +28,54 @@ public class IOBlackJackConsole extends IOConsole {
 //        blackJackConsole.println(name + " is betting " + betAmount + " dollars.");
 //    }
 
+    public void dealtCardMessage() {
+        blackJackConsole.println("The dealer has dealt the cards.");
+    }
+
     public void playerHandMessage(List<Card> hand) {
-        blackJackConsole.println("The dealer has dealt the cards.\nPlayer: [K][8]\nDealer: [Q][?]");
+        blackJackConsole.println("Player: ");
+        for(int i = 0; i <hand.size(); i++) {
+            String value = "";
+            if(hand.get(i).getValue() == 1) {value = "A";}
+            else if(hand.get(i).getValue() == 2) {value = "2";}
+            else if(hand.get(i).getValue() == 3) {value = "3";}
+            else if(hand.get(i).getValue() == 4) {value = "4";}
+            else if(hand.get(i).getValue() == 5) {value = "5";}
+            else if(hand.get(i).getValue() == 6) {value = "6";}
+            else if(hand.get(i).getValue() == 7) {value = "7";}
+            else if(hand.get(i).getValue() == 8) {value = "8";}
+            else if(hand.get(i).getValue() == 9) {value = "9";}
+            else if(hand.get(i).getValue() == 10) {value = "10";}
+            else if(hand.get(i).getValue() == 11) {value = "J";}
+            else if(hand.get(i).getValue() == 12) {value = "Q";}
+            else if (hand.get(i).getValue() == 13) {value = "K";}
+            blackJackConsole.print("["+value+"]");
+        }
+        blackJackConsole.print("\n");
+
+    }
+
+    public void dealerHandMessage(List<Card> hand) {
+        blackJackConsole.println("Dealer: ");
+        for(int i = 0; i <hand.size(); i++) {
+            String value = "";
+            if(hand.get(i).getValue() == 1) {value = "A";}
+            else if(hand.get(i).getValue() == 2) {value = "2";}
+            else if(hand.get(i).getValue() == 3) {value = "3";}
+            else if(hand.get(i).getValue() == 4) {value = "4";}
+            else if(hand.get(i).getValue() == 5) {value = "5";}
+            else if(hand.get(i).getValue() == 6) {value = "6";}
+            else if(hand.get(i).getValue() == 7) {value = "7";}
+            else if(hand.get(i).getValue() == 8) {value = "8";}
+            else if(hand.get(i).getValue() == 9) {value = "9";}
+            else if(hand.get(i).getValue() == 10) {value = "10";}
+            else if(hand.get(i).getValue() == 11) {value = "J";}
+            else if(hand.get(i).getValue() == 12) {value = "Q";}
+            else if (hand.get(i).getValue() == 13) {value = "K";}
+            blackJackConsole.print("["+value+"]");
+        }
+        blackJackConsole.print("\n");
+
     }
 
     public void NeedMoreCards() {

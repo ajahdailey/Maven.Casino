@@ -36,23 +36,52 @@ public class IOGoFishConsole extends IOConsole {
         if(hand == null) {
             goFishConsole.println("You don't have any cards in your hand.");
         } else {
-            for(int i = 0; i <hand.size(); i++) {
+            for(int i = 0; i <hand.size(); i++) { goFishConsole.print("┌─────────┐ "); }
+            goFishConsole.print("\n");
+            for(int i = 0; i <hand.size(); i++){
                 String value = "";
-                if(hand.get(i).getValue() == 1) {value += "A";}
-                else if(hand.get(i).getValue() == 2) {value += "2";}
-                else if(hand.get(i).getValue() == 3) {value += "3";}
-                else if(hand.get(i).getValue() == 4) {value += "4";}
-                else if(hand.get(i).getValue() == 5) {value += "5";}
-                else if(hand.get(i).getValue() == 6) {value += "6";}
-                else if(hand.get(i).getValue() == 7) {value += "7";}
-                else if(hand.get(i).getValue() == 8) {value += "8";}
-                else if(hand.get(i).getValue() == 9) {value += "9";}
-                else if(hand.get(i).getValue() == 10) {value += "10";}
-                else if(hand.get(i).getValue() == 11) {value += "J";}
-                else if(hand.get(i).getValue() == 12) {value += "Q";}
-                else if (hand.get(i).getValue() == 13) {value += "K";}
-                goFishConsole.print("["+value+"]");
+                if(hand.get(i).getValue() == 1) {value = "A";}
+                else if(hand.get(i).getValue() == 2) {value = "2";}
+                else if(hand.get(i).getValue() == 3) {value = "3";}
+                else if(hand.get(i).getValue() == 4) {value = "4";}
+                else if(hand.get(i).getValue() == 5) {value = "5";}
+                else if(hand.get(i).getValue() == 6) {value = "6";}
+                else if(hand.get(i).getValue() == 7) {value = "7";}
+                else if(hand.get(i).getValue() == 8) {value = "8";}
+                else if(hand.get(i).getValue() == 9) {value = "9";}
+                else if(hand.get(i).getValue() == 10) {value = "10";}
+                else if(hand.get(i).getValue() == 11) {value = "J";}
+                else if(hand.get(i).getValue() == 12) {value = "Q";}
+                else if (hand.get(i).getValue() == 13) {value = "K";}
+                goFishConsole.print("│"+value+"        │ ");
             }
+            goFishConsole.print("\n");
+            for(int i = 0; i <hand.size(); i++) {goFishConsole.print("│         │ ");}
+            goFishConsole.print("\n");
+            for(int i = 0; i <hand.size(); i++) {goFishConsole.print("│         │ ");}
+            goFishConsole.print("\n");
+            for(int i = 0; i <hand.size(); i++) {goFishConsole.print("│         │ ");}
+            goFishConsole.print("\n");
+            for(int i = 0; i <hand.size(); i++){
+                String value = "";
+                if(hand.get(i).getValue() == 1) {value = "A";}
+                else if(hand.get(i).getValue() == 2) {value = "2";}
+                else if(hand.get(i).getValue() == 3) {value = "3";}
+                else if(hand.get(i).getValue() == 4) {value = "4";}
+                else if(hand.get(i).getValue() == 5) {value = "5";}
+                else if(hand.get(i).getValue() == 6) {value = "6";}
+                else if(hand.get(i).getValue() == 7) {value = "7";}
+                else if(hand.get(i).getValue() == 8) {value = "8";}
+                else if(hand.get(i).getValue() == 9) {value = "9";}
+                else if(hand.get(i).getValue() == 10) {value = "10";}
+                else if(hand.get(i).getValue() == 11) {value = "J";}
+                else if(hand.get(i).getValue() == 12) {value = "Q";}
+                else if (hand.get(i).getValue() == 13) {value = "K";}
+                goFishConsole.print("│       "+value+" │ ");
+            }
+            goFishConsole.print("\n");
+            for(int i = 0; i <hand.size(); i++) {goFishConsole.print("└─────────┘ ");}
+
             goFishConsole.print("\n");
 
         }
@@ -66,83 +95,84 @@ public class IOGoFishConsole extends IOConsole {
 
     public Card pickACardForPlayerMessage(List<Card> hand) {
         int value =goFishConsole.getIntegerInput("What card would the player like to choose?");
+        goFishConsole.println("\n");
         //Your input will choose the card from your opponent hand, it is by index  and not actual card number.
         Card card = new Card(value, SignType.Spade);
         return card;
     }
 
     public void doesHaveCardMessage() {
-        goFishConsole.println("You have one or more matches in your hand.");
+        goFishConsole.println("You have a match in your hand.");
     }
 
     public void cardToAskForMessage( Card card) {
         String value = "";
-        if(card.getValue() == 1) {value += "A";}
-        else if(card.getValue() == 2) {value += "2";}
-        else if(card.getValue() == 3) {value += "3";}
-        else if(card.getValue() == 4) {value += "4";}
-        else if(card.getValue() == 5) {value += "5";}
-        else if(card.getValue() == 6) {value += "6";}
-        else if(card.getValue() == 7) {value += "7";}
-        else if(card.getValue() == 8) {value += "8";}
-        else if(card.getValue() == 9) {value += "9";}
-        else if(card.getValue() == 10) {value += "10";}
-        else if(card.getValue() == 11) {value += "J";}
-        else if (card.getValue() == 12) {value += "Q";}
-        else if (card.getValue() == 13) {value += "K";}
+        if(card.getValue() == 1) {value = "A";}
+        else if(card.getValue() == 2) {value = "2";}
+        else if(card.getValue() == 3) {value = "3";}
+        else if(card.getValue() == 4) {value = "4";}
+        else if(card.getValue() == 5) {value = "5";}
+        else if(card.getValue() == 6) {value = "6";}
+        else if(card.getValue() == 7) {value = "7";}
+        else if(card.getValue() == 8) {value = "8";}
+        else if(card.getValue() == 9) {value = "9";}
+        else if(card.getValue() == 10) {value = "10";}
+        else if(card.getValue() == 11) {value = "J";}
+        else if (card.getValue() == 12) {value = "Q";}
+        else if (card.getValue() == 13) {value = "K";}
 
-        goFishConsole.println(name + " has chosen a ["+ value + "].");
+        goFishConsole.println( name +" has chosen a ["+ value + "].");
     }
 
     public void doesNotHaveCardMessage(Card card) {
         String value = "";
-        if(card.getValue() == 1) {value += "A";}
-        else if(card.getValue() == 2) {value += "2";}
-        else if(card.getValue() == 3) {value += "3";}
-        else if(card.getValue() == 4) {value += "4";}
-        else if(card.getValue() == 5) {value += "5";}
-        else if(card.getValue() == 6) {value += "6";}
-        else if(card.getValue() == 7) {value += "7";}
-        else if(card.getValue() == 8) {value += "8";}
-        else if(card.getValue() == 9) {value += "9";}
-        else if(card.getValue() == 10) {value += "10";}
-        else if(card.getValue() == 11) {value += "J";}
-        else if (card.getValue() == 12) {value += "Q";}
-        else if (card.getValue() == 13) {value += "K";}
+        if(card.getValue() == 1) {value = "A";}
+        else if(card.getValue() == 2) {value = "2";}
+        else if(card.getValue() == 3) {value = "3";}
+        else if(card.getValue() == 4) {value = "4";}
+        else if(card.getValue() == 5) {value = "5";}
+        else if(card.getValue() == 6) {value = "6";}
+        else if(card.getValue() == 7) {value = "7";}
+        else if(card.getValue() == 8) {value = "8";}
+        else if(card.getValue() == 9) {value = "9";}
+        else if(card.getValue() == 10) {value = "10";}
+        else if(card.getValue() == 11) {value = "J";}
+        else if (card.getValue() == 12) {value = "Q";}
+        else if (card.getValue() == 13) {value = "K";}
 
-        goFishConsole.println("Dealer does not have a [" +value+"]. Go Fish!");
+        goFishConsole.println("Player does not have a [" +value+"]. Go Fish!");
     }
 
 
     public void doesHaveCardMessage(Card card) {
         String value = "";
-        if(card.getValue() == 1) {value += "A";}
-        else if(card.getValue() == 2) {value += "2";}
-        else if(card.getValue() == 3) {value += "3";}
-        else if(card.getValue() == 4) {value += "4";}
-        else if(card.getValue() == 5) {value += "5";}
-        else if(card.getValue() == 6) {value += "6";}
-        else if(card.getValue() == 7) {value += "7";}
-        else if(card.getValue() == 8) {value += "8";}
-        else if(card.getValue() == 9) {value += "9";}
-        else if(card.getValue() == 10) {value += "10";}
-        else if(card.getValue() == 11) {value += "J";}
-        else if (card.getValue() == 12) {value += "Q";}
-        else if (card.getValue() == 13) {value += "K";}
+        if(card.getValue() == 1) {value = "A";}
+        else if(card.getValue() == 2) {value = "2";}
+        else if(card.getValue() == 3) {value = "3";}
+        else if(card.getValue() == 4) {value = "4";}
+        else if(card.getValue() == 5) {value = "5";}
+        else if(card.getValue() == 6) {value = "6";}
+        else if(card.getValue() == 7) {value = "7";}
+        else if(card.getValue() == 8) {value = "8";}
+        else if(card.getValue() == 9) {value = "9";}
+        else if(card.getValue() == 10) {value = "10";}
+        else if(card.getValue() == 11) {value = "J";}
+        else if (card.getValue() == 12) {value = "Q";}
+        else if (card.getValue() == 13) {value = "K";}
 
-        goFishConsole.println(name + " have taken the [" + value + "] from the dealer. You have a match.");
+        goFishConsole.println(name + " have taken the [" + value + "]. A match was found.");
     }
 
 
     public void winningMessage() {
-        goFishConsole.println("You have won! Would you like to play again?");
+        goFishConsole.getStringInput(name +" have won! Would you like to play again?");
     }
 
     public void losingMessage() {
-        goFishConsole.println("You Lose. Would you like to try again?");
+        goFishConsole.getStringInput("You Lose. Would you like to try again?");
     }
 
-    public void result(boolean gameReuslt) {
+    public void printResult(boolean gameReuslt) {
         if(gameReuslt = true) {
             winningMessage();
         } else if (gameReuslt = false) {

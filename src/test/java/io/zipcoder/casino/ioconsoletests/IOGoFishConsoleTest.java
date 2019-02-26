@@ -156,14 +156,14 @@ public class IOGoFishConsoleTest {
     }
 
     @Test
-    public void resultTest() {
+    public void printResultTest() {
         //Given
         String expected = "You have won! Would you like to play again?\n";
         String name = "Java";
 
         //When
         IOGoFishConsole goFishConsole = new IOGoFishConsole(name);
-        goFishConsole.result(true);
+        goFishConsole.printResult(true);
         String actual = testOutStream.toString();
 
         //Then

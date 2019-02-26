@@ -3,10 +3,7 @@ package io.zipcoder.casino.cardgames;
 import io.zipcoder.casino.cardgames.Card;
 import io.zipcoder.casino.player.Player;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-import java.util.Stack;
+import java.util.*;
 
 public class Hand {
 
@@ -61,8 +58,11 @@ public class Hand {
                 if (cardsInHand.get(j).equals(cardsInHand.get(i))) {
                     matchedCards.add(card);
 
-                    cardsInHand.remove(cardsInHand.get(j));
-                    cardsInHand.remove(cardsInHand.get(i));
+                    Card cardToRemove1 = cardsInHand.get(j);
+                    Card cardToRemove2 = cardsInHand.get(i);
+
+                    cardsInHand.remove(cardToRemove1);
+                    cardsInHand.remove(cardToRemove2);
                     foundMatch = true;
                     anyMatchFound = true;
                     break;
@@ -92,4 +92,5 @@ public class Hand {
     public List<Card> getHandCards() {
         return new ArrayList<Card>(this.cardsInHand);
     }
+
 }

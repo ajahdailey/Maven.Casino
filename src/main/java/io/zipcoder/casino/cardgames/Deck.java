@@ -28,7 +28,7 @@ public class Deck {
                 this.deckOfcards.push(card);
             }
         }
-        System.out.println(deckOfcards);
+        //System.out.println(deckOfcards);
     }
 
 
