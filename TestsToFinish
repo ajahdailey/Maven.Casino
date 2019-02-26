@@ -1,10 +1,13 @@
 Checking Tests
 -------------------------------
 Facilitator- swapna
-   - getWinner
+   DONE getWinner
    DONE evaluateTurn
+   - anyCommonCardsAmongPlayers
    DONE distributeCards
-   - discardMatchedCards
+   DONE discardMatchedCards
+   X facilitateTurn - per Swapna's convo w Leon can't test this
+   - isCurrentPlayerDealer
 
 Casino
    - start - not sure how to test this other than running the game -kb
@@ -170,8 +173,6 @@ Card ✔
 
 
 CardGame ✔
-   - constructor * why is this an abstract class? we have a constructor
-
    - didWin
 
 GoFish
