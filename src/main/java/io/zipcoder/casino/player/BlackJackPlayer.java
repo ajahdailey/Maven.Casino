@@ -11,10 +11,19 @@ public class BlackJackPlayer extends CardPlayer implements GamblingPlayer {
         super(player);
     }
 
-    public int betMoney() {
-        return 0;
-    }
-    public void winMoney() {
 
+    private static final int blackJackBetMoney = 15;
+
+    public int betMoney(){
+        int betMoney = -1;
+        if (player.getMoney() > blackJackBetMoney){
+            player.reduceMoney(blackJackBetMoney);
+            betMoney = blackJackBetMoney;
+        }
+        return betMoney;
+    }
+
+    public void winMoney() {
+        player.addMoney(blackJackBetMoney * 2);
     }
 }

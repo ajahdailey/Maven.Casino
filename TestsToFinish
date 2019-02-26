@@ -7,22 +7,22 @@ Facilitator
    - discardMatchedCards
 
 Casino
-   - start
+   - start - not sure how to test this other than running the game -kb
 
 GameFactory
    DONE CreateGameObject
 
-GameType & SignType - do we need to do tests for enums??
+GameType & SignType - do we need to do tests for enums?? kb
 
 IOConsoleFactory
     DONE CreateIOConsole
 
 BlackJackPlayer
-   - constructor
-   - betMoney
-   - winMoney
+   DONE constructor
+   DONE betMoney
+   DONE winMoney
 
-CardPlayer
+CardPlayer - Thao
    - constructor
    DONE addCardToHand
    DONE getNumberOfCardsInHand
@@ -41,7 +41,7 @@ DicePlayer
    - constructor
 
 GoFishPlayer
-   - constructor
+   DONE constructor
 
 Player
    - constructor
@@ -166,7 +166,7 @@ Card
    - getSign
    - toString
 
-CardGame
+CardGame - Thao
    - constructor
    - didWin
 
