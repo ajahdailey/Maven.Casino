@@ -93,8 +93,11 @@ public class BlackJack extends CardGame implements GamblingGame {
                     this.playerWin = true;
 
                 }
+
                 this.whoWon();
                 this.printResults();
+                player.clearCardsInHand();
+                dealer.clearCardsInHand();
 
             } else {
                 this.continueFlagMain = false;
@@ -177,7 +180,7 @@ public class BlackJack extends CardGame implements GamblingGame {
         int sumOfValue = 0;
         for(Card card : hand){
 
-            sumOfValue += card.getValue();
+            sumOfValue += ((BlackJackCard)card).getBlackJackValue();
         }
         return sumOfValue;
     }

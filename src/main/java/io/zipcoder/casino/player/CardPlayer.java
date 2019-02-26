@@ -51,4 +51,8 @@ public class   CardPlayer {
         return cardsInHand.getHandCards();
 
     }
+
+    public void clearCardsInHand() {
+        cardsInHand.clearAllCardsInHand();
+    }
 }
