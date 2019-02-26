@@ -167,7 +167,7 @@ public class IOGoFishConsole extends IOConsole {
         return value;
     }
 
-    private void exitMessage() {
+    public void exitMessage() {
         goFishConsole.println("Thank you for playing. Have a good day! ♠♦♥♣");
     }
 

@@ -68,7 +68,7 @@ public class BlackJack extends CardGame implements GamblingGame {
                 this.distributeCards();
                 TimeUnit.SECONDS.sleep(5);
                 this.initBooleans();
-                this.showHands();
+                this.hiddenHands();
                 this.bustOr21();
 
                 while (!this.gameOver) {
@@ -170,6 +170,12 @@ public class BlackJack extends CardGame implements GamblingGame {
         // Should just print out the users hand and the dealers hand to the console
         console.printPlayerHand(player);
         console.printDealerHand(dealer);
+    }
+
+    private void hiddenHands() {
+        // Should just print out the users hand and the dealers hand to the console
+        console.printPlayerHand(player);
+        console.printDealerHandHidden(dealer);
     }
 
     private int valueOfAllCardsInHand(CardPlayer player){
