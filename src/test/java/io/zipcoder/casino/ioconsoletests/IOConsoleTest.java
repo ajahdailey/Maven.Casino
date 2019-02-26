@@ -23,10 +23,12 @@ public class IOConsoleTest {
     private PrintStream oldPrintStream;
     ByteArrayOutputStream testOutStream;
     String playerName;
+    Integer startingMoney;
 
     @Before
     public void setup() {
         playerName = "Kate";
+        startingMoney = 100;
         testOutStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(testOutStream);
         oldPrintStream = System.out;
@@ -88,22 +90,37 @@ public class IOConsoleTest {
     }
 
     @Test
-    public void getPlayer() {
+    public void getStartingBetMoneyTest() {
         //Given
-        byte[] inputBytes = playerName.getBytes();
+        String convertedExpected = startingMoney.toString();
+        byte[] inputBytes = convertedExpected.getBytes();
         ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
 
         //When
         IOConsole casinoIO = new IOConsole(inputByteArray);
-        Player testPlayer = casinoIO.getPlayer();
-        String actualName = testPlayer.getName();
-        Integer expectedMoney = 100;
-        Integer actualMoney = testPlayer.getMoney();
+        Integer actualOutput = casinoIO.getStartingMoney();
 
         //Then
-        Assert.assertEquals(playerName, actualName);
-        Assert.assertEquals(expectedMoney, actualMoney);
+        Assert.assertEquals(startingMoney, actualOutput);
     }
+
+//    @Test
+//    public void getPlayer() {
+//        //Given
+//        byte[] inputBytes = playerName.getBytes();
+//        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
+//
+//        //When
+//        IOConsole casinoIO = new IOConsole(inputByteArray);
+//        Player testPlayer = casinoIO.getPlayer();
+//        String actualName = testPlayer.getName();
+//        Integer expectedMoney = 100;
+//        Integer actualMoney = testPlayer.getMoney();
+//
+//        //Then
+//        Assert.assertEquals(playerName, actualName);
+//        Assert.assertEquals(expectedMoney, actualMoney);
+//    }
 
     @Test
     public void printGameIntroTest() {

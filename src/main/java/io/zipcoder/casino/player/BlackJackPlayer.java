@@ -22,4 +22,10 @@ public class BlackJackPlayer extends CardPlayer implements GamblingPlayer {
     public void winMoney() {
         player.addMoney(BLACKJACKBETMONEY*2);
     }
+
+    public static Integer getBlackJackBetAmount() {
+        return BLACKJACKBETMONEY;
+    }
 }
+
+

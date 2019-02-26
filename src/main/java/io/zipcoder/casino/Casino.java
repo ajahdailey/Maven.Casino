@@ -14,6 +14,8 @@ public class Casino {
     IOConsole consoleObject;
     List<Player> players;
     GameType currentSelectedGame;
+    String playerName;
+    Integer startingMoney;
 
     public static void main(String[] args) {
        new Casino().start();
@@ -23,8 +25,12 @@ public class Casino {
 
        IOConsole console = new IOConsole();
        console.startCasinoConsole();
-       Player player = console.getPlayer();
-       console.printGameIntro(player.getName());
+       playerName = console.getPlayerName();
+       startingMoney = console.getStartingMoney();
+       Player player = new Player(startingMoney, playerName);
+
+//       console.printGameIntro(player.getName());
+
        boolean playAgain;
        do {
            playAgain = false;

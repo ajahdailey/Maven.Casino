@@ -12,7 +12,8 @@ public class IOConsole {
 
     protected GameType gameType;
     private String playerName;
-    Console casinoConsole;
+    private Console casinoConsole;
+    private Integer startingMoney;
 
     public IOConsole() {
         this.casinoConsole = new Console(System.in, System.out);
@@ -39,19 +40,23 @@ public class IOConsole {
     }
 
     public String getPlayerName() {
-        playerName = casinoConsole.getStringInput("What is your name?");
+        playerName = casinoConsole.getStringInput("Welcome to our casino.\nWhat is your name?");
         return playerName;
     }
 
-    public Player getPlayer(){
-        String name = getPlayerName();
-        return new Player(100, name);
+    public Integer getStartingMoney() {
+        startingMoney = casinoConsole.getIntegerInput("How much money would you like to start with, %s?", playerName);
+        return startingMoney;
     }
+//
+//    public Player getPlayer(){
+//        String name = getPlayerName();
+//        return new Player(100, name);
+//    }
 
     public void printGameIntro(String playerName) {
-        casinoConsole.println("\nWelcome, %s. We have four games you can play.\n\n" +
+        casinoConsole.println("\nWe have four games you can play, %s.\n\n" +
                 "Black Jack and Craps require bets.\n" +
-                "We've given you $100 to play in the betting games.\n\n" +
                 "Chuck-A-Luck and Go Fish do not require bets.\n", playerName);
     }
 
