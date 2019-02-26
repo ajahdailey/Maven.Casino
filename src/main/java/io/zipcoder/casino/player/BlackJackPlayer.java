@@ -26,6 +26,10 @@ public class BlackJackPlayer extends CardPlayer implements GamblingPlayer {
     public static Integer getBlackJackBetAmount() {
         return BLACKJACKBETMONEY;
     }
+
+    public boolean enoughMoneyToBet() {
+        return player.getMoney() >= BLACKJACKBETMONEY;
+    }
 }
 
 

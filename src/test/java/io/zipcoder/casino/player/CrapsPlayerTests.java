@@ -75,4 +75,16 @@ public class CrapsPlayerTests {
         //Then
         Assert.assertEquals(expectedOutput,actualOutput);
     }
+
+    @Test
+    public void enoughMoneyToBetTest() {
+        //Given
+        Player newPlayer = new Player(100, "Kate");
+        CrapsPlayer testPlayer = new CrapsPlayer(newPlayer);
+
+        //Then
+        Assert.assertTrue(testPlayer.enoughMoneyToBet());
+
+    }
+
 }
