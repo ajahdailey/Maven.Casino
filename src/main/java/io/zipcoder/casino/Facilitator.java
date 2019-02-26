@@ -35,15 +35,27 @@ public class Facilitator {
         for(CardPlayer player : playerList) {
 
             if(player.getNumberOfCardsInHand() == 0)
-                {
+             {
                 winner = player;
                 isGameOver = true;
                 break;
-            } }
-
+             }
+        }
+        if(deck.getNumberOfCards() == 0 && !anyCommonCardsAmongPlayers())
+            isGameOver = true;
 
         return isGameOver;
 
+    }
+
+    private boolean anyCommonCardsAmongPlayers() {
+        List<Card> dealerCards = playerList.get(0).getHandCards();
+        List<Card> playerCards = playerList.get(1).getHandCards();
+        for(Card card : dealerCards){
+            if(playerCards.contains(card))
+                return true;
+        }
+        return false;
     }
 
     public void distributeCards() {
@@ -58,12 +70,13 @@ public class Facilitator {
         }
     }
 
-
     public void discardMatchedCards() {
-        for(CardPlayer player : playerList){
+        for (CardPlayer player : playerList) {
             player.discardMatchedCards();
+
         }
     }
+
 
     public void facilitateTurn(IOGoFishConsole console) {
 
@@ -73,6 +86,8 @@ public class Facilitator {
         console.setPlayerName(currentPlayer.getName());
         console.displayTurnMessage();
         if(isCurrentPlayerDealer()) {
+            List<Card> hand = currentPlayer.getHandCards();
+            console.displayCurrentHand(hand);
             opponentPlayer = playerList.get(playerIdx);
             cardChosen = currentPlayer.getRandomCardFromHand();
             console.cardToAskForMessage(cardChosen);
@@ -93,7 +108,7 @@ public class Facilitator {
             //Add a drawn message
 
             currentPlayer.addCardToHand(newCard);
-            if(currentPlayer.discardMatchedCards());
+            if(currentPlayer.discardMatchedCards())
                 console.doesHaveCardMessage();
         }
         List<Card> hand = playerList.get(playerIdx).getHandCards();

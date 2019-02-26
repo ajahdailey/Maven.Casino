@@ -183,7 +183,7 @@ public class HandTest {
     }
 
     @Test
-    public void getRandomCard() {
+    public void getRandomCardTest() {
 
         //Given
 

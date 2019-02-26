@@ -24,11 +24,8 @@ public class CrapsPlayer extends DicePlayer implements GamblingPlayer {
     }
 
     public void winMoney() {
-            player.addMoney(CrapsBetMoney);
+            player.addMoney(CrapsBetMoney * 2);
     }
 
 
-    public void addMoney(int money) {
-        player.addMoney(money);
-    }
 }
