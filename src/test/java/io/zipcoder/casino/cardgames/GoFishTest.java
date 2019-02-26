@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 public class GoFishTest {
 
     @Test
-    public void playTest() {
+    public void playTestDealerWins() {
 
         int[] deckValues = {11,3,8,2,11,6,6,4,3,3,2,3,4,2};
         Deck deck = new DummyDeckForGoFishTest(deckValues);
@@ -24,10 +24,19 @@ public class GoFishTest {
         game.play();
         game.printResults();
     }
-
     @Test
-    public void evaluateGame() {
+    public void playTestPlayerWins() {
+
+        int[] deckValues = {11,2,8,2,11,6,6,4,3,3,2,11,4,2};
+        Deck deck = new DummyDeckForGoFishTest(deckValues);
+        IOGoFishConsole console = new DummyIOForGoFishTest("Aswathy");
+
+        GoFish game = new GoFish(new CardPlayer(new Player(100, "Aswathy")), console, deck);
+        game.play();
+        game.printResults();
     }
+
+
 
     @Test
     public void exit() {

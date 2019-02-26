@@ -37,21 +37,7 @@ public class IOGoFishConsole extends IOConsole {
             goFishConsole.println("You don't have any cards in your hand.");
         } else {
             for(int i = 0; i <hand.size(); i++) {
-                String value = "";
-                if(hand.get(i).getValue() == 1) {value += "A";}
-                else if(hand.get(i).getValue() == 2) {value += "2";}
-                else if(hand.get(i).getValue() == 3) {value += "3";}
-                else if(hand.get(i).getValue() == 4) {value += "4";}
-                else if(hand.get(i).getValue() == 5) {value += "5";}
-                else if(hand.get(i).getValue() == 6) {value += "6";}
-                else if(hand.get(i).getValue() == 7) {value += "7";}
-                else if(hand.get(i).getValue() == 8) {value += "8";}
-                else if(hand.get(i).getValue() == 9) {value += "9";}
-                else if(hand.get(i).getValue() == 10) {value += "10";}
-                else if(hand.get(i).getValue() == 11) {value += "J";}
-                else if(hand.get(i).getValue() == 12) {value += "Q";}
-                else if (hand.get(i).getValue() == 13) {value += "K";}
-                goFishConsole.print("["+value+"]");
+                goFishConsole.print("["+getDisplayString(hand.get(i),"")+"]");
             }
             goFishConsole.print("\n");
 
@@ -60,22 +46,30 @@ public class IOGoFishConsole extends IOConsole {
     }
 
     public void displayTurnMessage() {
-        goFishConsole.println("It is now " + name + " turn.");
+        goFishConsole.println("It is now your turn. - " + name);
     }
 
 
     public Card pickACardForPlayerMessage(List<Card> hand) {
         int idx = 1;
         goFishConsole.println(name + " Your hand cards !!");
+
         for(Card card : hand){
-            goFishConsole.println(idx + ". " + getDisplayString(card));
+            goFishConsole.println(idx + ". " + getDisplayString(card, card.getSign().toString() + " "));
             idx++;
         }
+
+        goFishConsole.println(idx + ". " + "Quit");
+
         int value = 0;
+
         do {
             value = goFishConsole.getIntegerInput("What card would the player like to choose? " +
-                    "\nEnter the Number choice - 1 to " + hand.size());
-        }while(value >= hand.size());
+                    "\nEnter the Number choice - 1 to " + (hand.size()+1));
+        }while(value > (hand.size()+ 1));
+
+        if(value == hand.size() + 1)
+            return null;
         return hand.get(value - 1);
     }
 
@@ -85,11 +79,11 @@ public class IOGoFishConsole extends IOConsole {
 
     public void cardToAskForMessage( Card card) {
 
-        String value = getDisplayString(card);
+        String value = getDisplayString(card, card.getSign().toString() + " ");
         goFishConsole.println(name + " has chosen a ["+ value + "].");
     }
-    private String getDisplayString(Card card){
-        String value = card.getSign().toString() + " ";
+    private String getDisplayString(Card card, String initalString){
+        String value = initalString;
         if(card.getValue() == 1) {value += "A";}
         else if(card.getValue() == 2) {value += "2";}
         else if(card.getValue() == 3) {value += "3";}
@@ -106,16 +100,17 @@ public class IOGoFishConsole extends IOConsole {
         return value;
     }
     public void doesNotHaveCardMessage(Card card) {
-        String value = getDisplayString(card);
+        String value = getDisplayString(card, "");
 
-        goFishConsole.println("Dealer does not have a [" +value+"]. Go Fish!");
+        goFishConsole.println(name + " - Your opponent does not have a [" +value+"]. Go Fish!");
     }
 
 
     public void doesHaveCardMessage(Card card) {
-        String value = getDisplayString(card);
+        String value = getDisplayString(card, "");
 
-        goFishConsole.println(name + " have taken the [" + value + "] from the dealer. You have a match.");
+        goFishConsole.println(name + " have taken the [" + value + "] from his opponent. "+
+                name + " have a match.");
     }
 
 
@@ -133,6 +128,12 @@ public class IOGoFishConsole extends IOConsole {
         } else if (gameReuslt = false) {
             losingMessage();
         }
+    }
+
+    public void cardDrawnMessage(Card card){
+        goFishConsole.println(name + " - You have drawn - "+
+                getDisplayString(card, card.getSign().toString() + " "));
+
     }
 
 }
