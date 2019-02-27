@@ -135,8 +135,8 @@ public class IOBlackJackConsole extends IOConsole {
         int value = hand.get(0).getValue();
         blackJackConsole.print("┌─────────┐ ┌─────────┐");
         blackJackConsole.print("\n");
-        if(value ==10) {blackJackConsole.print("│" + value + "       │ │░░░░░░░░░│");}
-        else {blackJackConsole.print("│" + value + "        │ │░░░░░░░░░│");}
+        if(value ==10) {blackJackConsole.print("│" + getDisplayString(hand.get(0), "") + "       │ │░░░░░░░░░│");}
+        else {blackJackConsole.print("│" + getDisplayString(hand.get(0), "") + "        │ │░░░░░░░░░│");}
         blackJackConsole.print("\n");
         blackJackConsole.print("│         │ │░░░░░░░░░│");
         blackJackConsole.print("\n");
