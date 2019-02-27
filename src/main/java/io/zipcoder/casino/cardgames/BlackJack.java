@@ -21,6 +21,15 @@ public class BlackJack extends CardGame implements GamblingGame {
     private boolean gameOver;
     private boolean playerBust;
     private boolean dealerBust;
+
+    public boolean isPlayerWin() {
+        return playerWin;
+    }
+
+    public boolean isDealerWin() {
+        return dealerWin;
+    }
+
     private boolean playerWin;
     private boolean dealerWin;
     private int dealerPoints;
@@ -68,7 +77,7 @@ public class BlackJack extends CardGame implements GamblingGame {
                 this.distributeCards();
                 TimeUnit.SECONDS.sleep(5);
                 this.initBooleans();
-                this.showHands();
+                this.hiddenHands();
                 this.bustOr21();
 
                 while (!this.gameOver) {
@@ -108,23 +117,17 @@ public class BlackJack extends CardGame implements GamblingGame {
     }
 
     private void whoWon() {
-    if(playerWin == true){
-       console.setResults("Congrats, you won! \n\tyour score : " + playerPoints + "\n\tdealer score : " + dealerPoints);
+        if(playerWin == true){
+           console.setResults("Congrats, you won! \n\tyour score : " + playerPoints + "\n\tdealer score : " + dealerPoints);
 
 
-    }else if(playerWin == true && dealerWin == true ){
-        console.setResults("Its a tie! \n\tyour score : " + playerPoints + "\n\tdealer score : " + dealerPoints);
+        }else if(playerWin == true && dealerWin == true ){
+            console.setResults("Its a tie! \n\tyour score : " + playerPoints + "\n\tdealer score : " + dealerPoints);
 
 
-    }else if(playerWin == false){
-        console.setResults("Game Over, you lost \n\tyour score : " + playerPoints + "\n\tasdealer score : " + dealerPoints);
-    }
-
-
-
-
-
-
+        }else if(playerWin == false){
+            console.setResults("Game Over, you lost \n\tyour score : " + playerPoints + "\n\tasdealer score : " + dealerPoints);
+        }
     }
 
     private void initBooleans(){
@@ -135,7 +138,7 @@ public class BlackJack extends CardGame implements GamblingGame {
         this.dealerWin = false;
     }
 
-    private void bustOr21() {
+    public void bustOr21() {
         playerPoints = this.valueOfAllCardsInHand(player);
         dealerPoints = this.valueOfAllCardsInHand(dealer);
         if( playerPoints== 21){
@@ -158,7 +161,7 @@ public class BlackJack extends CardGame implements GamblingGame {
         }
     }
 
-    private void hitDealer() {
+    public void hitDealer() {
         // Give the dealer one more card
         if((21 - this.valueOfAllCardsInHand(dealer)) > 5) {
             dealer.addCardToHand(deck.draw());
@@ -166,7 +169,7 @@ public class BlackJack extends CardGame implements GamblingGame {
     }
 
 
-    private void hitUser() {
+    public void hitUser() {
         // Give the user one more card
         player.addCardToHand(deck.draw());
     }
@@ -177,16 +180,13 @@ public class BlackJack extends CardGame implements GamblingGame {
         console.printDealerHand(dealer);
     }
 
-    private int valueOfAllCardsInHand2(CardPlayer player){
-        List<Card> hand = player.getHandCards();
-        int sumOfValue = 0;
-        for(Card card : hand){
-
-            sumOfValue += ((BlackJackCard)card).getBlackJackValue();
-        }
-        return sumOfValue;
+    private void hiddenHands() {
+        // Should just print out the users hand and the dealers hand to the console
+        console.printPlayerHand(player);
+        console.printDealerHandHidden(dealer);
     }
-    private int valueOfAllCardsInHand(CardPlayer player){
+
+    public int valueOfAllCardsInHand(CardPlayer player){
         List<Card> hand = player.getHandCards();
         int sumOfValue = 0;
         for(Card card : hand){
@@ -235,5 +235,13 @@ public class BlackJack extends CardGame implements GamblingGame {
     @Override
     public void takeTurn() {
 
+    }
+
+    public BlackJackPlayer getPlayer() {
+        return  player;
+    }
+
+    public CardPlayer getDealer() {
+        return  dealer;
     }
 }

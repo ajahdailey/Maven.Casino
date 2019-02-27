@@ -10,10 +10,6 @@ public class Player {
         this.money = money;
         this.name = name;
     }
-
-    public Player(Player house) {
-    }
-
     public int getMoney() {
         return money;
     }

@@ -39,7 +39,7 @@ public class GoFishTest {
 
         GoFish game = new GoFish(new CardPlayer(new Player(100, "Aswathy")), console, deck);
         game.play();
-        game.printResults();
+        //game.printResults();
     }
     @Test
     public void playTestPlayerWins() {
@@ -50,7 +50,7 @@ public class GoFishTest {
 
         GoFish game = new GoFish(new CardPlayer(new Player(100, "Aswathy")), console, deck);
         game.play();
-        game.printResults();
+        //game.printResults();
     }
 
 
