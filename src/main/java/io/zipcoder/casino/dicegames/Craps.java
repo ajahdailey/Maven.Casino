@@ -43,6 +43,7 @@ public class Craps extends DiceGame implements GamblingGame {
 
 
     public void bet() {
+
         player.betMoney();
     }
 
@@ -68,6 +69,7 @@ public class Craps extends DiceGame implements GamblingGame {
             isDone = evaluateTurn(turnNumber, result);
 
             if(!isDone ) {
+                if(turnNumber != 1)
                 console.printContinueMessage();
                 turnNumber++;
             }
@@ -110,7 +112,7 @@ public class Craps extends DiceGame implements GamblingGame {
     }
 
     private boolean isInPassList(int result){
-        final int [] passList = {4,5,6,8,9,10};
+        final int [] passList = {4, 5, 6, 8, 9, 10};
         int isPresent = Arrays.binarySearch(passList,result);
         return isPresent >= 0;
     }
