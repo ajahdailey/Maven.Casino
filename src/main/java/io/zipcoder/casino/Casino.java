@@ -3,6 +3,7 @@ package io.zipcoder.casino;
 
 import io.zipcoder.casino.cardgames.BlackJack;
 import io.zipcoder.casino.ioconsoles.IOConsole;
+import io.zipcoder.casino.player.BlackJackPlayer;
 import io.zipcoder.casino.player.Player;
 import io.zipcoder.casino.utilities.GamblingGame;
 import io.zipcoder.casino.utilities.Game;
@@ -14,6 +15,8 @@ public class Casino {
     IOConsole consoleObject;
     List<Player> players;
     GameType currentSelectedGame;
+    String playerName;
+    Integer startingMoney;
 
     public static void main(String[] args) {
        new Casino().start();
@@ -23,16 +26,16 @@ public class Casino {
 
        IOConsole console = new IOConsole();
        console.startCasinoConsole();
-       Player player = console.getPlayer();
-       console.printGameIntro(player.getName());
+       playerName = console.getPlayerName();
+       startingMoney = console.getStartingMoney();
+       Player player = new Player(startingMoney, playerName);
+
+//       console.printGameIntro(player.getName());
+
        boolean playAgain;
        do {
            playAgain = false;
-           GameType gameType = console.getGameSelection();
-           if (gameType == null) {
-               console.invalidEntryMessage();
-               gameType = console.getGameSelection();
-           }
+           GameType gameType = console.getGameSelection(player);
 
            IOConsole gameConsole = IOConsoleFactory.CreateIOConsole(gameType, player);
 
