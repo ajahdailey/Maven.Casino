@@ -118,12 +118,12 @@ public class BlackJack extends CardGame implements GamblingGame {
     }
 
     private void whoWon() {
-        if(playerWin == true){
-           console.setResults("Congrats, you won! \n\tyour score : " + playerPoints + "\n\tdealer score : " + dealerPoints);
-
-
-        }else if(playerWin == true && dealerWin == true ){
+        if(playerWin == true && dealerWin == true ){
             console.setResults("Its a tie! \n\tyour score : " + playerPoints + "\n\tdealer score : " + dealerPoints);
+
+
+        }else if(playerWin == true){
+           console.setResults("Congrats, you won! \n\tyour score : " + playerPoints + "\n\tdealer score : " + dealerPoints);
 
 
         }else if(playerWin == false){

@@ -74,14 +74,9 @@ public class ChuckALuck extends DiceGame {
         return numOfMatch;
     }
 
-
-    //Will ask if they want to play another game or continue playing this game or exit. Will come from the console.
     public void exit() {
 
     }
-
-
-    //Todo: Implement printResults
 
     @Override
     public void printResults() {
@@ -89,15 +84,8 @@ public class ChuckALuck extends DiceGame {
         console.printResult(matches);
     }
 
-//   public static void main(String[] args) {
-//        Player player = new Player(10, "A");
-//        DicePlayer dicePlayer = new DicePlayer(player);
-//
-//        ChuckALuck game = new ChuckALuck(dicePlayer);
-//        game.play();
-//        game.printResults();
-//    }
+
 }
 
-//
+
 

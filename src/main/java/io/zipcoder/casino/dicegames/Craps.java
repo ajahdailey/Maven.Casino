@@ -81,7 +81,7 @@ public class Craps extends DiceGame implements GamblingGame {
     private boolean evaluateTurn(int turnNumber, int result){
         boolean isDone = false;
         if(passChoice){
-            if(turnNumber == 1 ) {
+            if(turnNumber == 1 ) {//First turn
                 if (result == 7 || result == 11) {
                     isDone = true;
                     didWin = true;
