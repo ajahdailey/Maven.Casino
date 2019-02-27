@@ -26,18 +26,13 @@ public class IOChuckALuckConsoleTest {
 
     @Test
     public void getGuesses() {
-        //Testing to see if a list was created using the inputs from the user
-        //simulating the user input as 4,2,5
+
         String input = "4\n2\n5\n";
-        //create a new input stream with the fake input from above. ByteArrayInputStream is similar to system.in
         ByteArrayInputStream inputStream = new ByteArrayInputStream(input.getBytes());
-        //create console based on the fake user input
         IOChuckALuckConsole console = createConsole(inputStream);
 
-        //When
         List<Integer> actual = console.getGuesses();
 
-        //Then
         Assert.assertEquals(Integer.valueOf(4), actual.get(0));
         Assert.assertEquals(Integer.valueOf(2), actual.get(1));
         Assert.assertEquals(Integer.valueOf(5), actual.get(2));

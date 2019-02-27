@@ -160,8 +160,9 @@ public class ChuckALuckTest { ChuckALuck game;
 
         //Then
         String output = outputStream.toString();
-        Assert.assertTrue(output.contains("You have"));
-        Assert.assertTrue(output.contains("matches"));
+
+        boolean retrievedMatches = output.contains("You have " );
+        Assert.assertTrue(retrievedMatches);
     }
 
     @Test
