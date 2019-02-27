@@ -56,7 +56,7 @@ public class ChuckALuckTest { ChuckALuck game;
         Assert.assertEquals(expected, actualMatch);
     }
     @Test
-    public void getResult_whenThereIsNoMatch2() {
+    public void getResult_whenThereIsMatch2() {
         //Given
         List<Integer> userGuesses = new ArrayList<Integer>();
         userGuesses.add(5);
@@ -76,7 +76,7 @@ public class ChuckALuckTest { ChuckALuck game;
         Assert.assertEquals(expected, actualMatch);
     }
     @Test
-    public void getResult_whenThereIsNoMatch3() {
+    public void getResult_whenThereIsMatch3() {
         //Given
         List<Integer> userGuesses = new ArrayList<Integer>();
         userGuesses.add(5);
@@ -97,11 +97,52 @@ public class ChuckALuckTest { ChuckALuck game;
     }
 
     @Test
-    public void evaluateGame() {
+    public void getResult_whenThereIsOneMatch() {
+        //Given
+        List<Integer> userGuesses = new ArrayList<Integer>();
+        userGuesses.add(5);
+        userGuesses.add(2);
+        userGuesses.add(4);
+
+        List<Integer> diceResults = new ArrayList<Integer>();
+        diceResults.add(4);
+        diceResults.add(4);
+        diceResults.add(1);
+
+        int expected = 1;
+
+        //When
+        int actualMatch = game.getMatches(userGuesses, diceResults);
+
+        Assert.assertEquals(expected, actualMatch);
+    }
+
+    @Test
+    public void getResult_whenThereIsOneMatch1() {
+        //Given
+        List<Integer> userGuesses = new ArrayList<Integer>();
+        userGuesses.add(5);
+        userGuesses.add(2);
+        userGuesses.add(4);
+
+        List<Integer> diceResults = new ArrayList<Integer>();
+        diceResults.add(4);
+        diceResults.add(4);
+        diceResults.add(4);
+
+        int expected = 1;
+
+        //When
+        int actualMatch = game.getMatches(userGuesses, diceResults);
+
+        Assert.assertEquals(expected, actualMatch);
+    }
+
+    @Test
+    public void printResults() {
         //sometimes pass
         //Given
-        Random random = new Random(5);
-        Dice dice = new Dice(1, random);
+        Dice dice = new Dice(1);
 
         Player player = new Player(10, "A");
         DicePlayer dicePlayer = new DicePlayer(player);
@@ -119,6 +160,7 @@ public class ChuckALuckTest { ChuckALuck game;
 
         //Then
         String output = outputStream.toString();
+
         boolean retrievedMatches = output.contains("You have " );
         Assert.assertTrue(retrievedMatches);
     }

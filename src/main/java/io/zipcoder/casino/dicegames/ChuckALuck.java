@@ -48,7 +48,11 @@ public class ChuckALuck extends DiceGame {
     }
 
     public void rollDices(){
-        console.diceRoll();
+        try {
+            console.diceRoll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         for(int i = 1; i <= NUMBER_OF_GUESS; i++){
             //for every round, generate a random number form 1 -6
             int diceResult = dice.roll();
@@ -71,6 +75,7 @@ public class ChuckALuck extends DiceGame {
 
         }
 
+
         return numOfMatch;
     }
 
@@ -83,7 +88,6 @@ public class ChuckALuck extends DiceGame {
         int matches = getMatches(guesses, results);
         console.printResult(matches);
     }
-
 
 }
 
