@@ -13,6 +13,11 @@ public class Facilitator {
     private List<CardPlayer> playerList;
     private final int playerIdx = 1;
     private final int dealerIdx = 0;
+
+    public boolean isQuit() {
+        return isQuit;
+    }
+
     private boolean isQuit = false;
 
     public CardPlayer getWinner() {
@@ -52,7 +57,7 @@ public class Facilitator {
 
     }
 
-    private boolean anyCommonCardsAmongPlayers() {
+    public boolean anyCommonCardsAmongPlayers() {
         List<Card> dealerCards = playerList.get(0).getHandCards();
         List<Card> playerCards = playerList.get(1).getHandCards();
         for(Card card : dealerCards){
@@ -63,7 +68,6 @@ public class Facilitator {
     }
 
     public void distributeCards() {
-
         for (int cardNo = 0; cardNo < numberOfCardsToBeDistributed; cardNo++) {
             for (CardPlayer player : playerList) {
                 Card card = deck.draw();
@@ -83,7 +87,6 @@ public class Facilitator {
 
 
     public void facilitateTurn(IOGoFishConsole console) {
-
         CardPlayer currentPlayer = playerList.get(currentPlayerIdx);
         CardPlayer opponentPlayer = null;
         Card cardChosen;
@@ -91,7 +94,7 @@ public class Facilitator {
         console.displayTurnMessage();
         if(isCurrentPlayerDealer()) {
             List<Card> hand = currentPlayer.getHandCards();
-            console.displayCurrentHand(hand);
+            //console.displayCurrentHand(hand);
             opponentPlayer = playerList.get(playerIdx);
             cardChosen = currentPlayer.getRandomCardFromHand();
             console.cardToAskForMessage(cardChosen);
@@ -110,7 +113,7 @@ public class Facilitator {
             } else {
                 console.doesNotHaveCardMessage(cardChosen);
                 Card newCard = deck.draw();
-                console.cardDrawnMessage(cardChosen);
+                console.cardDrawnMessage(newCard);
 
                 currentPlayer.addCardToHand(newCard);
                 if (currentPlayer.discardMatchedCards())

@@ -125,11 +125,12 @@ public class IOConsoleTest {
     @Test
     public void printGameIntroTest() {
         //Given
-        String gameIntro = "\nWelcome, %s. We have four games you can play.\n\n" +
-                "Black Jack and Craps require bets.\n" +
-                "We've given you $100 to play in the betting games.\n\n" +
-                "Chuck-A-Luck and Go Fish do not require bets.\n";
-        String expectedOutput = String.format(gameIntro, playerName) + "\n";
+        String gameIntro = "\nWe have four games you can play, Kate.\n\n"+
+                            "Black Jack and Craps require bets.\n"+
+                            "Chuck-A-Luck and Go Fish do not require bets.\n";
+
+
+                String expectedOutput = String.format(gameIntro, playerName) + "\n";
 
         //When
         IOConsole casinoIO = new IOConsole();
