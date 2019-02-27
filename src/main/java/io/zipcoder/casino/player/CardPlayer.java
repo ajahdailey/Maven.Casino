@@ -51,4 +51,11 @@ public class   CardPlayer {
         return cardsInHand.getHandCards();
 
     }
+
+    public void clearCardsInHand() {
+        cardsInHand.clearAllCardsInHand();
+    }
+    public boolean hasAce(){
+        return cardsInHand.hasCard(new Card(1));
+    }
 }

@@ -20,6 +20,7 @@ public class BlackJackTests {
         Assert.assertEquals(noOfCards,2);
 
     }
+
     @Test
     public void getDealerTest() {
         BlackJack game = new BlackJack(new BlackJackPlayer(
@@ -69,9 +70,9 @@ public class BlackJackTests {
         BlackJack game = new BlackJack(player, new IOBlackJackConsole("gamer"));
 
         int retrievedValue = game.valueOfAllCardsInHand(player);
-        Assert.assertEquals(11 , retrievedValue);
-
+        Assert.assertEquals(21 , retrievedValue);
     }
+
     @Test
     public void valueOfAllCardsInHandKingTest() {
         BlackJackPlayer player = new BlackJackPlayer(
@@ -82,8 +83,8 @@ public class BlackJackTests {
 
         int retrievedValue = game.valueOfAllCardsInHand(player);
         Assert.assertEquals(12 , retrievedValue);
-
     }
+
     @Test
     public void hitUserTest() {
         BlackJackPlayer player = new BlackJackPlayer(
@@ -94,8 +95,8 @@ public class BlackJackTests {
         game.hitUser();
         int retrievedValue = player.getNumberOfCardsInHand();
         Assert.assertEquals(3 , retrievedValue);
-
     }
+
     @Test
     public void hitDealerTest() {
         BlackJackPlayer player = new BlackJackPlayer(
@@ -109,6 +110,7 @@ public class BlackJackTests {
         Assert.assertEquals(3 , retrievedValue);
 
     }
+
     @Test
     public void bustOr21Test() {
         BlackJackPlayer player = new BlackJackPlayer(
@@ -122,6 +124,24 @@ public class BlackJackTests {
         dealer.addCardToHand(new BlackJackCard(11, SignType.Clover));
         game.bustOr21();
         boolean retrievedValue = game.isPlayerWin();
+        Assert.assertTrue(retrievedValue);
+
+    }
+
+    @Test
+    public void bustOr21DealerWinsTest() {
+        BlackJackPlayer player = new BlackJackPlayer(
+                new Player(100,"Gamer"));
+        player.addCardToHand(new BlackJackCard(10, SignType.Clover));
+        player.addCardToHand(new BlackJackCard(7, SignType.Clover));
+        player.addCardToHand(new BlackJackCard(3, SignType.Clover));
+        BlackJack game = new BlackJack(player, new IOBlackJackConsole("gamer"));
+        CardPlayer dealer = game.getDealer();
+        dealer.addCardToHand(new BlackJackCard(12, SignType.Clover));
+        dealer.addCardToHand(new BlackJackCard(11, SignType.Clover));
+        dealer.addCardToHand(new BlackJackCard(1, SignType.Clover));
+        game.bustOr21();
+        boolean retrievedValue = game.isDealerWin();
         Assert.assertTrue(retrievedValue);
 
     }

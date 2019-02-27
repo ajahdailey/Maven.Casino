@@ -18,6 +18,6 @@ public class BlackJackDeck extends Deck {
                 this.deckOfcards.push(card);
             }
         }
-        System.out.println(deckOfcards);
     }
+
 }

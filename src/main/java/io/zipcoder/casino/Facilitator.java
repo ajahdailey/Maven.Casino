@@ -57,7 +57,7 @@ public class Facilitator {
 
     }
 
-    private boolean anyCommonCardsAmongPlayers() {
+    public boolean anyCommonCardsAmongPlayers() {
         List<Card> dealerCards = playerList.get(0).getHandCards();
         List<Card> playerCards = playerList.get(1).getHandCards();
         for(Card card : dealerCards){
