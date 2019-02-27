@@ -66,7 +66,8 @@ public class Craps extends DiceGame implements GamblingGame {
             roll();
             int result = dice.getSum();
             console.printTossOutcome(result);
-            isDone = evaluateTurn(turnNumber, result);
+            isDone = evaluateTurn(turnNumber, result
+            );
 
             if(!isDone ) {
                 if(turnNumber != 1)

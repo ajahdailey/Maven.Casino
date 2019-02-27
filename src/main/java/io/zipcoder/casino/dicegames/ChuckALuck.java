@@ -62,10 +62,13 @@ public class ChuckALuck extends DiceGame {
         int numOfMatch = 0;
         for(int i = 0; i < userGuesses.size(); i++){
 
-            if(userGuesses.contains(diceResults.get(i))){
+            int result = userGuesses.get(i);
+            if(diceResults.contains(result)){
                 numOfMatch++;
+                diceResults.remove(diceResults.contains(result));
 
             }
+
         }
 
         return numOfMatch;

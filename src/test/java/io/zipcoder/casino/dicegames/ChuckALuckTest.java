@@ -119,7 +119,7 @@ public class ChuckALuckTest { ChuckALuck game;
 
         //Then
         String output = outputStream.toString();
-        boolean retrievedMatches = output.contains("You have");
+        boolean retrievedMatches = output.contains("You have " );
         Assert.assertTrue(retrievedMatches);
     }
 
