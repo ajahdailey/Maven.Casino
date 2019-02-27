@@ -83,7 +83,7 @@ public class IOConsole {
             case 3:
                 finalSelection = GameType.Crapes;
                 break;
-            case 5:
+            case 4:
                 finalSelection = GameType.GoFish;
                 break;
             default: finalSelection = null;
