@@ -48,7 +48,11 @@ public class ChuckALuck extends DiceGame {
     }
 
     public void rollDices(){
-        console.diceRoll();
+        try {
+            console.diceRoll();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         for(int i = 1; i <= NUMBER_OF_GUESS; i++){
             //for every round, generate a random number form 1 -6
             int diceResult = dice.roll();
@@ -64,9 +68,11 @@ public class ChuckALuck extends DiceGame {
 
             if(userGuesses.contains(diceResults.get(i))){
                 numOfMatch++;
+                userGuesses.remove(diceResults.get(i));
 
             }
         }
+
 
         return numOfMatch;
     }
@@ -86,14 +92,6 @@ public class ChuckALuck extends DiceGame {
         console.printResult(matches);
     }
 
-//   public static void main(String[] args) {
-//        Player player = new Player(10, "A");
-//        DicePlayer dicePlayer = new DicePlayer(player);
-//
-//        ChuckALuck game = new ChuckALuck(dicePlayer);
-//        game.play();
-//        game.printResults();
-//    }
 }
 
 //
