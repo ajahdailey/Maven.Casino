@@ -21,6 +21,15 @@ public class BlackJack extends CardGame implements GamblingGame {
     private boolean gameOver;
     private boolean playerBust;
     private boolean dealerBust;
+
+    public boolean isPlayerWin() {
+        return playerWin;
+    }
+
+    public boolean isDealerWin() {
+        return dealerWin;
+    }
+
     private boolean playerWin;
     private boolean dealerWin;
     private int dealerPoints;
@@ -130,7 +139,7 @@ public class BlackJack extends CardGame implements GamblingGame {
         this.dealerWin = false;
     }
 
-    private void bustOr21() {
+    public void bustOr21() {
         playerPoints = this.valueOfAllCardsInHand(player);
         dealerPoints = this.valueOfAllCardsInHand(dealer);
         if( playerPoints== 21){
@@ -153,7 +162,7 @@ public class BlackJack extends CardGame implements GamblingGame {
         }
     }
 
-    private void hitDealer() {
+    public void hitDealer() {
         // Give the dealer one more card
         if((21 - this.valueOfAllCardsInHand(dealer)) > 5) {
             dealer.addCardToHand(deck.draw());
@@ -161,7 +170,7 @@ public class BlackJack extends CardGame implements GamblingGame {
     }
 
 
-    private void hitUser() {
+    public void hitUser() {
         // Give the user one more card
         player.addCardToHand(deck.draw());
     }

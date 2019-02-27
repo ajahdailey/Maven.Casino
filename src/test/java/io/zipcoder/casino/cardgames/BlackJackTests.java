@@ -84,4 +84,46 @@ public class BlackJackTests {
         Assert.assertEquals(12 , retrievedValue);
 
     }
+    @Test
+    public void hitUserTest() {
+        BlackJackPlayer player = new BlackJackPlayer(
+                new Player(100,"Gamer"));
+        player.addCardToHand(new BlackJackCard(2, SignType.Clover));
+        player.addCardToHand(new BlackJackCard(11, SignType.Clover));
+        BlackJack game = new BlackJack(player, new IOBlackJackConsole("gamer"));
+        game.hitUser();
+        int retrievedValue = player.getNumberOfCardsInHand();
+        Assert.assertEquals(3 , retrievedValue);
+
+    }
+    @Test
+    public void hitDealerTest() {
+        BlackJackPlayer player = new BlackJackPlayer(
+                new Player(100,"Gamer"));
+        BlackJack game = new BlackJack(player, new IOBlackJackConsole("gamer"));
+        CardPlayer dealer = game.getDealer();
+        dealer.addCardToHand(new BlackJackCard(2, SignType.Clover));
+        dealer.addCardToHand(new BlackJackCard(11, SignType.Clover));
+        game.hitDealer();
+        int retrievedValue = dealer.getNumberOfCardsInHand();
+        Assert.assertEquals(3 , retrievedValue);
+
+    }
+    @Test
+    public void bustOr21Test() {
+        BlackJackPlayer player = new BlackJackPlayer(
+                new Player(100,"Gamer"));
+        player.addCardToHand(new BlackJackCard(10, SignType.Clover));
+        player.addCardToHand(new BlackJackCard(8, SignType.Clover));
+        player.addCardToHand(new BlackJackCard(3, SignType.Clover));
+        BlackJack game = new BlackJack(player, new IOBlackJackConsole("gamer"));
+        CardPlayer dealer = game.getDealer();
+        dealer.addCardToHand(new BlackJackCard(2, SignType.Clover));
+        dealer.addCardToHand(new BlackJackCard(11, SignType.Clover));
+        game.bustOr21();
+        boolean retrievedValue = game.isPlayerWin();
+        Assert.assertTrue(retrievedValue);
+
+    }
+
 }

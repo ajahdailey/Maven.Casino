@@ -87,7 +87,6 @@ public class Facilitator {
 
 
     public void facilitateTurn(IOGoFishConsole console) {
-
         CardPlayer currentPlayer = playerList.get(currentPlayerIdx);
         CardPlayer opponentPlayer = null;
         Card cardChosen;
@@ -95,7 +94,7 @@ public class Facilitator {
         console.displayTurnMessage();
         if(isCurrentPlayerDealer()) {
             List<Card> hand = currentPlayer.getHandCards();
-            console.displayCurrentHand(hand);
+            //console.displayCurrentHand(hand);
             opponentPlayer = playerList.get(playerIdx);
             cardChosen = currentPlayer.getRandomCardFromHand();
             console.cardToAskForMessage(cardChosen);
