@@ -28,17 +28,45 @@ public class IOConsole {
 
 
     public void startCasinoConsole() {
-        casinoConsole.println("777777777777777777777777\n" +
-                "7                      7\n" +
-                "7   THE SEVES CASINO   7\n" +
-                "7    ____              7\n" +
-                "7   /\\' .\\    _____    7\n" +
-                "7  /: \\___\\  / .  /\\   7\n" +
-                "7  \\' / . / /____/..\\  7\n" +
-                "7   \\/___/  \\'  '\\  /  7\n" +
-                "7            \\'__'\\/   7\n" +
-                "7                      7\n" +
-                "777777777777777777777777\n");
+//        casinoConsole.println("777777777777777777777777\n" +
+//                "7                      7\n" +
+//                "7   THE SEVES CASINO   7\n" +
+//                "7    ____              7\n" +
+//                "7   /\\' .\\    _____    7\n" +
+//                "7  /: \\___\\  / .  /\\   7\n" +
+//                "7  \\' / . / /____/..\\  7\n" +
+//                "7   \\/___/  \\'  '\\  /  7\n" +
+//                "7            \\'__'\\/   7\n" +
+//                "7                      7\n" +
+//                "777777777777777777777777\n");
+
+        casinoConsole.println("" +
+                "                                      ,`--.' |                    \n" +
+                "  .--.--.                              |   :  :                    \n" +
+                " /  /    '.                            |   |  '                    \n" +
+                "|  :  /`. /                            '   :  |                    \n" +
+                ";  |  |--`                 .---.       ;   |.'.--.--.              \n" +
+                "|  :  ;_       ,---.     /.  ./|  ,---.'---' /  /    '             \n" +
+                " \\  \\    `.   /     \\  .-' . ' | /     \\    |  :  /`./             \n" +
+                "  `----.   \\ /    /  |/___/ \\: |/    /  |   |  :  ;_               \n" +
+                "  __ \\  \\  |.    ' / |.   \\  ' .    ' / |    \\  \\    `.            \n" +
+                " /  /`--'  /'   ;   /| \\   \\   '   ;   /|     `----.   \\           \n" +
+                "'--'.     / '   |  / |  \\   \\  '   |  / |    /  /`--'  /           \n" +
+                "  `--'---'  |   :    |   \\   \\ |   :    |   '--'.     /            \n" +
+                "             \\   \\  /     '---\" \\   \\  /      `--'---'             \n" +
+                "  ,----..     `----'             `----'                            \n" +
+                " /   /   \\                           ,--,                          \n" +
+                "|   :     :                        ,--.'|         ,---,    ,---.   \n" +
+                ".   |  ;. /              .--.--.   |  |,      ,-+-. /  |  '   ,'\\  \n" +
+                ".   ; /--`   ,--.--.    /  /    '  `--'_     ,--.'|'   | /   /   | \n" +
+                ";   | ;     /       \\  |  :  /`./  ,' ,'|   |   |  ,\"' |.   ; ,. : \n" +
+                "|   : |    .--.  .-. | |  :  ;_    '  | |   |   | /  | |'   | |: : \n" +
+                ".   | '___  \\__\\/: . .  \\  \\    `. |  | :   |   | |  | |'   | .; : \n" +
+                "'   ; : .'| ,\" .--.; |   `----.   \\'  : |__ |   | |  |/ |   :    | \n" +
+                "'   | '/  :/  /  ,.  |  /  /`--'  /|  | '.'||   | |--'   \\   \\  /  \n" +
+                "|   :    /;  :   .'   \\'--'.     / ;  :    ;|   |/        `----'   \n" +
+                " \\   \\ .' |  ,     .-./  `--'---'  |  ,   / '---'                  \n" +
+                "  `---`    `--`---'                 ---`-'                         \n\n\n");
     }
 
     public String getPlayerName() {
@@ -58,7 +86,7 @@ public class IOConsole {
 
     public void printGameIntro(String playerName) {
         casinoConsole.println("\nWe have four games you can play, %s.\n\n" +
-                "Black Jack and Craps require bets.\n" +
+                "Black Jack and Craps require bets.\n\n" +
                 "Chuck-A-Luck and Go Fish do not require bets.\n", playerName);
     }
 
@@ -152,7 +180,7 @@ public class IOConsole {
     public void addMoneyMessage(Player player) {
         Integer money = casinoConsole.getIntegerInput("How much would you like to add?");
         player.addMoney(money);
-        casinoConsole.println("Your new balance is $%d\n", player.getMoney());
+        casinoConsole.println("Your new balance is $%d.\n", player.getMoney());
     }
 
 }
