@@ -90,6 +90,14 @@ public class GoFish extends CardGame {
 
     @Override
     public void printResults() {
+        if(facilitator.isQuit()) {
+            console.exitMessage();
+        }
+        else if(facilitator.getWinner() == player){
+            console.winningMessage();
+        }else {
+            console.losingMessage();
+        }
 
 
     }

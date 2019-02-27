@@ -53,17 +53,44 @@ public class IOConsoleTest {
     @Test
     public void startCasinoConsoleTest() {
         //Given
-        String casinoStart = "777777777777777777777777\n" +
-                "7                      7\n" +
-                "7   THE SEVES CASINO   7\n" +
-                "7    ____              7\n" +
-                "7   /\\' .\\    _____    7\n" +
-                "7  /: \\___\\  / .  /\\   7\n" +
-                "7  \\' / . / /____/..\\  7\n" +
-                "7   \\/___/  \\'  '\\  /  7\n" +
-                "7            \\'__'\\/   7\n" +
-                "7                      7\n" +
-                "777777777777777777777777\n";
+        String casinoStart = "" +
+                "                                      ,`--.' |                    \n" +
+                "  .--.--.                              |   :  :                    \n" +
+                " /  /    '.                            |   |  '                    \n" +
+                "|  :  /`. /                            '   :  |                    \n" +
+                ";  |  |--`                 .---.       ;   |.'.--.--.              \n" +
+                "|  :  ;_       ,---.     /.  ./|  ,---.'---' /  /    '             \n" +
+                " \\  \\    `.   /     \\  .-' . ' | /     \\    |  :  /`./             \n" +
+                "  `----.   \\ /    /  |/___/ \\: |/    /  |   |  :  ;_               \n" +
+                "  __ \\  \\  |.    ' / |.   \\  ' .    ' / |    \\  \\    `.            \n" +
+                " /  /`--'  /'   ;   /| \\   \\   '   ;   /|     `----.   \\           \n" +
+                "'--'.     / '   |  / |  \\   \\  '   |  / |    /  /`--'  /           \n" +
+                "  `--'---'  |   :    |   \\   \\ |   :    |   '--'.     /            \n" +
+                "             \\   \\  /     '---\" \\   \\  /      `--'---'             \n" +
+                "  ,----..     `----'             `----'                            \n" +
+                " /   /   \\                           ,--,                          \n" +
+                "|   :     :                        ,--.'|         ,---,    ,---.   \n" +
+                ".   |  ;. /              .--.--.   |  |,      ,-+-. /  |  '   ,'\\  \n" +
+                ".   ; /--`   ,--.--.    /  /    '  `--'_     ,--.'|'   | /   /   | \n" +
+                ";   | ;     /       \\  |  :  /`./  ,' ,'|   |   |  ,\"' |.   ; ,. : \n" +
+                "|   : |    .--.  .-. | |  :  ;_    '  | |   |   | /  | |'   | |: : \n" +
+                ".   | '___  \\__\\/: . .  \\  \\    `. |  | :   |   | |  | |'   | .; : \n" +
+                "'   ; : .'| ,\" .--.; |   `----.   \\'  : |__ |   | |  |/ |   :    | \n" +
+                "'   | '/  :/  /  ,.  |  /  /`--'  /|  | '.'||   | |--'   \\   \\  /  \n" +
+                "|   :    /;  :   .'   \\'--'.     / ;  :    ;|   |/        `----'   \n" +
+                " \\   \\ .' |  ,     .-./  `--'---'  |  ,   / '---'                  \n" +
+                "  `---`    `--`---'                 ---`-'                         \n\n\n";
+//                "777777777777777777777777\n" +
+//                "7                      7\n" +
+//                "7   THE SEVES CASINO   7\n" +
+//                "7    ____              7\n" +
+//                "7   /\\' .\\    _____    7\n" +
+//                "7  /: \\___\\  / .  /\\   7\n" +
+//                "7  \\' / . / /____/..\\  7\n" +
+//                "7   \\/___/  \\'  '\\  /  7\n" +
+//                "7            \\'__'\\/   7\n" +
+//                "7                      7\n" +
+//                "777777777777777777777777\n";
         String expectedOutput = String.format(casinoStart) + "\n";
 
         //When
@@ -125,11 +152,12 @@ public class IOConsoleTest {
     @Test
     public void printGameIntroTest() {
         //Given
-        String gameIntro = "\nWelcome, %s. We have four games you can play.\n\n" +
-                "Black Jack and Craps require bets.\n" +
-                "We've given you $100 to play in the betting games.\n\n" +
+
+        String gameIntro = "\nWe have four games you can play, %s.\n\n" +
+                "Black Jack and Craps require bets.\n\n" +
                 "Chuck-A-Luck and Go Fish do not require bets.\n";
         String expectedOutput = String.format(gameIntro, playerName) + "\n";
+
 
         //When
         IOConsole casinoIO = new IOConsole();
@@ -311,11 +339,23 @@ public class IOConsoleTest {
 
     @Test
     public void notEnoughMoneyMessageTest() {
-
+        //not sure how to test
     }
 
     @Test
     public void addMoneyMessageTest() {
+        //Given
+        Player testPlayer = new Player(startingMoney, playerName);
+        Integer addMoney = 50;
+        byte[] inputBytes = addMoney.toString().getBytes();
+        ByteArrayInputStream inputByteArray = new ByteArrayInputStream(inputBytes);
 
+        //When
+        IOConsole casinoIO = new IOConsole(inputByteArray );
+        String expectedOutput = "How much would you like to add?\n" + "Your new balance is $150.\n\n";
+        casinoIO.addMoneyMessage(testPlayer);
+        String actualOutput = testOutStream.toString();
+        //Then
+        Assert.assertEquals(expectedOutput, actualOutput);
     }
 }

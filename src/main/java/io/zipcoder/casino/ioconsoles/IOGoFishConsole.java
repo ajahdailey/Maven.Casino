@@ -136,11 +136,11 @@ public class IOGoFishConsole extends IOConsole {
 
 
     public void winningMessage() {
-        goFishConsole.getStringInput(name +" have won! Would you like to play again?");
+        goFishConsole.println(name +" have won! Would you like to play again?");
     }
 
     public void losingMessage() {
-        goFishConsole.getStringInput("You Lose. Would you like to try again?");
+        goFishConsole.println("You Lose. Would you like to try again?");
     }
 
     public void printResult(boolean gameReuslt) {
@@ -170,6 +170,7 @@ public class IOGoFishConsole extends IOConsole {
     public void exitMessage() {
         goFishConsole.println("Thank you for playing. Have a good day! ♠♦♥♣");
     }
+
 
 }
 

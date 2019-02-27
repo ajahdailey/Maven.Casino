@@ -45,7 +45,44 @@ public class FacilitatorTest {
         Assert.assertEquals(expected, actual);
 
     }
-
+    @Test
+    public void anyCommonCardsAmongPlayersTest()
+    {
+        Integer expectedNumOfCards = 5;
+        Deck deck = new Deck(52);
+        List<CardPlayer> playerList = new ArrayList<CardPlayer>();
+        CardPlayer cardPlayer = new CardPlayer(new Player(0, "Swapna"));
+        CardPlayer cardPlayer2 = new CardPlayer(new Player(0, "Siri"));
+        cardPlayer.addCardToHand(new Card(10));
+        cardPlayer.addCardToHand(new Card(1));
+        cardPlayer2.addCardToHand(new Card(11));
+        cardPlayer2.addCardToHand(new Card(10));
+        playerList.add(cardPlayer);
+        playerList.add(cardPlayer2);
+        //When
+        Facilitator facilitator = new Facilitator(playerList, deck, 5);
+        boolean present = facilitator.anyCommonCardsAmongPlayers();
+        Assert.assertTrue(present);
+    }
+    @Test
+    public void anyCommonCardsAmongPlayersFailTest()
+    {
+        Integer expectedNumOfCards = 5;
+        Deck deck = new Deck(52);
+        List<CardPlayer> playerList = new ArrayList<CardPlayer>();
+        CardPlayer cardPlayer = new CardPlayer(new Player(0, "Swapna"));
+        CardPlayer cardPlayer2 = new CardPlayer(new Player(0, "Siri"));
+        cardPlayer.addCardToHand(new Card(10));
+        cardPlayer.addCardToHand(new Card(1));
+        cardPlayer2.addCardToHand(new Card(2));
+        cardPlayer2.addCardToHand(new Card(3));
+        playerList.add(cardPlayer);
+        playerList.add(cardPlayer2);
+        //When
+        Facilitator facilitator = new Facilitator(playerList, deck, 5);
+        boolean present = facilitator.anyCommonCardsAmongPlayers();
+        Assert.assertFalse(present);
+    }
     @Test
     public void distributeCardsTest() {
         //Given
