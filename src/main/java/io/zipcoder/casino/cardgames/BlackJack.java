@@ -223,8 +223,10 @@ public class BlackJack extends CardGame implements GamblingGame {
     }
 
     public void giveMoney() {
-        if(playerWin)
+        if(playerWin) {
             player.winMoney();
+            playerWin = false;
+        }
     }
 
 

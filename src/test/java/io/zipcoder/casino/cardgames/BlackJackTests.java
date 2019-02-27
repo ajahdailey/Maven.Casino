@@ -47,7 +47,7 @@ public class BlackJackTests {
         game.giveMoney();
         int playerMoney = game.getPlayer().getMoney();
 
-        Assert.assertEquals(130 , playerMoney);
+        Assert.assertEquals(100 , playerMoney);
 
     }
     @Test
