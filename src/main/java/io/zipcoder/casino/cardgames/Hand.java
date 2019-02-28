@@ -1,26 +1,15 @@
 package io.zipcoder.casino.cardgames;
 
-import io.zipcoder.casino.cardgames.Card;
-import io.zipcoder.casino.player.Player;
 
 import java.util.*;
 
 public class Hand {
 
-
     List<Card> cardsInHand;
-    //List<Card> matchedCards = new ArrayList<Card>();
-    //Card card;
-
-    public Hand(List<Card> cards){
-    this.cardsInHand = cards;
-    }
 
     public Hand() {
         this.cardsInHand = new ArrayList<>();
-
     }
-
 
     public void discardCard(Card card) {
         for(int i = 0 ; i < cardsInHand.size(); i++){
@@ -29,51 +18,46 @@ public class Hand {
                 cardsInHand.remove(inHand);
             }
         }
-
     }
 
     public void clearAllCardsInHand() {
         cardsInHand.clear();
-
     }
 
     public void  addCardToHand(Card card){
-
         cardsInHand.add(card);
     }
 
 
     public int getNumberOfCardsInHand() {
-
         return cardsInHand.size();
     }
 
     public boolean manageDuplicateCards() {
-        boolean anyMatchFound = false;
-        boolean foundMatch;
-
-        for (int i = 0; i < cardsInHand.size(); ) {
+        boolean foundMatch = false;
+        int i = 0;
+        while(i < cardsInHand.size()) {
             foundMatch = false;
             Card cardTobeMatched = cardsInHand.get(i);
             for (int j = i + 1; j < cardsInHand.size(); j++) {
                 Card thisCard = cardsInHand.get(j);
-                if (thisCard.equals(cardTobeMatched)) {
-                    //matchedCards.add(card);
-
-
-                    cardsInHand.remove(cardTobeMatched);
-                    cardsInHand.remove(thisCard);
-
-                    foundMatch = true;
-                    anyMatchFound = true;
-                    break;
-                }
+                foundMatch = removeMatchingCards(cardTobeMatched, thisCard);
             }
-            if(!foundMatch)
+            if(!foundMatch) {
                 i++;
-
+            }
         }
-        return anyMatchFound;
+        return foundMatch;
+    }
+
+    private boolean removeMatchingCards(Card card1, Card card2) {
+        boolean matchfound = false;
+        if (card1.equals(card2)) {
+            cardsInHand.remove(card1);
+            cardsInHand.remove(card2);
+            matchfound = true;
+        }
+        return matchfound;
     }
 
     public Card getRandomCard() {
@@ -91,8 +75,6 @@ public class Hand {
     }
 
     public List<Card> getHandCards() {
-        return new ArrayList<Card>(this.cardsInHand);
+        return new ArrayList<>(this.cardsInHand);
     }
-
-
 }
