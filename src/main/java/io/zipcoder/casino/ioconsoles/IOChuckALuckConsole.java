@@ -4,6 +4,7 @@ import io.zipcoder.casino.utilities.Console;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class IOChuckALuckConsole extends IOConsole{
 
@@ -40,7 +41,9 @@ public class IOChuckALuckConsole extends IOConsole{
                 "                                                                        ");
     }
 
-    public void diceRoll(){
+    public void diceRoll () throws Exception {
+        TimeUnit.SECONDS.sleep(2);
+
         console.println("               (( _______\n" +
                 "     _______     /\\O    O\\   (( _______\n" +
                 "    /O     /\\   /  \\      \\    /O     /\\\n" +

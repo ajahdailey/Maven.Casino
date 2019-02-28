@@ -30,7 +30,7 @@ public class Casino {
        startingMoney = console.getStartingMoney();
        Player player = new Player(startingMoney, playerName);
 
-//       console.printGameIntro(player.getName());
+       console.printGameIntro(player.getName());
 
        boolean playAgain;
        do {

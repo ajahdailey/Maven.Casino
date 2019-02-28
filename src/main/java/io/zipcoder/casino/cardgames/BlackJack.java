@@ -106,6 +106,7 @@ public class BlackJack extends CardGame implements GamblingGame {
 
                 this.whoWon();
                 this.printResults();
+                giveMoney();
                 player.clearCardsInHand();
                 dealer.clearCardsInHand();
 
@@ -117,12 +118,12 @@ public class BlackJack extends CardGame implements GamblingGame {
     }
 
     private void whoWon() {
-        if(playerWin == true){
-           console.setResults("Congrats, you won! \n\tyour score : " + playerPoints + "\n\tdealer score : " + dealerPoints);
-
-
-        }else if(playerWin == true && dealerWin == true ){
+        if(playerWin == true && dealerWin == true ){
             console.setResults("Its a tie! \n\tyour score : " + playerPoints + "\n\tdealer score : " + dealerPoints);
+
+
+        }else if(playerWin == true){
+           console.setResults("Congrats, you won! \n\tyour score : " + playerPoints + "\n\tdealer score : " + dealerPoints);
 
 
         }else if(playerWin == false){
@@ -189,10 +190,13 @@ public class BlackJack extends CardGame implements GamblingGame {
     public int valueOfAllCardsInHand(CardPlayer player){
         List<Card> hand = player.getHandCards();
         int sumOfValue = 0;
+        // Find the summ of all other than Ace
         for(Card card : hand){
             if(card.getValue() != 1)
                 sumOfValue += ((BlackJackCard)card).getBlackJackValue();
         }
+
+        // Now add Ace
         if(hand.contains(new Card(1))) {
             for(Card card : hand){
                 if(card.getValue() == 1)
@@ -219,7 +223,10 @@ public class BlackJack extends CardGame implements GamblingGame {
     }
 
     public void giveMoney() {
-        player.winMoney();
+        if(playerWin) {
+            player.winMoney();
+            playerWin = false;
+        }
     }
 
 
