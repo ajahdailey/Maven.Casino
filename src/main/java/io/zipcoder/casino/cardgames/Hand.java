@@ -40,8 +40,10 @@ public class Hand {
             foundMatch = false;
             Card cardTobeMatched = cardsInHand.get(i);
             for (int j = i + 1; j < cardsInHand.size(); j++) {
-                Card thisCard = cardsInHand.get(j);
-                foundMatch = removeMatchingCards(cardTobeMatched, thisCard);
+                foundMatch = removeMatchingCards(cardTobeMatched, cardsInHand.get(j));
+                if (foundMatch) {
+                    break;
+                }
             }
             if(!foundMatch) {
                 i++;

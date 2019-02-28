@@ -122,7 +122,7 @@ public class HandTest {
             Card card4 = new Card(6, SignType.Clover);
             Hand hand=new Hand();
             hand.addCardToHand(card1);
-            hand.addCardToHand(card1);
+            hand.addCardToHand(card2);
             hand.addCardToHand(card3);
             hand.addCardToHand(card4);
 
