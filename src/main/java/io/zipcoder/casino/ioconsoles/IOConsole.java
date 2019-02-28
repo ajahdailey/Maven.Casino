@@ -27,19 +27,7 @@ public class IOConsole {
     }
 
 
-    public void startCasinoConsole() {
-//        casinoConsole.println("777777777777777777777777\n" +
-//                "7                      7\n" +
-//                "7   THE SEVES CASINO   7\n" +
-//                "7    ____              7\n" +
-//                "7   /\\' .\\    _____    7\n" +
-//                "7  /: \\___\\  / .  /\\   7\n" +
-//                "7  \\' / . / /____/..\\  7\n" +
-//                "7   \\/___/  \\'  '\\  /  7\n" +
-//                "7            \\'__'\\/   7\n" +
-//                "7                      7\n" +
-//                "777777777777777777777777\n");
-
+    public void casinoSign() {
         casinoConsole.println("" +
                 "                                      ,`--.' |                    \n" +
                 "  .--.--.                              |   :  :                    \n" +
@@ -78,11 +66,6 @@ public class IOConsole {
         startingMoney = casinoConsole.getIntegerInput("How much money would you like to start with, %s?", playerName);
         return startingMoney;
     }
-//
-//    public Player getPlayer(){
-//        String name = getPlayerName();
-//        return new Player(100, name);
-//    }
 
     public void printGameIntro(String playerName) {
         casinoConsole.println("\nWe have four games you can play, %s.\n\n" +
@@ -90,51 +73,15 @@ public class IOConsole {
                 "Chuck-A-Luck and Go Fish do not require bets.\n", playerName);
     }
 
-    public GameType getGameSelection(Player player) {
+    public Integer getGameSelection(Player player) {
         Integer gameSelection = casinoConsole.getIntegerInput("Which game do you want to play?\n" +
                 "-------------------------------\n" +
                 "Press 1 for BlackJack\n" +
                 "Press 2 for Chuck-A-Luck\n" +
                 "Press 3 for Craps\n" +
-                "Press 4 for Go Fish"
-        );
-
-        GameType finalSelection;
-
-        switch (gameSelection) {
-            case 1:
-                finalSelection = GameType.BlackJack;
-                break;
-            case 2:
-                finalSelection = GameType.ChuckALuck;
-                break;
-            case 3:
-                finalSelection = GameType.Crapes;
-                break;
-            case 4:
-                finalSelection = GameType.GoFish;
-                break;
-            default: finalSelection = null;
-        }
-
-        if (finalSelection == null) {
-            invalidEntryMessage();
-            finalSelection = getGameSelection(player);
-        }
-        if (finalSelection == GameType.BlackJack) {
-            if (player.getMoney() < BlackJackPlayer.getBlackJackBetAmount()) {
-                notEnoughMoneyMessage(player);
-                finalSelection = getGameSelection(player);
-            }
-        }
-        if (finalSelection == GameType.Crapes) {
-            if (player.getMoney() < CrapsPlayer.getCrapsBetAmount()) {
-                notEnoughMoneyMessage(player);
-                finalSelection = getGameSelection(player);
-            }
-        }
-            return finalSelection;
-        }
+                "Press 4 for Go Fish");
+        return gameSelection;
+    }
 
     public void printPlayerAccount(Integer balance) {
         casinoConsole.println("\n" +
