@@ -5,6 +5,4 @@ public enum SignType {
     Spade,
     Clover,
     Diamond
-
-    //method to produce a suit for the cards Spade, Hearts, Clover, Diamond;
 }
