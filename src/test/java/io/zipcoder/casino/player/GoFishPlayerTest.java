@@ -1,9 +1,9 @@
 package io.zipcoder.casino.player;
 
+import io.zipcoder.casino.Player;
+import io.zipcoder.casino.cardgames.GoFish.GoFishPlayer;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class GoFishPlayerTest {
 

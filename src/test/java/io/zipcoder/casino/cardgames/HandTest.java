@@ -1,11 +1,11 @@
 package io.zipcoder.casino.cardgames;
 
-import io.zipcoder.casino.player.CardPlayer;
-import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.cardgames.CardUtilities.Card;
+import io.zipcoder.casino.cardgames.CardUtilities.Hand;
+import io.zipcoder.casino.cardgames.CardUtilities.SignType;
 import org.junit.Assert;
 import org.junit.Test;
 
-import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +17,7 @@ public class HandTest {
         //Given
         Hand hand=new Hand();
 
-        Card card = new Card(3,SignType.Clover);
+        Card card = new Card(3, SignType.Clover);
         hand.addCardToHand(card);
 
         int expected = 0;

@@ -1,8 +1,10 @@
 package io.zipcoder.casino.dicegames;
 
-import io.zipcoder.casino.ioconsoles.IOCrapsConsole;
-import io.zipcoder.casino.player.CrapsPlayer;
-import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.dicegames.Craps.Craps;
+import io.zipcoder.casino.dicegames.DiceUtilities.Dice;
+import io.zipcoder.casino.dicegames.DiceUtilities.DiceGame;
+import io.zipcoder.casino.dicegames.Craps.CrapsPlayer;
+import io.zipcoder.casino.Player;
 import org.junit.Assert;
 import org.junit.Test;
 

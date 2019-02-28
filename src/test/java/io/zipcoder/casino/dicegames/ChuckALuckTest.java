@@ -1,8 +1,10 @@
 package io.zipcoder.casino.dicegames;
 
-import io.zipcoder.casino.ioconsoles.IOChuckALuckConsole;
-import io.zipcoder.casino.player.DicePlayer;
-import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.dicegames.ChuckALuck.ChuckALuck;
+import io.zipcoder.casino.dicegames.DiceUtilities.Dice;
+import io.zipcoder.casino.dicegames.ChuckALuck.IOChuckALuckConsole;
+import io.zipcoder.casino.dicegames.DiceUtilities.DicePlayer;
+import io.zipcoder.casino.Player;
 import io.zipcoder.casino.utilities.Console;
 import org.junit.Assert;
 import org.junit.Before;
@@ -13,7 +15,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class ChuckALuckTest { ChuckALuck game;
 

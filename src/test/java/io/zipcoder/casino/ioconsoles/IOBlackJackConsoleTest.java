@@ -1,5 +1,6 @@
 package io.zipcoder.casino.ioconsoles;
 
+import io.zipcoder.casino.cardgames.BlackJack.IOBlackJackConsole;
 import io.zipcoder.casino.utilities.Console;
 import org.junit.After;
 import org.junit.Assert;
@@ -8,8 +9,6 @@ import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import static org.junit.Assert.*;
 
 public class IOBlackJackConsoleTest {
 

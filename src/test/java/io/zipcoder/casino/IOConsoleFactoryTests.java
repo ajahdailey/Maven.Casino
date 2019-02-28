@@ -1,7 +1,7 @@
 package io.zipcoder.casino;
 
-import io.zipcoder.casino.ioconsoles.IOCrapsConsole;
-import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.utilities.GameType;
+import io.zipcoder.casino.utilities.IOConsoleFactory;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,14 +1,12 @@
 package io.zipcoder.casino;
 
 
-import io.zipcoder.casino.ioconsoles.IOConsole;
-import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.utilities.GameType;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 

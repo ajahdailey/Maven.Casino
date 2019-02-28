@@ -1,6 +1,6 @@
 package io.zipcoder.casino.dicegames;
 
-import io.zipcoder.casino.ioconsoles.IOCrapsConsole;
+import io.zipcoder.casino.dicegames.Craps.IOCrapsConsole;
 
 public class DummyIOForCrapsTest extends IOCrapsConsole {
     boolean pass;

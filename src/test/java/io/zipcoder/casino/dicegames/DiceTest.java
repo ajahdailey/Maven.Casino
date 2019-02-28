@@ -1,5 +1,6 @@
 package io.zipcoder.casino.dicegames;
 
+import io.zipcoder.casino.dicegames.DiceUtilities.Dice;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

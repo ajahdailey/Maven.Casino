@@ -1,6 +1,6 @@
 package io.zipcoder.casino.ioconsoletests;
 
-import io.zipcoder.casino.ioconsoles.IOChuckALuckConsole;
+import io.zipcoder.casino.dicegames.ChuckALuck.IOChuckALuckConsole;
 import io.zipcoder.casino.utilities.Console;
 import org.junit.Test;
 import org.junit.Assert;

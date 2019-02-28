@@ -1,5 +1,7 @@
 package io.zipcoder.casino.dicegames;
 
+import io.zipcoder.casino.dicegames.DiceUtilities.Dice;
+
 public class DummyDiceForCrapsTest extends Dice {
     int tossNumber = 0;
     private Integer[] possibleToss1;

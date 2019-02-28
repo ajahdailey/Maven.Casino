@@ -1,16 +1,9 @@
 package io.zipcoder.casino;
 
 
-import io.zipcoder.casino.cardgames.BlackJack;
-import io.zipcoder.casino.dicegames.Craps;
-import io.zipcoder.casino.ioconsoles.IOConsole;
-import io.zipcoder.casino.player.BlackJackPlayer;
-import io.zipcoder.casino.player.CrapsPlayer;
-import io.zipcoder.casino.player.Player;
-import io.zipcoder.casino.utilities.GamblingGame;
-import io.zipcoder.casino.utilities.Game;
-
-import java.util.List;
+import io.zipcoder.casino.cardgames.BlackJack.BlackJackPlayer;
+import io.zipcoder.casino.dicegames.Craps.CrapsPlayer;
+import io.zipcoder.casino.utilities.*;
 
 public class Casino {
 
@@ -18,11 +11,11 @@ public class Casino {
        new Casino().enterLobby();
     }
 
-    private IOConsole casinoConsole;
+    private CasinoConsole casinoConsole;
     private Player player;
 
     public void enterLobby() {
-        casinoConsole = new IOConsole();
+        casinoConsole = new CasinoConsole();
         casinoConsole.casinoSign();
         createPlayerAccount();
         casinoConsole.printGameIntro(this.player.getName());
@@ -43,7 +36,7 @@ public class Casino {
     }
 
         public GameType gameValidation(Integer gameSelection, Player player) {
-            GameType gameSelected = GameType.ChuckALuck;
+            GameType gameSelected = null;
             switch (gameSelection) {
                 case 1:
                     if(validateBlackJack(player)) {
@@ -89,7 +82,7 @@ public class Casino {
 
 
     public void playGame(GameType gameSelected) {
-        IOConsole gameConsole = IOConsoleFactory.CreateIOConsole(gameSelected, this.player);
+        CasinoConsole gameConsole = IOConsoleFactory.CreateIOConsole(gameSelected, this.player);
         Game gameObject = GameFactory.CreateGameObject(this.player, gameSelected, gameConsole);
         gameObject.play();
         gameObject.printResults();

@@ -1,16 +1,13 @@
 package io.zipcoder.casino.player;
 
-import io.zipcoder.casino.cardgames.Card;
-import io.zipcoder.casino.cardgames.Hand;
-import io.zipcoder.casino.cardgames.SignType;
+import io.zipcoder.casino.Player;
+import io.zipcoder.casino.cardgames.CardUtilities.Card;
+import io.zipcoder.casino.cardgames.CardUtilities.CardPlayer;
+import io.zipcoder.casino.cardgames.CardUtilities.SignType;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
-
-import static org.junit.Assert.*;
 
 public class CardPlayerTest {
 

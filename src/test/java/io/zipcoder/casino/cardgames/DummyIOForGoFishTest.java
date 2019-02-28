@@ -1,6 +1,7 @@
 package io.zipcoder.casino.cardgames;
 
-import io.zipcoder.casino.ioconsoles.IOGoFishConsole;
+import io.zipcoder.casino.cardgames.CardUtilities.Card;
+import io.zipcoder.casino.cardgames.GoFish.IOGoFishConsole;
 
 import java.util.List;
 

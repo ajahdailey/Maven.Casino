@@ -1,20 +1,16 @@
 package io.zipcoder.casino;
 
-import io.zipcoder.casino.cardgames.Card;
-import io.zipcoder.casino.cardgames.Deck;
-import io.zipcoder.casino.cardgames.Hand;
-import io.zipcoder.casino.cardgames.SignType;
-import io.zipcoder.casino.ioconsoles.IOGoFishConsole;
-import io.zipcoder.casino.player.CardPlayer;
-import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.cardgames.CardUtilities.Card;
+import io.zipcoder.casino.cardgames.CardUtilities.Deck;
+import io.zipcoder.casino.cardgames.CardUtilities.Hand;
+import io.zipcoder.casino.cardgames.CardUtilities.SignType;
+import io.zipcoder.casino.cardgames.CardUtilities.CardPlayer;
+import io.zipcoder.casino.cardgames.Facilitator;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
-
-import static org.junit.Assert.*;
 
 public class FacilitatorTest {
 

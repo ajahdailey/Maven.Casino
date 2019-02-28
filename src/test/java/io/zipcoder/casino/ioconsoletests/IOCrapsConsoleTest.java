@@ -1,6 +1,6 @@
 package io.zipcoder.casino.ioconsoletests;
 
-import io.zipcoder.casino.ioconsoles.IOCrapsConsole;
+import io.zipcoder.casino.dicegames.Craps.IOCrapsConsole;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;

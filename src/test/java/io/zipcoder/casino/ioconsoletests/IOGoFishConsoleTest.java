@@ -1,12 +1,8 @@
 package io.zipcoder.casino.ioconsoletests;
 
-import io.zipcoder.casino.cardgames.Card;
-import io.zipcoder.casino.cardgames.SignType;
-import io.zipcoder.casino.ioconsoles.IOBlackJackConsole;
-import io.zipcoder.casino.ioconsoles.IOGoFishConsole;
-import io.zipcoder.casino.player.Dealer;
-import io.zipcoder.casino.player.GoFishPlayer;
-import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.cardgames.CardUtilities.Card;
+import io.zipcoder.casino.cardgames.CardUtilities.SignType;
+import io.zipcoder.casino.cardgames.GoFish.IOGoFishConsole;
 import io.zipcoder.casino.utilities.Console;
 import org.junit.After;
 import org.junit.Assert;
@@ -17,9 +13,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
-
-import static io.zipcoder.casino.GameType.GoFish;
-import static org.junit.Assert.*;
 
 public class IOGoFishConsoleTest {
     Console goFishConsole;

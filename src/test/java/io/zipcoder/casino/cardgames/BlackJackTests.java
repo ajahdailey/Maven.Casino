@@ -1,9 +1,12 @@
 package io.zipcoder.casino.cardgames;
 
-import io.zipcoder.casino.ioconsoles.IOBlackJackConsole;
-import io.zipcoder.casino.player.BlackJackPlayer;
-import io.zipcoder.casino.player.CardPlayer;
-import io.zipcoder.casino.player.Player;
+import io.zipcoder.casino.cardgames.BlackJack.BlackJack;
+import io.zipcoder.casino.cardgames.BlackJack.BlackJackCard;
+import io.zipcoder.casino.cardgames.BlackJack.IOBlackJackConsole;
+import io.zipcoder.casino.cardgames.BlackJack.BlackJackPlayer;
+import io.zipcoder.casino.cardgames.CardUtilities.SignType;
+import io.zipcoder.casino.cardgames.CardUtilities.CardPlayer;
+import io.zipcoder.casino.Player;
 import org.junit.Assert;
 import org.junit.Test;
 
