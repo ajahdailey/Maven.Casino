@@ -12,14 +12,13 @@ public class IOChuckALuckConsole extends IOConsole{
 
     public IOChuckALuckConsole(Console console){
         this.console = console;
-
     }
-
 
     public IOChuckALuckConsole(String name) {
         super();
         this.console = new Console(System.in, System.out);
     }
+
     public void welcome(){
         console.println("                __    __     _                                          \n" +
                 "               / / /\\ \\ \\___| | ___ ___  _ __ ___   ___                 \n" +
