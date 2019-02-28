@@ -21,17 +21,14 @@ public class ChuckALuckTest { ChuckALuck game;
     public void setup(){
         Player player = new Player(10, "A");
         DicePlayer dicePlayer = new DicePlayer(player);
-
-       game = new ChuckALuck(dicePlayer);
+        game = new ChuckALuck(dicePlayer);
     }
 
     @Test
     public void chuckALuckConstructorTest() {
-        //Given
         DicePlayer newPlayer = new DicePlayer();
         ChuckALuck newgame = new ChuckALuck(newPlayer);
 
-        //Then
         Assert.assertNotNull(newgame);
     }
 
@@ -47,17 +44,14 @@ public class ChuckALuckTest { ChuckALuck game;
         diceResults.add(1);
         diceResults.add(3);
         diceResults.add(6);
-
         int expected = 0;
 
-        //When
         int actualMatch = game.getMatches(userGuesses, diceResults);
 
         Assert.assertEquals(expected, actualMatch);
     }
     @Test
     public void getResult_whenThereIsMatch2() {
-        //Given
         List<Integer> userGuesses = new ArrayList<Integer>();
         userGuesses.add(5);
         userGuesses.add(2);
@@ -69,15 +63,12 @@ public class ChuckALuckTest { ChuckALuck game;
         diceResults.add(6);
 
         int expected = 1;
-
-        //When
         int actualMatch = game.getMatches(userGuesses, diceResults);
 
         Assert.assertEquals(expected, actualMatch);
     }
     @Test
     public void getResult_whenThereIsMatch3() {
-        //Given
         List<Integer> userGuesses = new ArrayList<Integer>();
         userGuesses.add(5);
         userGuesses.add(2);
@@ -87,18 +78,14 @@ public class ChuckALuckTest { ChuckALuck game;
         diceResults.add(5);
         diceResults.add(4);
         diceResults.add(2);
-
         int expected = 3;
 
-        //When
         int actualMatch = game.getMatches(userGuesses, diceResults);
-
         Assert.assertEquals(expected, actualMatch);
     }
 
     @Test
     public void getResult_whenThereIsOneMatch() {
-        //Given
         List<Integer> userGuesses = new ArrayList<Integer>();
         userGuesses.add(5);
         userGuesses.add(2);
@@ -111,15 +98,12 @@ public class ChuckALuckTest { ChuckALuck game;
 
         int expected = 1;
 
-        //When
         int actualMatch = game.getMatches(userGuesses, diceResults);
-
         Assert.assertEquals(expected, actualMatch);
     }
 
     @Test
     public void getResult_whenThereIsOneMatch1() {
-        //Given
         List<Integer> userGuesses = new ArrayList<Integer>();
         userGuesses.add(5);
         userGuesses.add(2);
@@ -132,16 +116,12 @@ public class ChuckALuckTest { ChuckALuck game;
 
         int expected = 1;
 
-        //When
         int actualMatch = game.getMatches(userGuesses, diceResults);
-
         Assert.assertEquals(expected, actualMatch);
     }
 
     @Test
     public void printResults() {
-        //sometimes pass
-        //Given
         Dice dice = new Dice(1);
 
         Player player = new Player(10, "A");
@@ -155,10 +135,8 @@ public class ChuckALuckTest { ChuckALuck game;
         ChuckALuck game = new ChuckALuck(dicePlayer, console);
         game.play();
 
-        //When
         game.printResults();
 
-        //Then
         String output = outputStream.toString();
 
         boolean retrievedMatches = output.contains("You have " );
@@ -176,22 +154,15 @@ public class ChuckALuckTest { ChuckALuck game;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 
         IOChuckALuckConsole console = createConsole(inputStream, outputStream);
-
         ChuckALuck game = new ChuckALuck(dicePlayer, console);
-
-        //When
         game.play();
 
-        //Then
         String output = outputStream.toString();
         Assert.assertTrue(output.contains("Guess the outcome"));
-
     }
-
     private IOChuckALuckConsole createConsole(ByteArrayInputStream inputStream, ByteArrayOutputStream outputStream) {
         Console c = new Console(inputStream, new PrintStream(outputStream));
         IOChuckALuckConsole console = new IOChuckALuckConsole(c);
         return console;
     }
-
 }

@@ -4,6 +4,7 @@ import io.zipcoder.casino.cardgames.Card;
 import io.zipcoder.casino.cardgames.Deck;
 import io.zipcoder.casino.cardgames.Hand;
 import io.zipcoder.casino.cardgames.SignType;
+import io.zipcoder.casino.ioconsoles.IOGoFishConsole;
 import io.zipcoder.casino.player.CardPlayer;
 import io.zipcoder.casino.player.Player;
 import org.junit.Assert;
@@ -125,18 +126,14 @@ public class FacilitatorTest {
         facilitator.discardMatchedCards();
         facilitator.evaluateTurn();
 
-        System.out.println(facilitator.getWinner());
-
         //Then
+        CardPlayer cardPlayer1 = facilitator.getWinner();
+        String strRepresentationOfCardPlayer1 = cardPlayer1.toString();
+        String expectedReperesentation = "";
+        Assert.assertEquals(strRepresentationOfCardPlayer1, expectedReperesentation);
 
     }
 
-
-    @Test
-    public void facilitateTurnTest() {
-
-
-    }
 
     @Test
     public void discardMatchedCards() {
