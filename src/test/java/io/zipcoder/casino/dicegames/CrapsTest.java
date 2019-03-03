@@ -137,4 +137,18 @@ public class CrapsTest {
         Assert.assertFalse(craps.didWin());
     }
 
+    @Test
+    public void giveMoneyTest(){
+        Integer[] toss1 = {1};
+        Integer[] toss2 = {1};
+        Dice dice = new DummyDiceForCrapsTest(toss1,toss2);
+        Player player = new Player(100,"Aswathy");
+        Craps craps = new Craps(new CrapsPlayer(player),
+                new DummyIOForCrapsTest("Aswathy", false), dice);
+        craps.play();
+        craps.giveMoney();
+        Assert.assertEquals(player.getMoney(), 110);
+
+    }
+
 }

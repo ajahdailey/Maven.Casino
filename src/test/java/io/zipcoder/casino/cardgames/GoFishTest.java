@@ -27,28 +27,42 @@ public class GoFishTest {
     @Test
     public void playTestDealerWins() {
 
-        int[] deckValues = {11,3,8,2,11,6,6,4,3,3,2,3,4,2};
+        int[] deckValues = {11,3,8,2,10,7,6,4,3,3,2,3,4,2};
         Deck deck = new DummyDeckForGoFishTest(deckValues);
         IOGoFishConsole console = new DummyIOForGoFishTest("Aswathy");
 
         GoFish game = new GoFish(new CardPlayer(new Player(100, "Aswathy")), console, deck);
         game.play();
-        //game.printResults();
+        game.printResults();
+        boolean didwin =  game.didWin();
+        Assert.assertFalse(didwin);
     }
     @Test
     public void playTestPlayerWins() {
 
-        int[] deckValues = {11,2,8,2,11,6,6,4,3,3,2,11,4,2};
+        int[] deckValues = {10,2,8,2,11,6,6,4,3,3,2,11,4,2};
         Deck deck = new DummyDeckForGoFishTest(deckValues);
         IOGoFishConsole console = new DummyIOForGoFishTest("Aswathy");
 
         GoFish game = new GoFish(new CardPlayer(new Player(100, "Aswathy")), console, deck);
         game.play();
-        //game.printResults();
+        game.printResults();
+        boolean didwin =  game.didWin();
+        Assert.assertTrue(didwin);
     }
+    @Test
+    public void playTestPlayerQuits() {
 
+        int[] deckValues = {11,2,8,2,11,6,6,4,3,3};
+        Deck deck = new DummyDeckForGoFishTest(deckValues);
+        IOGoFishConsole console = new DummyIOForGoFishTest("Aswathy", true);
 
-
+        GoFish game = new GoFish(new CardPlayer(new Player(100, "Aswathy")), console, deck);
+        game.play();
+        game.printResults();
+        boolean didQuit =  game.isQuit();
+        Assert.assertTrue(didQuit);
+    }
     @Test
     public void exit() {
     }

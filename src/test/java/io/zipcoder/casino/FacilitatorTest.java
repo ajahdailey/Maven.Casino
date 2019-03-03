@@ -6,6 +6,7 @@ import io.zipcoder.casino.cardgames.CardUtilities.Hand;
 import io.zipcoder.casino.cardgames.CardUtilities.SignType;
 import io.zipcoder.casino.cardgames.CardUtilities.CardPlayer;
 import io.zipcoder.casino.cardgames.Facilitator;
+import io.zipcoder.casino.cardgames.GoFish.IOGoFishConsole;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -24,6 +25,7 @@ public class FacilitatorTest {
         Deck deck = new Deck(52);
         List<CardPlayer> playerList = new ArrayList<CardPlayer>();
         CardPlayer cardPlayer = new CardPlayer(new Player(200, "Swapna"));
+        playerList.add(new CardPlayer(new Player(0, "dealer")));
         playerList.add(cardPlayer);
         Card card1 = new Card(2);
         Card card2 = new Card(5);
@@ -31,7 +33,8 @@ public class FacilitatorTest {
         hand.addCardToHand(card1);
         hand.addCardToHand(card2);
 
-        Facilitator facilitator = new Facilitator(playerList, deck, 5);
+        Facilitator facilitator = new Facilitator(playerList, deck, 5,
+                new IOGoFishConsole("Swapna"));
 
 
         boolean actual = facilitator.evaluateTurn();
@@ -56,7 +59,8 @@ public class FacilitatorTest {
         playerList.add(cardPlayer);
         playerList.add(cardPlayer2);
         //When
-        Facilitator facilitator = new Facilitator(playerList, deck, 5);
+        Facilitator facilitator = new Facilitator(playerList, deck,
+                5, new IOGoFishConsole("Swapna"));
         boolean present = facilitator.anyCommonCardsAmongPlayers();
         Assert.assertTrue(present);
     }
@@ -75,7 +79,8 @@ public class FacilitatorTest {
         playerList.add(cardPlayer);
         playerList.add(cardPlayer2);
         //When
-        Facilitator facilitator = new Facilitator(playerList, deck, 5);
+        Facilitator facilitator = new Facilitator(playerList, deck,
+                5, new IOGoFishConsole("Swapna"));
         boolean present = facilitator.anyCommonCardsAmongPlayers();
         Assert.assertFalse(present);
     }
@@ -86,10 +91,12 @@ public class FacilitatorTest {
         Deck deck = new Deck(52);
         List<CardPlayer> playerList = new ArrayList<CardPlayer>();
         CardPlayer cardPlayer = new CardPlayer(new Player(0, "Swapna"));
+        playerList.add(new CardPlayer(new Player(0, "dealer")));
         playerList.add(cardPlayer);
 
         //When
-        Facilitator facilitator = new Facilitator(playerList, deck, 5);
+        Facilitator facilitator = new Facilitator(playerList, deck,
+                5, new IOGoFishConsole("Swapna"));
         facilitator.distributeCards();
 
         Integer actualCardsInHand = cardPlayer.getNumberOfCardsInHand();
@@ -106,18 +113,23 @@ public class FacilitatorTest {
         Deck deck = new Deck(52);
         List<CardPlayer> playerList = new ArrayList<CardPlayer>();
         CardPlayer cardPlayer = new CardPlayer(new Player(0, "Swapna"));
+        CardPlayer dealer = new CardPlayer(new Player(0, "dealer"));
+        playerList.add(dealer);
         playerList.add(cardPlayer);
-        Facilitator facilitator = new Facilitator(playerList, deck, 5);
-       // facilitator.distributeCards();
+        Facilitator facilitator = new Facilitator(playerList, deck,
+                5, new IOGoFishConsole("Swapna"));
         Card card1 = new Card(2, SignType.Clover);
         Card card2 = new Card(5, SignType.Clover);
         Card card3 = new Card(2, SignType.Clover);
         Card card4 = new Card(5, SignType.Clover);
 
+        Card card5 = new Card(6, SignType.Clover);
+
         cardPlayer.addCardToHand(card1);
         cardPlayer.addCardToHand(card2);
         cardPlayer.addCardToHand(card3);
         cardPlayer.addCardToHand(card4);
+        dealer.addCardToHand(card5);
         //When
         facilitator.discardMatchedCards();
         facilitator.evaluateTurn();
@@ -125,7 +137,7 @@ public class FacilitatorTest {
         //Then
         CardPlayer cardPlayer1 = facilitator.getWinner();
         String strRepresentationOfCardPlayer1 = cardPlayer1.toString();
-        String expectedReperesentation = "";
+        String expectedReperesentation = cardPlayer.toString();
         Assert.assertEquals(strRepresentationOfCardPlayer1, expectedReperesentation);
 
     }
@@ -136,8 +148,10 @@ public class FacilitatorTest {
         Deck deck = new Deck(52);
         List<CardPlayer> playerList = new ArrayList<CardPlayer>();
         CardPlayer cardPlayer = new CardPlayer(new Player(0, "Swapna"));
+        playerList.add(new CardPlayer(new Player(0, "dealer")));
         playerList.add(cardPlayer);
-        Facilitator facilitator = new Facilitator(playerList, deck, 5);
+        Facilitator facilitator = new Facilitator(playerList, deck,
+                5, new IOGoFishConsole("Swapna"));
        // facilitator.distributeCards();
         Card card1 = new Card(2, SignType.Clover);
         Card card2 = new Card(5, SignType.Clover);

@@ -3,6 +3,7 @@ package io.zipcoder.casino.cardgames.BlackJack;
 import io.zipcoder.casino.cardgames.CardUtilities.Card;
 import io.zipcoder.casino.cardgames.CardUtilities.CardGame;
 import io.zipcoder.casino.cardgames.CardUtilities.CardPlayer;
+import io.zipcoder.casino.cardgames.CardUtilities.Deck;
 import io.zipcoder.casino.cardgames.Facilitator;
 import io.zipcoder.casino.Player;
 import io.zipcoder.casino.utilities.GamblingGame;
@@ -18,8 +19,17 @@ public class BlackJack extends CardGame implements GamblingGame {
     private Facilitator facilitator;
     private boolean continueFlagMain;
     private boolean gameOver;
-    private boolean playerBust;
-    private boolean dealerBust;
+
+    //Used only by Test
+    public BlackJack(BlackJackPlayer player, IOBlackJackConsole console, BlackJackDeck deck) {
+        super();
+        this.player = player;
+
+        dealer = new Dealer(new Player(0, "Dealer"));
+
+        this.console = console;
+        this.deck = deck;
+    }
 
     public boolean isPlayerWin() {
         return playerWin;
@@ -93,12 +103,10 @@ public class BlackJack extends CardGame implements GamblingGame {
                 }
 
                 if(dealerPoints > playerPoints && dealerPoints <= 21){
-                    this.playerBust = true;
                     this.dealerWin = true;
 
                 }
                 else if(dealerPoints < playerPoints && playerPoints <= 21){
-                    this.dealerBust = false;
                     this.playerWin = true;
 
                 }
@@ -132,9 +140,7 @@ public class BlackJack extends CardGame implements GamblingGame {
 
     private void initBooleans(){
         this.gameOver = false;
-        this.playerBust = false;
-        this.dealerBust = false;
-        this.playerWin = false;
+         this.playerWin = false;
         this.dealerWin = false;
     }
 
@@ -150,12 +156,10 @@ public class BlackJack extends CardGame implements GamblingGame {
             this.gameOver = true;
         }
         else if(playerPoints > 21 ){
-            this.playerBust = true;
             this.playerWin = false;
             this.gameOver = true;
         }
         else if(dealerPoints > 21){
-            this.dealerBust = true;
             this.dealerWin = false;
             this.gameOver = true;
         }
@@ -223,6 +227,7 @@ public class BlackJack extends CardGame implements GamblingGame {
 
     public void giveMoney() {
         if(playerWin) {
+            didWin = true;
             player.winMoney();
             playerWin = false;
         }
