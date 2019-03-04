@@ -1,17 +1,55 @@
 package io.zipcoder.casino.cardgames;
 
-import io.zipcoder.casino.cardgames.BlackJack.BlackJack;
-import io.zipcoder.casino.cardgames.BlackJack.BlackJackCard;
-import io.zipcoder.casino.cardgames.BlackJack.IOBlackJackConsole;
-import io.zipcoder.casino.cardgames.BlackJack.BlackJackPlayer;
+import io.zipcoder.casino.cardgames.BlackJack.*;
+import io.zipcoder.casino.cardgames.CardUtilities.Deck;
 import io.zipcoder.casino.cardgames.CardUtilities.SignType;
 import io.zipcoder.casino.cardgames.CardUtilities.CardPlayer;
 import io.zipcoder.casino.Player;
+import io.zipcoder.casino.cardgames.GoFish.GoFish;
 import org.junit.Assert;
 import org.junit.Test;
 
 public class BlackJackTests {
+    @Test
+    public void playTestDealerWins() {
 
+        int[] deckValues = {11,2,1,12};
+        BlackJackDeck deck = new DummyDeckForBlackJackTest(deckValues);
+        IOBlackJackConsole console = new DummyIOForBlackJackTest("Aswathy", "hit");
+
+        BlackJack game = new BlackJack(new BlackJackPlayer(new Player(100, "Aswathy")), console, deck);
+        game.play();
+        //game.printResults();
+        boolean didwin =  game.didWin();
+        Assert.assertFalse(didwin);
+    }
+
+    @Test
+    public void playTestPlayerWins() {
+
+        int[] deckValues = {11,1,1,2};
+        BlackJackDeck deck = new DummyDeckForBlackJackTest(deckValues);
+        IOBlackJackConsole console = new DummyIOForBlackJackTest("Aswathy", "stand");
+
+        BlackJack game = new BlackJack(new BlackJackPlayer(new Player(100, "Aswathy")), console, deck);
+        game.play();
+        //game.printResults();
+        boolean didwin =  game.didWin();
+        Assert.assertTrue(didwin);
+    }
+    @Test
+    public void playTestPlayerHitWins() {
+
+        int[] deckValues = {8,1,1,9,2,1};
+        BlackJackDeck deck = new DummyDeckForBlackJackTest(deckValues);
+        IOBlackJackConsole console = new DummyIOForBlackJackTest("Aswathy", "hit");
+
+        BlackJack game = new BlackJack(new BlackJackPlayer(new Player(100, "Aswathy")), console, deck);
+        game.play();
+        //game.printResults();
+        boolean didwin =  game.didWin();
+        Assert.assertTrue(didwin);
+    }
     @Test
     public void distributeCardsTest() {
         BlackJack game = new BlackJack(new BlackJackPlayer(

@@ -50,7 +50,31 @@ public class CardPlayerTest {
         //Then
         Assert.assertEquals((Integer)3, actual);
     }
+    @Test
+    public void clearCardsInHandTest() {
+        //Given
+        Player player = new Player(0,"Swapna");
+        CardPlayer cardPlayer = new CardPlayer(player);
+        Card card1=new Card(2);
+        Card card2=new Card(5);
 
+
+        //When
+        cardPlayer.addCardToHand(card1);
+        cardPlayer.addCardToHand(card2);
+
+        Integer actual = cardPlayer.getNumberOfCardsInHand();
+
+        //Then
+        Assert.assertEquals((Integer)2, actual);
+
+        cardPlayer.clearCardsInHand();
+        Integer clearedRetrieved = cardPlayer.getNumberOfCardsInHand();
+
+        //Then
+        Assert.assertEquals((Integer)0, clearedRetrieved);
+
+    }
     @Test
     public void discardMatchedCardsTest() {
 

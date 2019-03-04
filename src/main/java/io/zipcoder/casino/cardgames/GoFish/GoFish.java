@@ -33,7 +33,7 @@ public class GoFish extends CardGame {
 
         this.console = console;
         deck = new Deck(52);
-        facilitator = new Facilitator(playerList, deck, noOfCardsToBeDistributed);
+        facilitator = new Facilitator(playerList, deck, noOfCardsToBeDistributed, console);
 
 
     }
@@ -50,25 +50,19 @@ public class GoFish extends CardGame {
 
         this.console = console;
         this.deck = deck;
-        facilitator = new Facilitator(playerList, deck, noOfCardsToBeDistributed);
+        facilitator = new Facilitator(playerList, deck, noOfCardsToBeDistributed, console);
     }
 
 
     public void play() {
+
         console.goFishWelcomeMessage();
         facilitator.distributeCards();
-        console.distributeCardMessage();
+
         List<Card> hand = player.getHandCards();
         console.displayCurrentHand(hand);
-        int numberofCards = hand.size();
-        facilitator.discardMatchedCards();
-        hand = player.getHandCards();
 
-        if(numberofCards != hand.size()){
-            console.doesHaveCardMessage();
-            console.displayCurrentHand(hand);
-        }
-
+        checkMatchCardsInHand(hand);
 
         boolean done = false;
         do{
@@ -83,16 +77,23 @@ public class GoFish extends CardGame {
         }
 
    }
+    private void checkMatchCardsInHand(List<Card> hand){
+        int numberofCards = hand.size();
+        facilitator.discardMatchedCards();
+        hand = player.getHandCards();
 
-    public void exit() {
-
+        if(numberofCards != hand.size()){
+            console.doesHaveCardMessage();
+            console.displayCurrentHand(hand);
+        }
     }
+
 
     @Override
     public void printResults() {
-        if(facilitator.isQuit()) {
+        if(facilitator.isQuit())
             console.exitMessage();
-        }
+
         else if(facilitator.getWinner() == player){
             console.winningMessage();
         }else {
@@ -101,8 +102,11 @@ public class GoFish extends CardGame {
 
 
     }
-    public void takeTurn() {
-        facilitator.facilitateTurn(console);
+    protected void takeTurn() {
+        facilitator.facilitateTurn();
 
+    }
+    public boolean isQuit(){
+        return facilitator.isQuit();
     }
 }

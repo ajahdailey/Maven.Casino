@@ -21,7 +21,7 @@ public class CasinoTest {
     @Before
     public void setup() {
         playerName = "Kate";
-        startingMoney = 100;
+        startingMoney = 90;
         testOutStream = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(testOutStream);
         oldPrintStream = System.out;

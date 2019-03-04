@@ -9,30 +9,34 @@ import java.util.List;
 
 public class Facilitator {
 
+    private final IOGoFishConsole console;
     private int numberOfCardsToBeDistributed;
     private List<CardPlayer> playerList;
+
+    private CardPlayer currentPlayer = null;
+    private CardPlayer opponentPlayer = null;
+    private CardPlayer winner;
+    private Deck deck;
     private final int playerIdx = 1;
     private final int dealerIdx = 0;
-
-    public boolean isQuit() {
-        return isQuit;
-    }
-
     private boolean isQuit = false;
+
 
     public CardPlayer getWinner() {
         return winner;
     }
 
-    public int currentPlayerIdx = 1;
-    private CardPlayer winner;
-    Deck deck;
+    public boolean isQuit() {
+        return isQuit;
+    }
 
-
-    public Facilitator(List<CardPlayer> playerList, Deck deck, int numberOfCardsToBeDistributed) {
+    public Facilitator(List<CardPlayer> playerList, Deck deck, int numberOfCardsToBeDistributed, IOGoFishConsole console) {
         this.playerList = playerList;
         this.deck = deck;
         this.numberOfCardsToBeDistributed = numberOfCardsToBeDistributed;
+        this.console = console;
+        currentPlayer = playerList.get(playerIdx);
+        opponentPlayer = playerList.get(dealerIdx);
     }
 
     public boolean evaluateTurn() {
@@ -76,6 +80,7 @@ public class Facilitator {
                 }
             }
         }
+        console.distributeCardMessage();
     }
 
     public void discardMatchedCards() {
@@ -86,16 +91,52 @@ public class Facilitator {
     }
 
 
-    public void facilitateTurn(IOGoFishConsole console) {
-        CardPlayer currentPlayer = playerList.get(currentPlayerIdx);
-        CardPlayer opponentPlayer = null;
-        Card cardChosen;
+    public void facilitateTurn() {
+
+        Card cardChosen = initialiseTurnAndSelectCard();
+
+        if(cardChosen != null) {
+            evaluateCard(cardChosen);
+            List<Card> hand = playerList.get(playerIdx).getHandCards();
+            console.displayCurrentHand(hand);
+            setNextTurnPlayer();
+        }
+        else
+            isQuit = true;
+    }
+
+    private void setNextTurnPlayer(){
+        if (isCurrentPlayerDealer()) {
+            currentPlayer = playerList.get(playerIdx);
+            opponentPlayer = playerList.get(dealerIdx);
+        } else {
+            currentPlayer = playerList.get(dealerIdx);
+            opponentPlayer = playerList.get(playerIdx);
+        }
+    }
+
+    private void evaluateCard(Card cardChosen){
+        if (opponentPlayer.hasCard(cardChosen)) {
+            console.doesHaveCardMessage(cardChosen);
+            opponentPlayer.removeCardFromHand(cardChosen);
+            currentPlayer.removeCardFromHand(cardChosen);
+        } else {
+            console.doesNotHaveCardMessage(cardChosen);
+            Card newCard = deck.draw();
+            console.cardDrawnMessage(newCard);
+
+            currentPlayer.addCardToHand(newCard);
+            if (currentPlayer.discardMatchedCards())
+                console.doesHaveCardMessage();
+        }
+    }
+
+    private Card initialiseTurnAndSelectCard(){
+        Card cardChosen = null;
         console.setPlayerName(currentPlayer.getName());
         console.displayTurnMessage();
         if(isCurrentPlayerDealer()) {
             List<Card> hand = currentPlayer.getHandCards();
-            //console.displayCurrentHand(hand);
-            opponentPlayer = playerList.get(playerIdx);
             cardChosen = currentPlayer.getRandomCardFromHand();
             console.cardToAskForMessage(cardChosen);
 
@@ -104,36 +145,10 @@ public class Facilitator {
             List<Card> hand = currentPlayer.getHandCards();
             cardChosen = console.pickACardForPlayerMessage(hand);
         }
-        if(cardChosen != null) {
-
-            if (opponentPlayer.hasCard(cardChosen)) {
-                console.doesHaveCardMessage(cardChosen);
-                opponentPlayer.removeCardFromHand(cardChosen);
-                currentPlayer.removeCardFromHand(cardChosen);
-            } else {
-                console.doesNotHaveCardMessage(cardChosen);
-                Card newCard = deck.draw();
-                console.cardDrawnMessage(newCard);
-
-                currentPlayer.addCardToHand(newCard);
-                if (currentPlayer.discardMatchedCards())
-                    console.doesHaveCardMessage();
-            }
-            List<Card> hand = playerList.get(playerIdx).getHandCards();
-            console.displayCurrentHand(hand);
-
-            if (isCurrentPlayerDealer()) {
-                currentPlayerIdx = playerIdx;
-            } else {
-                currentPlayerIdx = dealerIdx;
-            }
-        }
-        else
-            isQuit = true;
-
+        return cardChosen;
     }
 
     private boolean isCurrentPlayerDealer(){
-        return currentPlayerIdx == dealerIdx ? true : false;
+        return currentPlayer == playerList.get(dealerIdx) ? true : false;
     }
 }

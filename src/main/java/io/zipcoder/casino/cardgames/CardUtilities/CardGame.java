@@ -15,7 +15,7 @@ public abstract class CardGame implements Game {
     protected boolean didWin = false;
 
 
-    public abstract void takeTurn();
+    protected abstract void takeTurn();
 }
 
 

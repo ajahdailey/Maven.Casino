@@ -32,11 +32,6 @@ public class CardGameTest {
         }
 
         @Override
-        public void exit() {
-
-        }
-
-        @Override
         public void printResults() {
 
         }
